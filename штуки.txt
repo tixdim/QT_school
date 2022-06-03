@@ -1,0 +1,1 @@
+fname = QFileDialog.getOpenFileName(self, 'Выбрать картинку', '')[0] # для выбора картинки из файлообменника 
