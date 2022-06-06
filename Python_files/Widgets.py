@@ -23,25 +23,35 @@ class MenuWithMenu(AnyWidget):
         self.Spravka_btn.clicked.connect(self.go_to_spravka)
         self.Menu_btn.clicked.connect(self.go_to_menu)
         self.Profile_btn.clicked.connect(self.go_to_profile)
-        self.Exit_btn.clicked.connect(self.exit)
+        self.Exit_btn.clicked.connect(self.go_to_login)
 
     def go_to_spravka(self):
-        spr = Spravka()
-        spr.show()
-        self.hide()
+        self.spr = Spravka()
+        self.spr.show()
+        self.close()
 
     def go_to_menu(self):
-        men = Menu()
-        men.show()
-        self.hide()
+        self.men = Menu()
+        self.men.show()
+        self.close()
 
     def go_to_profile(self):
-        pro = Profile()
-        pro.show()
-        self.hide()
+        self.pro = Profile()
+        self.pro.show()
+        self.close()
 
-    def exit(self):
-        sys.exit()
+    def go_to_login(self):
+        self.log = Login()
+        self.log.show()
+        self.close()
+
+
+class Login(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('LogIn.ui', self)
+        img = QPixmap('1.jpg')
+        self.imageLabel.setPixmap(img)
 
 
 class Spravka(AnyWidget):

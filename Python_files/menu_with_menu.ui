@@ -29,8 +29,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(246,170,253); color: White; border-radius: 20px; 
-font: rgb(181,184,177) </string>
+    <string notr="true">background-color: rgb(107,92,209,220); color: White; border-radius: 20px; </string>
    </property>
    <property name="text">
     <string>Справка</string>
@@ -52,7 +51,7 @@ font: rgb(181,184,177) </string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(246,170,253); color: White; border-radius: 20px;</string>
+    <string notr="true">background-color: rgb(107,92,209,200); color: White; border-radius: 20px; </string>
    </property>
    <property name="text">
     <string>Меню</string>
@@ -74,7 +73,7 @@ font: rgb(181,184,177) </string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(246,170,253); color: White; border-radius: 20px;</string>
+    <string notr="true">background-color: rgb(107,92,209,150); color: White; border-radius: 20px; </string>
    </property>
    <property name="text">
     <string>Профиль</string>
@@ -96,30 +95,12 @@ font: rgb(181,184,177) </string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(246,170,253); color: White; border-radius: 20px;</string>
+    <string notr="true">background-color: rgb(107,92,209,150); color: White; border-radius: 20px; </string>
    </property>
    <property name="text">
     <string>Выход</string>
    </property>
   </widget>
-  <widget class="QLabel" name="imageLabel">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1400</width>
-     <height>800</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <zorder>imageLabel</zorder>
-  <zorder>Spravka_btn</zorder>
-  <zorder>Menu_btn</zorder>
-  <zorder>Profile_btn</zorder>
-  <zorder>Exit_btn</zorder>
  </widget>
  <resources/>
  <connections/>
