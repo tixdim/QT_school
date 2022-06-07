@@ -24,7 +24,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>MS Shell Dlg 2</family>
      <pointsize>28</pointsize>
     </font>
    </property>
@@ -46,7 +46,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>MS Shell Dlg 2</family>
      <pointsize>28</pointsize>
     </font>
    </property>
@@ -68,7 +68,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>MS Shell Dlg 2</family>
      <pointsize>28</pointsize>
     </font>
    </property>
@@ -90,7 +90,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>MS Shell Dlg 2</family>
      <pointsize>28</pointsize>
     </font>
    </property>
