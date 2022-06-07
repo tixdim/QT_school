@@ -1,9 +1,7 @@
 import sys
-from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
-from PyQt5 import uic, QtCore
-from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QButtonGroup,\
-    QVBoxLayout, QScrollArea
+from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon
+from PyQt5 import uic, QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QButtonGroup
 
 
 class AnyWidget(QWidget):
@@ -20,6 +18,8 @@ class AnyWidget(QWidget):
 
         self.setWindowTitle(name)
         self.setFixedSize(1400, 800)
+
+
 
 
 class MenuWithMenu(AnyWidget):
@@ -59,6 +59,14 @@ class Login(QMainWindow):
         self.back.setStyleSheet("background-color: #ffc0cb; border-radius: 25px;")
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setFixedSize(521, 600)
+
+        self.back.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0,
+                                                                        color=QtGui.QColor(234, 221, 186, 100)))
+        self.front.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0,
+                                                                        color=QtGui.QColor(105, 118, 132, 100)))
+        self.pb_login.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=3, yOffset=3,
+                                                                        color=QtGui.QColor(105, 118, 132, 100)))
 
 
 class Spravka(AnyWidget):
@@ -74,27 +82,6 @@ class Menu(AnyWidget):
 class Profile(AnyWidget):
     def __init__(self):
         super().__init__('UI_files/Profile.ui', 'Профиль')
-        self.widget = QWidget()
-        self.vbox = QVBoxLayout()
-
-        for i in range(1, 50):
-            font = QFont('MS Shell Dlg 2', 30)
-            btn = QPushButton(f'Вариант {i}')
-            btn.setFont(font)
-            if i % 2 == 1:
-                btn.setStyleSheet('background-color: rgba(223, 116, 153, 150); color: '
-                                  'rgba(255, 255, 255, 150); text-align: left;')
-            else:
-                btn.setStyleSheet('background-color: rgba(158, 241, 162, 200); color: '
-                                  'rgba(255, 255, 255, 150); text-align: left;')
-            self.vbox.addWidget(btn)
-
-        self.vbox.setSpacing(20)
-        self.widget.setLayout(self.vbox)
-        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setWidget(self.widget)
 
 
 def except_hook(cls, exception, traceback):
@@ -103,7 +90,7 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Profile()
+    ex = Login()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
