@@ -1,7 +1,9 @@
 import sys
-from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon
+from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
+from PyQt5 import uic, QtCore
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QButtonGroup
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QButtonGroup,\
+    QVBoxLayout, QScrollArea
 
 
 class AnyWidget(QWidget):
@@ -18,8 +20,6 @@ class AnyWidget(QWidget):
 
         self.setWindowTitle(name)
         self.setFixedSize(1400, 800)
-
-
 
 
 class MenuWithMenu(AnyWidget):
