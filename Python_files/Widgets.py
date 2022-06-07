@@ -20,8 +20,6 @@ class AnyWidget(QWidget):
         self.setFixedSize(1400, 800)
 
 
-
-
 class MenuWithMenu(AnyWidget):
     def __init__(self):
         super().__init__('UI_files/menu_with_menu.ui', 'Меню (название переделать)')
@@ -54,7 +52,7 @@ class MenuWithMenu(AnyWidget):
 class Login(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI_files/LogIn.ui', self)
+        uic.loadUi('UI_files/SignIn.ui', self)
 
         self.back.setStyleSheet("background-color: #ffc0cb; border-radius: 25px;")
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -64,9 +62,22 @@ class Login(QMainWindow):
         self.back.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0,
                                                                         color=QtGui.QColor(234, 221, 186, 100)))
         self.front.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0,
-                                                                        color=QtGui.QColor(105, 118, 132, 100)))
+                                                                         color=QtGui.QColor(105, 118, 132, 100)))
         self.pb_login.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=3, yOffset=3,
-                                                                        color=QtGui.QColor(105, 118, 132, 100)))
+                                                                            color=QtGui.QColor(105, 118, 132, 100)))
+
+        self.pb_close.clicked.connect(self.exit)
+        self.pb_login.clicked.connect(self.log_in_menu)
+
+    def exit(self):
+        sys.exit()
+
+    def log_in_menu(self):
+        # проверка на правильность пароля и логина
+
+        self.glavn_menu = MenuWithMenu()
+        self.glavn_menu.show()
+        self.close()
 
 
 class Spravka(AnyWidget):
