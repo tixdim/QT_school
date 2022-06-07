@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon
-from PyQt5 import uic, QtCore
+from PyQt5 import uic, QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QButtonGroup
 
 
@@ -59,6 +59,14 @@ class Login(QMainWindow):
         self.back.setStyleSheet("background-color: #ffc0cb; border-radius: 25px;")
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setFixedSize(521, 600)
+
+        self.back.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0,
+                                                                        color=QtGui.QColor(234, 221, 186, 100)))
+        self.front.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0,
+                                                                        color=QtGui.QColor(105, 118, 132, 100)))
+        self.pb_login.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=3, yOffset=3,
+                                                                        color=QtGui.QColor(105, 118, 132, 100)))
 
 
 class Spravka(AnyWidget):
@@ -82,7 +90,7 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Spravka()
+    ex = Login()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())

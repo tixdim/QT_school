@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>531</width>
-    <height>588</height>
+    <width>520</width>
+    <height>581</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -24,31 +30,32 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton#pushButton{
+     <string notr="true">QPushButton#pb_login{
 	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(20, 47, 78, 219), stop:1 rgba(85, 98, 112, 226));
 	color: rgba(255, 255, 255, 210);
 	border-radius: 5px;
 }
-QPushButton#pushButton:hover{
+QPushButton#pb_login:hover{
 	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 rgba(105, 118, 132, 226));
 }
-QPushButton#pushButton:pressed{
+QPushButton#pb_login:pressed{
 	padding-left: 2px;
 	padding-top: 2px;
 	background-color: rgba(105, 118, 132, 200);
 }
 
-QPushButton#pushButton_2{
-	background-color:rgba(0, 0, 0, 0);
-	color: rgba(85, 98, 112, 255);
+QPushButton#pb_for{
+	background-color: rgba(105, 118, 132, 0);
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
 }
-QPushButton#pushButton_2:hover{
-	color: rgba(155, 168, 182, 220);
-}
-QPushButton#pushButton_2:pressed{
+QPushButton#pb_for:pressed{
 	padding-left: 2px;
 	padding-top: 2px;
-	background-color: rgba(115, 128, 142, 255);
+}
+
+QPushButton#pb_back{
+	background-color: rgba(105, 118, 132, 0);
 }</string>
     </property>
     <widget class="QLabel" name="back">
@@ -137,7 +144,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>270</y>
+       <y>260</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -161,11 +168,14 @@ padding-bottom: 7px;</string>
       <string>  Password</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="but_login">
+    <widget class="QPushButton" name="pb_login">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>370</y>
+       <y>420</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -177,38 +187,59 @@ padding-bottom: 7px;</string>
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="text">
       <string>L o g  I n</string>
      </property>
     </widget>
-    <widget class="QLabel" name="pered">
+    <widget class="QPushButton" name="pb_for">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
-       <x>150</x>
-       <y>420</y>
-       <width>191</width>
-       <height>20</height>
+       <x>120</x>
+       <y>470</y>
+       <width>251</width>
+       <height>23</height>
       </rect>
      </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
      <property name="styleSheet">
-      <string notr="true">color: rgba(255, 255, 255, 140);</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Forgot your User Name or Password?</string>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+    </widget>
+    <widget class="QPushButton" name="pb_back">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>50</y>
+       <width>50</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../right-arrows.png</normaloff>../right-arrows.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
      </property>
     </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
