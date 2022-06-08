@@ -6,13 +6,128 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>586</width>
-    <height>438</height>
+    <width>1400</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton#Tren_btn:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}
+
+QPushButton#Theo_btn:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}
+
+QPushButton#Exam_btn:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}
+
+QPushButton#back{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#back:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}
+
+</string>
+  </property>
+  <widget class="QPushButton" name="Theo_btn">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>130</y>
+     <width>460</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>28</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(107,92,209,220); color: White; border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>Теория</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Exam_btn">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>410</y>
+     <width>460</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>28</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(107,92,209,150); color: White; border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>Экзаменатор</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Tren_btn">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>270</y>
+     <width>460</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>28</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(107,92,209,200); color: White; border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>Тренажёр</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="back">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>50</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../Images/right-arrows.png</normaloff>../Images/right-arrows.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

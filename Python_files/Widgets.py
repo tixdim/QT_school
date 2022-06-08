@@ -333,10 +333,64 @@ class Spravka(AnyWidget):
         self.close()
 
 
+class Theory(AnyWidget):
+    def __init__(self, nickname):
+        super().__init__('UI_files/Theory.ui', 'Теория')
+        self.back.clicked.connect(self.go_to_menu)
+        self.nickname = nickname
+
+    def go_to_menu(self):
+        self.men = Menu(self.nickname)
+        self.men.show()
+        self.close()
+
+
+class Exam(AnyWidget):
+    def __init__(self, nickname):
+        super().__init__('UI_files/Exam.ui', 'Экзамен')
+        self.back.clicked.connect(self.go_to_menu)
+        self.nickname = nickname
+
+    def go_to_menu(self):
+        self.men = Menu(self.nickname)
+        self.men.show()
+        self.close()
+
+
+class Tren(AnyWidget):
+    def __init__(self, nickname):
+        super().__init__('UI_files/Tren.ui', 'Тренажер')
+        self.back.clicked.connect(self.go_to_menu)
+        self.nickname = nickname
+
+    def go_to_menu(self):
+        self.men = Menu(self.nickname)
+        self.men.show()
+        self.close()
+
+
 class Menu(AnyWidget):
     def __init__(self, nickname):
         super().__init__('UI_files/Menu.ui', 'Меню')
         self.nicname = nickname
+        self.Theo_btn.clicked.connect(self.go_to_Theo)
+        self.Exam_btn.clicked.connect(self.go_to_Exam)
+        self.Tren_btn.clicked.connect(self.go_to_Tren)
+
+    def go_to_Theo(self):
+        self.the = Theory(self.nicname)
+        self.the.show()
+        self.close()
+
+    def go_to_Exam(self):
+        self.exam = Exam(self.nicname)
+        self.exam.show()
+        self.close()
+
+    def go_to_Tren(self):
+        self.tren = Tren(self.nicname)
+        self.tren.show()
+        self.close()
 
 
 class ChangeMenu(AnyWidget):
@@ -600,7 +654,7 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Spravka('ap$en')
+    ex = Menu('ap$en')
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
