@@ -23,7 +23,7 @@ class AnyWidget(QWidget):
         self.setFixedSize(1400, 800)
 
 
-class MenuWithMenu(AnyWidget):
+class MainMenu(AnyWidget):
     def __init__(self):
         super().__init__('UI_files/menu_with_menu.ui', 'Меню (название переделать)')
         self.Spravka_btn.clicked.connect(self.go_to_spravka)
@@ -84,7 +84,7 @@ class Login(QMainWindow):
 
     def sign_in(self):
         # проверка на правильность пароля и логина
-        self.glavn_menu = MenuWithMenu()
+        self.glavn_menu = MainMenu()
         self.glavn_menu.show()
         self.close()
 
@@ -226,6 +226,12 @@ class ChangeMenu(AnyWidget):
                                          f' border-radius: 60px')
 
         self.image_change_btn.clicked.connect(self.change_img)
+        self.back.clicked.connect(self.go_to_profile)
+
+    def go_to_profile(self):
+        self.pro = Profile()
+        self.pro.show()
+        self.close()
 
     def change_img(self):
         try:
@@ -290,6 +296,12 @@ class Profile(AnyWidget):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setWidget(self.widget)
         self.change_btn.clicked.connect(self.go_to_change)
+        self.back.clicked.connect(self.go_to_main_menu)
+
+    def go_to_main_menu(self):
+        self.men = MainMenu()
+        self.men.show()
+        self.close()
 
     def go_to_change(self):
         self.cha = ChangeMenu()
@@ -303,7 +315,7 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Regist()
+    ex = Profile()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
