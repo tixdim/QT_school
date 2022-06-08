@@ -23,6 +23,22 @@ class AnyWidget(QWidget):
         self.setFixedSize(1400, 800)
 
 
+class TheoryWidget(AnyWidget):
+    def __init__(self, nickname):
+        super().__init__('UI_files/TheoryWidget.ui', 'Теория')
+        lab1 = QLabel('1', self.tab)
+        lab2 = QLabel('2', self.tab_2)
+        lab2.move(600, 300)
+        lab1.move(600, 300)
+        self.tab
+        for i in range(5):
+            new_widget = QtWidgets.QWidget()
+            count = self.tabWidget.count()
+            lab = QLabel(f'{count + 1}', new_widget)
+            lab.move(600, 300)
+            self.tabWidget.insertTab(count, new_widget, f"{count + 1}")
+
+
 class MainMenu(AnyWidget):
     def __init__(self, nickname):
         super().__init__('UI_files/menu_with_menu.ui', 'Меню (название переделать)')
@@ -660,7 +676,7 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Menu('ap$en')
+    ex = TheoryWidget('ap$en')
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
