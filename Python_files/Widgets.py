@@ -1,9 +1,10 @@
-import sys
+import os, shutil
+import sys, json
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
-from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtCore import Qt, QSize, QRect
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QButtonGroup,\
-    QVBoxLayout, QScrollArea
+    QVBoxLayout, QScrollArea, QGraphicsDropShadowEffect, QFileDialog, QLineEdit
 
 
 class AnyWidget(QWidget):
@@ -92,22 +93,75 @@ class Menu(AnyWidget):
         super().__init__('UI_files/Menu.ui', 'Меню')
 
 
+class ChangeMenu(AnyWidget):
+    def __init__(self):
+        super().__init__('UI_files/ChangeMenu.ui', 'Изменить профиль')
+        self.user_name = 'ДимASSS'    # json
+
+        if os.path.exists(f'users_avatars/{self.user_name}_img.png'):
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.user_name}_img.png);'
+                                         f' border-radius: 60px')
+
+        else:
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.user_name}_img.jpg);'
+                                         f' border-radius: 60px')
+
+        self.image_change_btn.clicked.connect(self.change_img)
+
+    def change_img(self):
+        try:
+            file = QFileDialog.getOpenFileUrl(caption='Выберите картинку')[0]
+            file_url = file.url()[8:]
+            if not file_url:
+                raise BaseException
+            try:
+                os.remove(f'users_avatars/{self.user_name}_img.jpg')
+            except:
+                try:
+                    os.remove(f'users_avatars/{self.user_name}_img.png')
+                except:
+                    pass
+            shutil.copy(file_url, "users_avatars")
+            os.rename(f'users_avatars/{file_url[-1 * file_url[::-1].find("/"):]}',
+                      f'users_avatars/{self.user_name}_img.{file_url[-3:]}')
+
+            self.user_icon.setStyleSheet(f'border-radius:60px;'
+                                         f'border-image: url(users_avatars/{self.user_name}_img.{file_url[-3:]})')
+        except:
+            pass
+
+
 class Profile(AnyWidget):
     def __init__(self):
         super().__init__('UI_files/Profile.ui', 'Профиль')
         self.widget = QWidget()
+        self.num = 49
+        self.user_name = 'ДимASSS'            # переделать 100 проц (через json файл)
         self.vbox = QVBoxLayout()
+        self.vbox.setGeometry(QRect(0, 0, 1341, 1000))
+
+        if os.path.exists(f'users_avatars/{self.user_name}_img.png'):
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.user_name}_img.png);'
+                                         f' border-radius: 60px')
+
+        else:
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.user_name}_img.jpg);'
+                                         f' border-radius: 60px')
 
         for i in range(1, 50):
             font = QFont('MS Shell Dlg 2', 30)
-            btn = QPushButton(f'Вариант {i}')
+            btn = QPushButton(f'  Вариант {i}')
             btn.setFont(font)
+            btn.setMaximumSize(QSize(1300, 120))
+            btn.setMinimumSize(QSize(1300, 120))
             if i % 2 == 1:
                 btn.setStyleSheet('background-color: rgba(223, 116, 153, 150); color: '
-                                  'rgba(255, 255, 255, 150); text-align: left;')
+                                  'rgba(255, 255, 255, 150); text-align: left;'
+                                  'border-radius: 25px')
             else:
                 btn.setStyleSheet('background-color: rgba(158, 241, 162, 200); color: '
-                                  'rgba(255, 255, 255, 150); text-align: left;')
+                                  'rgba(255, 255, 255, 150); text-align: left;'
+                                  'border-radius: 25px')
             self.vbox.addWidget(btn)
 
         self.vbox.setSpacing(20)
@@ -116,6 +170,12 @@ class Profile(AnyWidget):
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setWidget(self.widget)
+        self.change_btn.clicked.connect(self.go_to_change)
+
+    def go_to_change(self):
+        self.cha = ChangeMenu()
+        self.cha.show()
+        self.close()
 
 
 def except_hook(cls, exception, traceback):
