@@ -24,25 +24,27 @@ class AnyWidget(QWidget):
 
 
 class MainMenu(AnyWidget):
-    def __init__(self):
+    def __init__(self, nickname):
         super().__init__('UI_files/menu_with_menu.ui', 'Меню (название переделать)')
+        self.nicname = nickname
+
         self.Spravka_btn.clicked.connect(self.go_to_spravka)
         self.Menu_btn.clicked.connect(self.go_to_menu)
         self.Profile_btn.clicked.connect(self.go_to_profile)
         self.Exit_btn.clicked.connect(self.go_to_login)
 
     def go_to_spravka(self):
-        self.spr = Spravka()
+        self.spr = Spravka(self.nicname)
         self.spr.show()
         self.close()
 
     def go_to_menu(self):
-        self.men = Menu()
+        self.men = Menu(self.nicname)
         self.men.show()
         self.close()
 
     def go_to_profile(self):
-        self.pro = Profile()
+        self.pro = Profile(self.nicname)
         self.pro.show()
         self.close()
 
@@ -56,8 +58,6 @@ class Login(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('UI_files/SignIn.ui', self)
-
-        # self.back.setStyleSheet("background-color: #ffc0cb; border-radius: 25px;")
 
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
@@ -264,18 +264,21 @@ class Regist(QMainWindow):
 
 
 class Spravka(AnyWidget):
-    def __init__(self):
+    def __init__(self, nickname):
         super().__init__('UI_files/Spravka.ui', 'Справка')
+        self.nicname = nickname
 
 
 class Menu(AnyWidget):
-    def __init__(self):
+    def __init__(self, nickname):
         super().__init__('UI_files/Menu.ui', 'Меню')
+        self.nicname = nickname
 
 
 class ChangeMenu(AnyWidget):
-    def __init__(self):
+    def __init__(self, nickname):
         super().__init__('UI_files/ChangeMenu.ui', 'Изменить профиль')
+        self.nicname = nickname
         self.user_name = 'ДимASSS'    # json
 
         if os.path.exists(f'users_avatars/{self.user_name}_img.png'):
@@ -312,8 +315,9 @@ class ChangeMenu(AnyWidget):
 
 
 class Profile(AnyWidget):
-    def __init__(self):
+    def __init__(self, nickname):
         super().__init__('UI_files/Profile.ui', 'Профиль')
+        self.nicname = nickname
         self.widget = QWidget()
         self.num = 49
         self.user_name = 'ДимASSS'            # переделать 100 проц (через json файл)
@@ -353,7 +357,7 @@ class Profile(AnyWidget):
         self.change_btn.clicked.connect(self.go_to_change)
 
     def go_to_change(self):
-        self.cha = ChangeMenu()
+        self.cha = ChangeMenu(self.nicname)
         self.cha.show()
         self.close()
 
