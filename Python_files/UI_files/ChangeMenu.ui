@@ -21,12 +21,12 @@ QPushButton#back:pressed{
 	padding-left: 2px;
 	padding-top: 2px;
 }
-QPushButton#accept{
+QPushButton#acept{
 	background-color: rgb(170, 0, 255);
 	border-radius:10px;
 	color: rgba(255, 255, 255, 210);
 }
-QPushButton#accept:pressed{
+QPushButton#acept:pressed{
 	padding-left: 2px;
 	padding-top: 2px;
 }
@@ -38,9 +38,40 @@ QPushButton#image_change_btn{
 QPushButton#image_change_btn:pressed{
 	padding-left: 2px;
 	padding-top: 2px;
+}
+QPushButton#pb_eye_not_1{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_eye_not_1:pressed{
+	padding-left: 1px;
+	padding-top: 1px;
+}
+
+QPushButton#pb_eye_active_1{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_eye_active_1:pressed{
+	padding-left: 1px;
+	padding-top: 1px;
+}
+
+QPushButton#pb_eye_not_2{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_eye_not_2:pressed{
+	padding-left: 1px;
+	padding-top: 1px;
+}
+
+QPushButton#pb_eye_active_2{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_eye_active_2:pressed{
+	padding-left: 1px;
+	padding-top: 1px;
 }</string>
   </property>
-  <widget class="QLineEdit" name="user_name_label">
+  <widget class="QLineEdit" name="name">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -49,7 +80,7 @@ QPushButton#image_change_btn:pressed{
      <x>500</x>
      <y>220</y>
      <width>400</width>
-     <height>61</height>
+     <height>60</height>
     </rect>
    </property>
    <property name="font">
@@ -70,13 +101,13 @@ padding-bottom: 7px;</string>
     <string/>
    </property>
    <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
+    <enum>QLineEdit::Normal</enum>
    </property>
    <property name="placeholderText">
     <string> Имя</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="user_password2_label">
+  <widget class="QLineEdit" name="password_2">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -85,7 +116,7 @@ padding-bottom: 7px;</string>
      <x>500</x>
      <y>520</y>
      <width>400</width>
-     <height>61</height>
+     <height>60</height>
     </rect>
    </property>
    <property name="font">
@@ -109,7 +140,7 @@ padding-bottom: 7px;</string>
     <string> Повторить пароль</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="user_password1_label">
+  <widget class="QLineEdit" name="password_1">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -118,7 +149,7 @@ padding-bottom: 7px;</string>
      <x>500</x>
      <y>420</y>
      <width>400</width>
-     <height>61</height>
+     <height>60</height>
     </rect>
    </property>
    <property name="font">
@@ -136,11 +167,14 @@ color: rgba(255, 255, 255, 230);
 padding-bottom: 7px;
 </string>
    </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
    <property name="placeholderText">
-    <string> Пароль</string>
+    <string> Новый Пароль</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="user_surname_label">
+  <widget class="QLineEdit" name="surname">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -149,7 +183,7 @@ padding-bottom: 7px;
      <x>500</x>
      <y>320</y>
      <width>400</width>
-     <height>61</height>
+     <height>60</height>
     </rect>
    </property>
    <property name="font">
@@ -212,11 +246,11 @@ padding-bottom: 7px;</string>
     <string>Выбрать картинку</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="accept">
+  <widget class="QPushButton" name="acept">
    <property name="geometry">
     <rect>
      <x>500</x>
-     <y>650</y>
+     <y>660</y>
      <width>400</width>
      <height>71</height>
     </rect>
@@ -255,14 +289,137 @@ padding-bottom: 7px;</string>
     </size>
    </property>
   </widget>
-  <zorder>user_name_label</zorder>
-  <zorder>user_password2_label</zorder>
-  <zorder>user_password1_label</zorder>
-  <zorder>user_surname_label</zorder>
+  <widget class="QPushButton" name="pb_eye_not_1">
+   <property name="geometry">
+    <rect>
+     <x>870</x>
+     <y>435</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../Images/eyes.svg</normaloff>../Images/eyes.svg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pb_eye_not_2">
+   <property name="geometry">
+    <rect>
+     <x>870</x>
+     <y>535</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../Images/eyes.svg</normaloff>../Images/eyes.svg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pb_eye_active_2">
+   <property name="geometry">
+    <rect>
+     <x>900</x>
+     <y>535</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../Images/eyes-active.svg</normaloff>../Images/eyes-active.svg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pb_eye_active_1">
+   <property name="geometry">
+    <rect>
+     <x>900</x>
+     <y>435</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../Images/eyes-active.svg</normaloff>../Images/eyes-active.svg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="error">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>600</y>
+     <width>481</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgba(255, 255, 255, 210);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>name</zorder>
+  <zorder>password_2</zorder>
+  <zorder>password_1</zorder>
+  <zorder>surname</zorder>
   <zorder>image_change_btn</zorder>
   <zorder>user_icon</zorder>
-  <zorder>accept</zorder>
+  <zorder>acept</zorder>
   <zorder>back</zorder>
+  <zorder>pb_eye_not_1</zorder>
+  <zorder>pb_eye_not_2</zorder>
+  <zorder>pb_eye_active_2</zorder>
+  <zorder>pb_eye_active_1</zorder>
+  <zorder>error</zorder>
  </widget>
  <resources/>
  <connections/>

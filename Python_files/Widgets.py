@@ -279,21 +279,170 @@ class ChangeMenu(AnyWidget):
     def __init__(self, nickname):
         super().__init__('UI_files/ChangeMenu.ui', 'Изменить профиль')
         self.nicname = nickname
-        self.user_name = 'ДимASSS'    # json
+        self.pb_eye_active_1.setHidden(True)
+        self.pb_eye_active_2.setHidden(True)
 
-        if os.path.exists(f'users_avatars/{self.user_name}_img.png'):
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.user_name}_img.png);'
+        if os.path.exists(f'users_avatars/{self.nicname}_img.png'):
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nicname}_img.png);'
                                          f' border-radius: 60px')
 
+        elif os.path.exists(f'users_avatars/{self.nicname}_img.jpg'):
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nicname}_img.jpg);'
+                                         f' border-radius: 60px')
         else:
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.user_name}_img.jpg);'
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/standart_image.png);'
                                          f' border-radius: 60px')
 
         self.image_change_btn.clicked.connect(self.change_img)
         self.back.clicked.connect(self.go_to_profile)
+        self.acept.clicked.connect(self.accept)
+        self.pb_eye_not_1.clicked.connect(self.off_pass_1)
+        self.pb_eye_active_1.clicked.connect(self.on_pass_1)
+        self.pb_eye_not_2.clicked.connect(self.off_pass_2)
+        self.pb_eye_active_2.clicked.connect(self.on_pass_2)
+
+    def off_pass_1(self):
+        self.password_1.setEchoMode(QLineEdit.Normal)
+        self.pb_eye_not_1.setHidden(True)
+        self.pb_eye_not_1.setEnabled(False)
+
+        self.pb_eye_active_1.setHidden(False)
+        self.pb_eye_active_1.setEnabled(True)
+
+        self.pb_eye_active_1.setGeometry(870, 435, 30, 30)
+
+        self.name.setEnabled(False)
+        self.surname.setEnabled(False)
+        self.password_1.setEnabled(False)
+        self.password_2.setEnabled(False)
+        self.image_change_btn.setEnabled(False)
+
+        self.image_change_btn.setEnabled(True)
+        self.name.setEnabled(True)
+        self.surname.setEnabled(True)
+        self.password_1.setEnabled(True)
+        self.password_2.setEnabled(True)
+
+    def on_pass_1(self):
+        self.password_1.setEchoMode(QLineEdit.Password)
+        self.pb_eye_active_1.setHidden(True)
+        self.pb_eye_active_1.setEnabled(False)
+
+        self.pb_eye_not_1.setHidden(False)
+        self.pb_eye_not_1.setEnabled(True)
+
+        self.name.setEnabled(False)
+        self.surname.setEnabled(False)
+        self.password_1.setEnabled(False)
+        self.password_2.setEnabled(False)
+        self.image_change_btn.setEnabled(False)
+
+        self.image_change_btn.setEnabled(True)
+        self.name.setEnabled(True)
+        self.surname.setEnabled(True)
+        self.password_1.setEnabled(True)
+        self.password_2.setEnabled(True)
+
+    def off_pass_2(self):
+        self.password_2.setEchoMode(QLineEdit.Normal)
+        self.pb_eye_not_2.setHidden(True)
+        self.pb_eye_not_2.setEnabled(False)
+
+        self.pb_eye_active_2.setHidden(False)
+        self.pb_eye_active_2.setEnabled(True)
+
+        self.pb_eye_active_2.setGeometry(870, 535, 30, 30)
+
+        self.name.setEnabled(False)
+        self.surname.setEnabled(False)
+        self.password_1.setEnabled(False)
+        self.password_2.setEnabled(False)
+        self.image_change_btn.setEnabled(False)
+
+        self.image_change_btn.setEnabled(True)
+        self.name.setEnabled(True)
+        self.surname.setEnabled(True)
+        self.password_1.setEnabled(True)
+        self.password_2.setEnabled(True)
+
+    def on_pass_2(self):
+        self.password_2.setEchoMode(QLineEdit.Password)
+        self.pb_eye_active_2.setHidden(True)
+        self.pb_eye_active_2.setEnabled(False)
+
+        self.pb_eye_not_2.setHidden(False)
+        self.pb_eye_not_2.setEnabled(True)
+
+        self.name.setEnabled(False)
+        self.surname.setEnabled(False)
+        self.password_1.setEnabled(False)
+        self.password_2.setEnabled(False)
+        self.image_change_btn.setEnabled(False)
+
+        self.image_change_btn.setEnabled(True)
+        self.name.setEnabled(True)
+        self.surname.setEnabled(True)
+        self.password_1.setEnabled(True)
+        self.password_2.setEnabled(True)
+
+    def accept(self):
+        user_name = self.name.text()
+        user_surname = self.surname.text()
+        user_password_1 = self.password_1.text()
+        user_password_2 = self.password_2.text()
+        with open("users.json", "r", encoding="utf-8") as read_file:
+            user_file = json.load(read_file)[f'{self.nicname}']
+            if user_name:
+                pass
+            else:
+                user_name = user_file['name']
+            if user_surname:
+                pass
+            else:
+                user_surname = user_file['surname']
+            if user_password_1 or user_password_2:
+                pass
+            else:
+                user_password_1 = user_password_2 = user_file['password']
+
+        self.error.setStyleSheet("color: rgba(255, 255, 255, 210);")
+        self.error.setAlignment(QtCore.Qt.AlignCenter)
+
+        if len(user_name) == 0 or len(user_surname) == 0:
+            self.error.setText("Вы заполнили не все поля!")
+
+        elif len(user_password_1) < 6 or len(user_password_2) < 6:
+            self.error.setText("Длина пароля должна быть больше 6 символов!")
+
+        elif user_password_1 != user_password_2:
+            self.error.setText("Пароли не совпадают!")
+
+        else:
+            self.error.setText("Ваши данные сохранены")
+            self.name.setText('')
+            self.surname.setText('')
+            self.password_1.setText('')
+            self.password_2.setText('')
+
+            if not os.path.isfile("users.json"):
+                with open("users.json", "w", encoding="utf-8") as write_file:
+                    json.dump({}, write_file, indent=4, ensure_ascii=False)
+
+            with open("users.json", "r", encoding="utf-8") as read_file:
+                users = json.load(read_file)
+
+            users[self.nicname] = {
+                "name": user_name,
+                "surname": user_surname,
+                "password": user_password_1
+            }
+
+            with open("users.json", "w", encoding="utf-8") as write_file:
+                json.dump(users, write_file, indent=4, ensure_ascii=False)
+
 
     def go_to_profile(self):
-        self.pro = Profile()
+        self.pro = Profile(self.nicname)
         self.pro.show()
         self.close()
 
@@ -304,18 +453,18 @@ class ChangeMenu(AnyWidget):
             if not file_url:
                 raise BaseException
             try:
-                os.remove(f'users_avatars/{self.user_name}_img.jpg')
+                os.remove(f'users_avatars/{self.nicname}_img.jpg')
             except:
                 try:
-                    os.remove(f'users_avatars/{self.user_name}_img.png')
+                    os.remove(f'users_avatars/{self.nicname}_img.png')
                 except:
                     pass
             shutil.copy(file_url, "users_avatars")
             os.rename(f'users_avatars/{file_url[-1 * file_url[::-1].find("/"):]}',
-                      f'users_avatars/{self.user_name}_img.{file_url[-3:]}')
+                      f'users_avatars/{self.nicname}_img.{file_url[-3:]}')
 
             self.user_icon.setStyleSheet(f'border-radius:60px;'
-                                         f'border-image: url(users_avatars/{self.user_name}_img.{file_url[-3:]})')
+                                         f'border-image: url(users_avatars/{self.nicname}_img.{file_url[-3:]})')
         except:
             pass
 
@@ -324,18 +473,24 @@ class Profile(AnyWidget):
     def __init__(self, nickname):
         super().__init__('UI_files/Profile.ui', 'Профиль')
         self.nicname = nickname
+        with open("users.json", "r", encoding="utf-8") as read_file:
+            user_data = json.load(read_file)[self.nicname]
+            self.user_FI.setText(f'{user_data["name"]} {user_data["surname"]}')
+            self.user_nickname.setText(self.nicname)
         self.widget = QWidget()
         self.num = 49
-        self.user_name = 'ДимASSS'            # переделать 100 проц (через json файл)
         self.vbox = QVBoxLayout()
         self.vbox.setGeometry(QRect(0, 0, 1341, 1000))
 
-        if os.path.exists(f'users_avatars/{self.user_name}_img.png'):
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.user_name}_img.png);'
+        if os.path.exists(f'users_avatars/{self.nicname}_img.png'):
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nicname}_img.png);'
                                          f' border-radius: 60px')
 
+        elif os.path.exists(f'users_avatars/{self.nicname}_img.jpg'):
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nicname}_img.jpg);'
+                                         f' border-radius: 60px')
         else:
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.user_name}_img.jpg);'
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/standart_image.png);'
                                          f' border-radius: 60px')
 
         for i in range(1, 50):
@@ -364,7 +519,7 @@ class Profile(AnyWidget):
         self.back.clicked.connect(self.go_to_main_menu)
 
     def go_to_main_menu(self):
-        self.men = MainMenu()
+        self.men = MainMenu(self.nicname)
         self.men.show()
         self.close()
 
@@ -380,7 +535,7 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Profile()
+    ex = Profile('ap$en')
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())

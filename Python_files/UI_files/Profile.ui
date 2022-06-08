@@ -69,10 +69,13 @@ QPushButton#change_btn:pressed{
     <string notr="true">color: rgba(255, 255, 255, 210);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;ДимASSS&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="user_FIO">
+  <widget class="QLabel" name="user_FI">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -81,11 +84,18 @@ QPushButton#change_btn:pressed{
      <height>171</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>36</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">color: rgba(255, 255, 255, 210);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Тихонов Дмитрий&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="change_btn">
@@ -210,7 +220,7 @@ border-radius: 20px;</string>
   <zorder>label</zorder>
   <zorder>user_icon</zorder>
   <zorder>user_nickname</zorder>
-  <zorder>user_FIO</zorder>
+  <zorder>user_FI</zorder>
   <zorder>change_btn</zorder>
   <zorder>variants</zorder>
   <zorder>scrollArea</zorder>
