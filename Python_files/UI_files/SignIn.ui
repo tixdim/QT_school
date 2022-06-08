@@ -160,11 +160,11 @@ border-radius: 20px;</string>
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Авторизация&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="user_name">
+    <widget class="QLineEdit" name="user_nickname">
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>190</y>
+       <y>200</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -191,7 +191,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>250</y>
+       <y>260</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -222,7 +222,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>350</y>
+       <y>370</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -239,25 +239,6 @@ padding-bottom: 7px;</string>
      </property>
      <property name="text">
       <string>В о й т и</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pb_for">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>470</y>
-       <width>251</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string>Forgot your User Name or Password?</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pb_close">
@@ -296,7 +277,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>410</y>
+       <y>430</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -329,7 +310,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>350</x>
-       <y>260</y>
+       <y>270</y>
        <width>21</width>
        <height>21</height>
       </rect>
@@ -346,7 +327,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>370</x>
-       <y>260</y>
+       <y>270</y>
        <width>21</width>
        <height>21</height>
       </rect>
@@ -359,17 +340,43 @@ padding-bottom: 7px;</string>
        <normaloff>../Images/eyes-active.svg</normaloff>../Images/eyes-active.svg</iconset>
      </property>
     </widget>
+    <widget class="QLabel" name="error">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>310</y>
+       <width>311</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgba(255, 255, 255, 210);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>back</zorder>
     <zorder>front</zorder>
     <zorder>login</zorder>
-    <zorder>user_name</zorder>
+    <zorder>user_nickname</zorder>
     <zorder>user_password</zorder>
     <zorder>pb_login</zorder>
-    <zorder>pb_for</zorder>
     <zorder>pb_regist</zorder>
     <zorder>pb_eye_not</zorder>
     <zorder>pb_eye_active</zorder>
     <zorder>pb_close</zorder>
+    <zorder>error</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
