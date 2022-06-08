@@ -13,18 +13,84 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLineEdit" name="user_name_2">
+  <property name="styleSheet">
+   <string notr="true">QPushButton#back{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#back:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}
+QPushButton#accept{
+	background-color: rgb(170, 0, 255);
+	border-radius:10px;
+	color: rgba(255, 255, 255, 210);
+}
+QPushButton#accept:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}
+QPushButton#image_change_btn{
+	background-color: rgb(170, 0, 255);
+	border-radius: 10px;
+	color: rgba(255, 255, 255, 210);
+}
+QPushButton#image_change_btn:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}</string>
+  </property>
+  <widget class="QLineEdit" name="user_name_label">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>350</y>
-     <width>371</width>
+     <x>500</x>
+     <y>220</y>
+     <width>400</width>
      <height>61</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>16</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(105, 118, 132, 255);
+color: rgba(255, 255, 255, 230);
+padding-bottom: 7px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="placeholderText">
+    <string> Имя</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="user_password2_label">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>520</y>
+     <width>400</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -40,21 +106,24 @@ padding-bottom: 7px;</string>
     <enum>QLineEdit::Password</enum>
    </property>
    <property name="placeholderText">
-    <string>  Пароль</string>
+    <string> Повторить пароль</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="user_name_3">
+  <widget class="QLineEdit" name="user_password1_label">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>470</y>
-     <width>371</width>
+     <x>500</x>
+     <y>420</y>
+     <width>400</width>
      <height>61</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>16</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -64,54 +133,28 @@ padding-bottom: 7px;</string>
 border: none;
 border-bottom: 2px solid rgba(105, 118, 132, 255);
 color: rgba(255, 255, 255, 230);
-padding-bottom: 7px;</string>
-   </property>
-   <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
+padding-bottom: 7px;
+</string>
    </property>
    <property name="placeholderText">
-    <string>  Повторить пароль</string>
+    <string> Пароль</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="user_name_4">
+  <widget class="QLineEdit" name="user_surname_label">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>110</y>
-     <width>371</width>
+     <x>500</x>
+     <y>320</y>
+     <width>400</width>
      <height>61</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgba(0, 0, 0, 0);
-border: none;
-border-bottom: 2px solid rgba(105, 118, 132, 255);
-color: rgba(255, 255, 255, 230);
-padding-bottom: 7px;</string>
-   </property>
-   <property name="placeholderText">
-    <string>  Имя</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="user_name_5">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>230</y>
-     <width>371</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
+     <pointsize>16</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -124,14 +167,14 @@ color: rgba(255, 255, 255, 230);
 padding-bottom: 7px;</string>
    </property>
    <property name="placeholderText">
-    <string>  Фамилия</string>
+    <string> Фамилия</string>
    </property>
   </widget>
   <widget class="QLabel" name="user_icon">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>570</y>
+     <x>500</x>
+     <y>70</y>
      <width>120</width>
      <height>120</height>
     </rect>
@@ -149,32 +192,77 @@ padding-bottom: 7px;</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>600</y>
-     <width>181</width>
+     <x>660</x>
+     <y>110</y>
+     <width>241</width>
      <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <pointsize>18</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 0, 255);
-border-radius: 10px;
-color: rgb(255, 255, 255)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
-    <string>выбрать картинку</string>
+    <string>Выбрать картинку</string>
    </property>
   </widget>
-  <zorder>user_name_2</zorder>
-  <zorder>user_name_3</zorder>
-  <zorder>user_name_4</zorder>
-  <zorder>user_name_5</zorder>
+  <widget class="QPushButton" name="accept">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>650</y>
+     <width>400</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Подтвердить</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="back">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>50</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../Images/right-arrows.png</normaloff>../Images/right-arrows.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
+  </widget>
+  <zorder>user_name_label</zorder>
+  <zorder>user_password2_label</zorder>
+  <zorder>user_password1_label</zorder>
+  <zorder>user_surname_label</zorder>
   <zorder>image_change_btn</zorder>
   <zorder>user_icon</zorder>
+  <zorder>accept</zorder>
+  <zorder>back</zorder>
  </widget>
  <resources/>
  <connections/>
