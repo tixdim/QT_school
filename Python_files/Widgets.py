@@ -74,6 +74,47 @@ class Login(QMainWindow):
         self.pb_login.clicked.connect(self.sign_in)
         self.pb_regist.clicked.connect(self.sign_up)
 
+        self.pb_eye_not.clicked.connect(self.off_pass)
+        self.pb_eye_active.clicked.connect(self.on_pass)
+
+        self.start_hidden_enabled()
+
+    def start_hidden_enabled(self):
+        self.pb_eye_active.setHidden(True)
+        self.pb_eye_active.setEnabled(False)
+        self.pb_eye_not.setHidden(False)
+        self.pb_eye_not.setEnabled(True)
+
+    def off_pass(self):
+        self.user_password.setEchoMode(QLineEdit.Normal)
+        self.pb_eye_not.setHidden(True)
+        self.pb_eye_not.setEnabled(False)
+
+        self.pb_eye_active.setHidden(False)
+        self.pb_eye_active.setEnabled(True)
+
+        self.pb_eye_active.setGeometry(350, 270, 21, 21)
+
+        self.user_nickname.setEnabled(False)
+        self.user_password.setEnabled(False)
+
+        self.user_nickname.setEnabled(True)
+        self.user_password.setEnabled(True)
+
+    def on_pass(self):
+        self.user_password.setEchoMode(QLineEdit.Password)
+        self.pb_eye_active.setHidden(True)
+        self.pb_eye_active.setEnabled(False)
+
+        self.pb_eye_not.setHidden(False)
+        self.pb_eye_not.setEnabled(True)
+
+        self.user_nickname.setEnabled(False)
+        self.user_password.setEnabled(False)
+
+        self.user_nickname.setEnabled(True)
+        self.user_password.setEnabled(True)
+
     def exit(self):
         sys.exit()
 
@@ -83,10 +124,27 @@ class Login(QMainWindow):
         self.close()
 
     def sign_in(self):
-        # проверка на правильность пароля и логина
-        self.glavn_menu = MainMenu()
-        self.glavn_menu.show()
-        self.close()
+        user_nick = self.user_nickname.text()
+        user_password = self.user_password.text()
+
+        self.error.setStyleSheet("color: rgba(255, 255, 255, 210);")
+        self.error.setAlignment(QtCore.Qt.AlignCenter)
+
+        with open("users.json", "r", encoding="utf-8") as read_file:
+            users = json.load(read_file)
+
+        if user_nick in users:
+            if users[user_nick]["password"] == user_password:
+                self.glavn_menu = MainMenu(user_nick)
+                self.glavn_menu.show()
+                self.close()
+            else:
+                if user_password == "":
+                    self.error.setText("Заполните пароль!")
+                else:
+                    self.error.setText("Вы ввели неправильный пароль!")
+        else:
+            self.error.setText("Такого никнейма нет!")
 
 
 class Regist(QMainWindow):
@@ -114,6 +172,9 @@ class Regist(QMainWindow):
         self.pb_eye_not_2.clicked.connect(self.off_pass_2)
         self.pb_eye_active_2.clicked.connect(self.on_pass_2)
 
+        self.start_hidden_enabled()
+
+    def start_hidden_enabled(self):
         self.pb_eye_active_1.setHidden(True)
         self.pb_eye_active_1.setEnabled(False)
         self.pb_eye_not_1.setHidden(False)
@@ -364,7 +425,7 @@ class Profile(AnyWidget):
         self.back.clicked.connect(self.go_to_main_menu)
 
     def go_to_main_menu(self):
-        self.men = MainMenu()
+        self.men = MainMenu(self.nicname)
         self.men.show()
         self.close()
 
@@ -380,7 +441,7 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Profile()
+    ex = Login()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
