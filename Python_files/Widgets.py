@@ -506,7 +506,9 @@ class ChangeMenu(AnyWidget):
 
     def change_img(self):
         try:
-            file = QFileDialog.getOpenFileUrl(caption='Выберите картинку')[0]
+            file = QFileDialog.getOpenFileUrl(self,
+                                              caption='Выбрать картинку',
+                                              filter='Картинка (*.jpg);;Картинка (*.png)')[0]
             file_url = file.url()[8:]
             if not file_url:
                 raise BaseException
