@@ -325,6 +325,12 @@ class Spravka(AnyWidget):
     def __init__(self, nickname):
         super().__init__('UI_files/Spravka.ui', 'Справка')
         self.nicname = nickname
+        self.back.clicked.connect(self.go_to_main_menu)
+
+    def go_to_main_menu(self):
+        self.Main = MainMenu(self.nicname)
+        self.Main.show()
+        self.close()
 
 
 class Menu(AnyWidget):
@@ -498,7 +504,6 @@ class ChangeMenu(AnyWidget):
             with open("users.json", "w", encoding="utf-8") as write_file:
                 json.dump(users, write_file, indent=4, ensure_ascii=False)
 
-
     def go_to_profile(self):
         self.pro = Profile(self.nicname)
         self.pro.show()
@@ -595,7 +600,7 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Login()
+    ex = Spravka('ap$en')
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
