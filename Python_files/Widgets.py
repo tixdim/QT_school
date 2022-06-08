@@ -372,23 +372,29 @@ class Tren(AnyWidget):
 class Menu(AnyWidget):
     def __init__(self, nickname):
         super().__init__('UI_files/Menu.ui', 'Меню')
-        self.nicname = nickname
+        self.nickname = nickname
         self.Theo_btn.clicked.connect(self.go_to_Theo)
         self.Exam_btn.clicked.connect(self.go_to_Exam)
         self.Tren_btn.clicked.connect(self.go_to_Tren)
+        self.back.clicked.connect(self.go_to_main)
+
+    def go_to_main(self):
+        self.mai = MainMenu(self.nickname)
+        self.mai.show()
+        self.close()
 
     def go_to_Theo(self):
-        self.the = Theory(self.nicname)
+        self.the = Theory(self.nickname)
         self.the.show()
         self.close()
 
     def go_to_Exam(self):
-        self.exam = Exam(self.nicname)
+        self.exam = Exam(self.nickname)
         self.exam.show()
         self.close()
 
     def go_to_Tren(self):
-        self.tren = Tren(self.nicname)
+        self.tren = Tren(self.nickname)
         self.tren.show()
         self.close()
 
