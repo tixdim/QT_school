@@ -94,8 +94,6 @@ class Regist(QMainWindow):
         super().__init__()
         uic.loadUi('UI_files/SignUp.ui', self)
 
-        # self.back.setStyleSheet("background-color: #9370DB; border-radius: 25px;")
-
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.setFixedSize(520, 600)
@@ -118,8 +116,13 @@ class Regist(QMainWindow):
 
         self.pb_eye_active_1.setHidden(True)
         self.pb_eye_active_1.setEnabled(False)
+        self.pb_eye_not_1.setHidden(False)
+        self.pb_eye_not_1.setEnabled(True)
+
         self.pb_eye_active_2.setHidden(True)
         self.pb_eye_active_2.setEnabled(False)
+        self.pb_eye_not_2.setHidden(False)
+        self.pb_eye_not_2.setEnabled(True)
 
     def off_pass_1(self):
         self.password_1.setEchoMode(QLineEdit.Normal)
@@ -131,6 +134,18 @@ class Regist(QMainWindow):
 
         self.pb_eye_active_1.setGeometry(350, 320, 21, 21)
 
+        self.nickname.setEnabled(False)
+        self.name.setEnabled(False)
+        self.surname.setEnabled(False)
+        self.password_1.setEnabled(False)
+        self.password_2.setEnabled(False)
+
+        self.nickname.setEnabled(True)
+        self.name.setEnabled(True)
+        self.surname.setEnabled(True)
+        self.password_1.setEnabled(True)
+        self.password_2.setEnabled(True)
+
     def on_pass_1(self):
         self.password_1.setEchoMode(QLineEdit.Password)
         self.pb_eye_active_1.setHidden(True)
@@ -138,6 +153,18 @@ class Regist(QMainWindow):
 
         self.pb_eye_not_1.setHidden(False)
         self.pb_eye_not_1.setEnabled(True)
+
+        self.nickname.setEnabled(False)
+        self.name.setEnabled(False)
+        self.surname.setEnabled(False)
+        self.password_1.setEnabled(False)
+        self.password_2.setEnabled(False)
+
+        self.nickname.setEnabled(True)
+        self.name.setEnabled(True)
+        self.surname.setEnabled(True)
+        self.password_1.setEnabled(True)
+        self.password_2.setEnabled(True)
 
     def off_pass_2(self):
         self.password_2.setEchoMode(QLineEdit.Normal)
@@ -149,6 +176,18 @@ class Regist(QMainWindow):
 
         self.pb_eye_active_2.setGeometry(350, 380, 21, 21)
 
+        self.nickname.setEnabled(False)
+        self.name.setEnabled(False)
+        self.surname.setEnabled(False)
+        self.password_1.setEnabled(False)
+        self.password_2.setEnabled(False)
+
+        self.nickname.setEnabled(True)
+        self.name.setEnabled(True)
+        self.surname.setEnabled(True)
+        self.password_1.setEnabled(True)
+        self.password_2.setEnabled(True)
+
     def on_pass_2(self):
         self.password_2.setEchoMode(QLineEdit.Password)
         self.pb_eye_active_2.setHidden(True)
@@ -156,6 +195,18 @@ class Regist(QMainWindow):
 
         self.pb_eye_not_2.setHidden(False)
         self.pb_eye_not_2.setEnabled(True)
+
+        self.nickname.setEnabled(False)
+        self.name.setEnabled(False)
+        self.surname.setEnabled(False)
+        self.password_1.setEnabled(False)
+        self.password_2.setEnabled(False)
+
+        self.nickname.setEnabled(True)
+        self.name.setEnabled(True)
+        self.surname.setEnabled(True)
+        self.password_1.setEnabled(True)
+        self.password_2.setEnabled(True)
 
     def exit(self):
         sys.exit()
@@ -175,8 +226,6 @@ class Regist(QMainWindow):
         self.error.setStyleSheet("color: rgba(255, 255, 255, 210);")
         self.error.setAlignment(QtCore.Qt.AlignCenter)
 
-        print(user_nick, user_name, user_surname, user_password_1, user_password_2)
-
         if len(user_nick) == 0 or len(user_name) == 0 or len(user_surname) == 0:
             self.error.setText("Вы заполнили не все поля!")
 
@@ -189,17 +238,29 @@ class Regist(QMainWindow):
         else:
             self.error.setText("")
 
-            user = {
-                user_nick: {
-                    "name": "Zaphod Beeblebrox",
-                    "surname": "Betelgeusian",
-                    "password": "Betelgeusian"
-                }
+            if not os.path.isfile("users.json"):
+                with open("users.json", "w", encoding="utf-8") as write_file:
+                    json.dump({}, write_file, indent=4, ensure_ascii=False)
+
+            with open("users.json", "r", encoding="utf-8") as read_file:
+                users = json.load(read_file)
+
+            if user_nick in users:
+                self.error.setText("Извините, такой никнейм уже занят!")
+                return
+
+            users[user_nick] = {
+                "name": user_name,
+                "surname": user_surname,
+                "password": user_password_1
             }
 
-        # self.signin = Login()
-        # self.signin.show()
-        # self.close()
+            with open("users.json", "w", encoding="utf-8") as write_file:
+                json.dump(users, write_file, indent=4, ensure_ascii=False)
+
+            self.signin = Login()
+            self.signin.show()
+            self.close()
 
 
 class Spravka(AnyWidget):
