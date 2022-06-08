@@ -3,8 +3,6 @@ class Login(QMainWindow):
         super().__init__()
         uic.loadUi('UI_files/SignIn.ui', self)
 
-        # self.back.setStyleSheet("background-color: #ffc0cb; border-radius: 25px;")
-
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.setFixedSize(520, 600)
@@ -20,6 +18,47 @@ class Login(QMainWindow):
         self.pb_login.clicked.connect(self.sign_in)
         self.pb_regist.clicked.connect(self.sign_up)
 
+        self.pb_eye_not.clicked.connect(self.off_pass)
+        self.pb_eye_active.clicked.connect(self.on_pass)
+
+        self.start_hidden_enabled()
+
+    def start_hidden_enabled(self):
+        self.pb_eye_active.setHidden(True)
+        self.pb_eye_active.setEnabled(False)
+        self.pb_eye_not.setHidden(False)
+        self.pb_eye_not.setEnabled(True)
+
+    def off_pass(self):
+        self.user_password.setEchoMode(QLineEdit.Normal)
+        self.pb_eye_not.setHidden(True)
+        self.pb_eye_not.setEnabled(False)
+
+        self.pb_eye_active.setHidden(False)
+        self.pb_eye_active.setEnabled(True)
+
+        self.pb_eye_active.setGeometry(350, 270, 21, 21)
+
+        self.user_nickname.setEnabled(False)
+        self.user_password.setEnabled(False)
+
+        self.user_nickname.setEnabled(True)
+        self.user_password.setEnabled(True)
+
+    def on_pass(self):
+        self.user_password.setEchoMode(QLineEdit.Password)
+        self.pb_eye_active.setHidden(True)
+        self.pb_eye_active.setEnabled(False)
+
+        self.pb_eye_not.setHidden(False)
+        self.pb_eye_not.setEnabled(True)
+
+        self.user_nickname.setEnabled(False)
+        self.user_password.setEnabled(False)
+
+        self.user_nickname.setEnabled(True)
+        self.user_password.setEnabled(True)
+
     def exit(self):
         sys.exit()
 
@@ -29,10 +68,27 @@ class Login(QMainWindow):
         self.close()
 
     def sign_in(self):
-        # проверка на правильность пароля и логина
-        self.glavn_menu = MenuWithMenu()
-        self.glavn_menu.show()
-        self.close()
+        user_nick = self.user_nickname.text()
+        user_password = self.user_password.text()
+
+        self.error.setStyleSheet("color: rgba(255, 255, 255, 210);")
+        self.error.setAlignment(QtCore.Qt.AlignCenter)
+
+        with open("users.json", "r", encoding="utf-8") as read_file:
+            users = json.load(read_file)
+
+        if user_nick in users:
+            if users[user_nick]["password"] == user_password:
+                self.glavn_menu = MainMenu(user_nick)
+                self.glavn_menu.show()
+                self.close()
+            else:
+                if user_password == "":
+                    self.error.setText("Заполните пароль!")
+                else:
+                    self.error.setText("Вы ввели неправильный пароль!")
+        else:
+            self.error.setText("Такого никнейма нет!")
 
 
 class Regist(QMainWindow):
@@ -60,6 +116,9 @@ class Regist(QMainWindow):
         self.pb_eye_not_2.clicked.connect(self.off_pass_2)
         self.pb_eye_active_2.clicked.connect(self.on_pass_2)
 
+        self.start_hidden_enabled()
+
+    def start_hidden_enabled(self):
         self.pb_eye_active_1.setHidden(True)
         self.pb_eye_active_1.setEnabled(False)
         self.pb_eye_not_1.setHidden(False)
