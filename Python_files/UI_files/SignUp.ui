@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>520</width>
-    <height>581</height>
+    <height>580</height>
    </rect>
   </property>
   <property name="font">
@@ -82,6 +82,38 @@ QPushButton#pb_close{
 QPushButton#pb_close:pressed{
 	padding-left: 3px;
 	padding-top: 3px;
+}
+
+QPushButton#pb_eye_not_1{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_eye_not_1:pressed{
+	padding-left: 1px;
+	padding-top: 1px;
+}
+
+QPushButton#pb_eye_active_1{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_eye_active_1:pressed{
+	padding-left: 1px;
+	padding-top: 1px;
+}
+
+QPushButton#pb_eye_not_2{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_eye_not_2:pressed{
+	padding-left: 1px;
+	padding-top: 1px;
+}
+
+QPushButton#pb_eye_active_2{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_eye_active_2:pressed{
+	padding-left: 1px;
+	padding-top: 1px;
 }</string>
     </property>
     <widget class="QLabel" name="back">
@@ -121,9 +153,9 @@ border-radius: 20px;</string>
     <widget class="QLabel" name="login">
      <property name="geometry">
       <rect>
-       <x>139</x>
-       <y>90</y>
-       <width>201</width>
+       <x>119</x>
+       <y>80</y>
+       <width>251</width>
        <height>40</height>
       </rect>
      </property>
@@ -144,11 +176,11 @@ border-radius: 20px;</string>
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Регистрация&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="user_name">
+    <widget class="QLineEdit" name="nickname">
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>150</y>
+       <y>140</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -168,14 +200,14 @@ color: rgba(255, 255, 255, 230);
 padding-bottom: 7px;</string>
      </property>
      <property name="placeholderText">
-      <string>  Ваш никнейм</string>
+      <string> Ваш никнейм</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="user_password">
+    <widget class="QLineEdit" name="name">
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>200</y>
+       <y>190</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -193,10 +225,10 @@ color: rgba(255, 255, 255, 230);
 padding-bottom: 7px;</string>
      </property>
      <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
+      <enum>QLineEdit::Normal</enum>
      </property>
      <property name="placeholderText">
-      <string>  Ваша фамилия</string>
+      <string> Ваше имя</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pb_back">
@@ -213,7 +245,7 @@ padding-bottom: 7px;</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../right-arrows.png</normaloff>../right-arrows.png</iconset>
+       <normaloff>../Images/right-arrows.png</normaloff>../Images/right-arrows.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -242,7 +274,7 @@ padding-bottom: 7px;</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../close.png</normaloff>../close.png</iconset>
+       <normaloff>../Images/close.png</normaloff>../Images/close.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -287,11 +319,39 @@ padding-bottom: 7px;</string>
       <string>Зарегистрироваться</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="user_password_2">
+    <widget class="QLineEdit" name="surname">
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>260</y>
+       <y>250</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(105, 118, 132, 255);
+color: rgba(255, 255, 255, 230);
+padding-bottom: 7px;</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Normal</enum>
+     </property>
+     <property name="placeholderText">
+      <string> Ваша фамилия</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="password_1">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>310</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -312,63 +372,129 @@ padding-bottom: 7px;</string>
       <enum>QLineEdit::Password</enum>
      </property>
      <property name="placeholderText">
-      <string>  Ваше имя</string>
+      <string> Ваш пароль</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="user_password_3">
+    <widget class="QLineEdit" name="password_2">
      <property name="geometry">
       <rect>
        <x>120</x>
+       <y>370</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(105, 118, 132, 255);
+color: rgba(255, 255, 255, 230);
+padding-bottom: 7px;</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string> Повторите пароль</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_eye_not_1">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
        <y>320</y>
-       <width>251</width>
-       <height>41</height>
+       <width>21</width>
+       <height>21</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-      </font>
+     <property name="text">
+      <string/>
      </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(0, 0, 0, 0);
-border: none;
-border-bottom: 2px solid rgba(105, 118, 132, 255);
-color: rgba(255, 255, 255, 230);
-padding-bottom: 7px;</string>
-     </property>
-     <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
-     </property>
-     <property name="placeholderText">
-      <string>  Ваш пароль</string>
+     <property name="icon">
+      <iconset>
+       <normaloff>../Images/eyes.svg</normaloff>../Images/eyes.svg</iconset>
      </property>
     </widget>
-    <widget class="QLineEdit" name="user_password_4">
+    <widget class="QPushButton" name="pb_eye_active_1">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>370</x>
+       <y>320</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../Images/eyes-active.svg</normaloff>../Images/eyes-active.svg</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_eye_active_2">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
        <y>380</y>
-       <width>251</width>
-       <height>41</height>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../Images/eyes-active.svg</normaloff>../Images/eyes-active.svg</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_eye_not_2">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>380</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../Images/eyes.svg</normaloff>../Images/eyes.svg</iconset>
+     </property>
+    </widget>
+    <widget class="QLabel" name="error">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>409</y>
+       <width>311</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>9</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgba(0, 0, 0, 0);
-border: none;
-border-bottom: 2px solid rgba(105, 118, 132, 255);
-color: rgba(255, 255, 255, 230);
-padding-bottom: 7px;</string>
+      <string notr="true">color: rgba(255, 255, 255, 210);</string>
      </property>
-     <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
-     </property>
-     <property name="placeholderText">
-      <string>  Повторите пароль</string>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>
