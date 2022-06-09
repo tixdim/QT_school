@@ -1,4 +1,4 @@
-import os, shutil
+import os, shutil, PIL
 import sys, json
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
 from PyQt5.QtCore import Qt, QSize, QRect
@@ -26,17 +26,26 @@ class AnyWidget(QWidget):
 class TheoryWidget(AnyWidget):
     def __init__(self, nickname):
         super().__init__('UI_files/TheoryWidget.ui', 'Теория')
-        lab1 = QLabel('1', self.tab)
-        lab2 = QLabel('2', self.tab_2)
-        lab2.move(600, 300)
-        lab1.move(600, 300)
-        self.tab
-        for i in range(5):
-            new_widget = QtWidgets.QWidget()
-            count = self.tabWidget.count()
-            lab = QLabel(f'{count + 1}', new_widget)
-            lab.move(600, 300)
-            self.tabWidget.insertTab(count, new_widget, f"{count + 1}")
+        self.nickname = nickname
+        self.back.clicked.connect(self.go_to_menu)
+
+
+        # lab1 = QLabel('1', self.tab)
+        # lab2 = QLabel('2', self.tab_2)
+        # lab2.move(600, 300)
+        # lab1.move(600, 300)
+        # self.tab
+        # for i in range(5):
+        #     new_widget = QtWidgets.QWidget()
+        #     count = self.tabWidget.count()
+        #     lab = QLabel(f'{count + 1}', new_widget)
+        #     lab.move(600, 300)
+        #     self.tabWidget.insertTab(count, new_widget, f"{count + 1}")
+
+    def go_to_menu(self):
+        self.mai = Menu(self.nickname)
+        self.mai.show()
+        self.close()
 
 
 class MainMenu(AnyWidget):
@@ -349,18 +358,6 @@ class Spravka(AnyWidget):
         self.close()
 
 
-class Theory(AnyWidget):
-    def __init__(self, nickname):
-        super().__init__('UI_files/Theory.ui', 'Теория')
-        self.back.clicked.connect(self.go_to_menu)
-        self.nickname = nickname
-
-    def go_to_menu(self):
-        self.men = Menu(self.nickname)
-        self.men.show()
-        self.close()
-
-
 class Exam(AnyWidget):
     def __init__(self, nickname):
         super().__init__('UI_files/Exam.ui', 'Экзамен')
@@ -400,7 +397,7 @@ class Menu(AnyWidget):
         self.close()
 
     def go_to_Theo(self):
-        self.the = Theory(self.nickname)
+        self.the = TheoryWidget(self.nickname)
         self.the.show()
         self.close()
 
@@ -676,7 +673,8 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = TheoryWidget('ap$en')
+    ex = TheoryWidget("ДимASSS")
+    # ex = Login()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
