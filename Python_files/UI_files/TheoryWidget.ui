@@ -77,7 +77,7 @@ border: 0px;</string>
    <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="tab">
+   <widget class="QWidget" name="tab_1">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -87,7 +87,7 @@ border: 0px;</string>
     <attribute name="title">
      <string>1</string>
     </attribute>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="label_1">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -97,7 +97,7 @@ border: 0px;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(ege_po_borbe_theory/1.png);</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>
@@ -187,6 +187,22 @@ border: 0px;</string>
      <string>17</string>
     </attribute>
    </widget>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>1250</x>
+     <y>30</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
   </widget>
  </widget>
  <resources/>

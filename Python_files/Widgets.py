@@ -1,10 +1,10 @@
-import os, shutil, PIL
+import os, shutil, PIL.Image
 import sys, json
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
 from PyQt5.QtCore import Qt, QSize, QRect
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QButtonGroup,\
-    QVBoxLayout, QScrollArea, QGraphicsDropShadowEffect, QFileDialog, QLineEdit
+    QVBoxLayout, QScrollArea, QGraphicsDropShadowEffect, QFileDialog, QLineEdit, QTabWidget
 
 
 class AnyWidget(QWidget):
@@ -28,8 +28,22 @@ class TheoryWidget(AnyWidget):
         super().__init__('UI_files/TheoryWidget.ui', 'Теория')
         self.nickname = nickname
         self.back.clicked.connect(self.go_to_menu)
+        try:
+            count = 0
+            while 1:
+                count += 1
+
+                pixmap = QPixmap(f'ege_po_borbe_theory/theory_{count}.png')
+
+                with PIL.Image.open(f'ege_po_borbe_theory/theory_{count}.png') as image:
+                    eval(f'self.label_{count}.setFixedSize({image.size[0]}, {image.size[1]})')
+
+                eval(f'self.label_{count}.setPixmap(pixmap)')
 
 
+        except Exception as e:
+            print(e)
+            pass
         # lab1 = QLabel('1', self.tab)
         # lab2 = QLabel('2', self.tab_2)
         # lab2.move(600, 300)
