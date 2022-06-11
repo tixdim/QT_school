@@ -29,7 +29,7 @@ class TheoryWidget(AnyWidget):
 
         self.nickname = nickname
 
-        for i in range(1, 33):
+        for i in range(1, 55):
 
             pixmap = QPixmap(f'ege_po_borbe_theory/theory_{i}.png')
             try:
