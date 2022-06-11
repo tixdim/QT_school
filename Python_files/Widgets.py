@@ -29,17 +29,16 @@ class TheoryWidget(AnyWidget):
 
         self.nickname = nickname
 
-        for i in range(1, 55):
+        for i in range(1, 59):
 
             pixmap = QPixmap(f'ege_po_borbe_theory/theory_{i}.png')
-            try:
-                with PIL.Image.open(f'ege_po_borbe_theory/theory_{i}.png') as image:
-                    eval(f'self.label_{i}.setFixedSize({image.size[0]}, {image.size[1]})')
 
-                eval(f'self.label_{i}.setScaledContents(True)')
-                eval(f'self.label_{i}.setPixmap(pixmap)')
-            except:
-                pass
+            with PIL.Image.open(f'ege_po_borbe_theory/theory_{i}.png') as image:
+                eval(f'self.label_{i}.setFixedSize({image.size[0]}, {image.size[1]})')
+
+            eval(f'self.label_{i}.setScaledContents(True)')
+            eval(f'self.label_{i}.setPixmap(pixmap)')
+
 
         self.back.clicked.connect(self.go_to_menu)
 
