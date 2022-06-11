@@ -27,7 +27,7 @@ QTabBar::tab {
                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
     border: 2px solid #C4C4C3;
-    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-bottom-color: #C2C7CB; 
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     min-width: 8ex;
@@ -36,6 +36,9 @@ QTabBar::tab {
 
 QTabBar::tab:selected, QTabBar::tab:hover {
     background: rgba(100, 100, 100, 100);
+}
+QLabel{
+ background-color:rgba(0,0,0,0); 
 }</string>
   </property>
   <widget class="QPushButton" name="back">
@@ -71,11 +74,11 @@ QTabBar::tab:selected, QTabBar::tab:hover {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgba(255, 170, 255,100 );
+    <string notr="true">border-image: url(1.jpg);
 border: 0px;</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>5</number>
    </property>
    <widget class="QWidget" name="tab_1">
     <property name="enabled">
@@ -90,14 +93,38 @@ border: 0px;</string>
     <widget class="QLabel" name="label_1">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>40</y>
-       <width>541</width>
-       <height>381</height>
+       <x>50</x>
+       <y>50</y>
+       <width>481</width>
+       <height>331</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background-color: rgb(0,0,0,0);
+border-image: url();</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>720</x>
+       <y>50</y>
+       <width>481</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0,0,0,0);
+border-image: url();</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="text">
       <string/>
@@ -111,26 +138,186 @@ border: 0px;</string>
     <attribute name="title">
      <string>2</string>
     </attribute>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>40</y>
+       <width>481</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0,0,0,0);
+border-image: url();</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>100</y>
+       <width>481</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0,0,0,0);
+border-image: url();</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
      <string>3</string>
     </attribute>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>160</y>
+       <width>321</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0,0,0,0);
+border-image: url();</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>270</y>
+       <width>611</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0,0,0,0);
+border-image: url();</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_4">
     <attribute name="title">
      <string>4</string>
     </attribute>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>481</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0,0,0,0);
+border-image: url();</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_5">
     <attribute name="title">
      <string>5</string>
     </attribute>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>50</y>
+       <width>481</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0,0,0,0);
+border-image: url();</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>410</y>
+       <width>481</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0,0,0,0);
+border-image: url();</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_6">
     <attribute name="title">
      <string>6</string>
     </attribute>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>-100</y>
+       <width>481</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0,0,0,0);
+border-image: url();</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_7">
     <attribute name="title">
@@ -187,22 +374,6 @@ border: 0px;</string>
      <string>17</string>
     </attribute>
    </widget>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>1250</x>
-     <y>30</y>
-     <width>47</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::NoFrame</enum>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
   </widget>
  </widget>
  <resources/>

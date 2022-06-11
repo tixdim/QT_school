@@ -26,35 +26,22 @@ class AnyWidget(QWidget):
 class TheoryWidget(AnyWidget):
     def __init__(self, nickname):
         super().__init__('UI_files/TheoryWidget.ui', 'Теория')
+
         self.nickname = nickname
+
+        for i in range(1, 33):
+
+            pixmap = QPixmap(f'ege_po_borbe_theory/theory_{i}.png')
+            try:
+                with PIL.Image.open(f'ege_po_borbe_theory/theory_{i}.png') as image:
+                    eval(f'self.label_{i}.setFixedSize({image.size[0]}, {image.size[1]})')
+
+                eval(f'self.label_{i}.setScaledContents(True)')
+                eval(f'self.label_{i}.setPixmap(pixmap)')
+            except:
+                pass
+
         self.back.clicked.connect(self.go_to_menu)
-        try:
-            count = 0
-            while 1:
-                count += 1
-
-                pixmap = QPixmap(f'ege_po_borbe_theory/theory_{count}.png')
-
-                with PIL.Image.open(f'ege_po_borbe_theory/theory_{count}.png') as image:
-                    eval(f'self.label_{count}.setFixedSize({image.size[0]}, {image.size[1]})')
-
-                eval(f'self.label_{count}.setPixmap(pixmap)')
-
-
-        except Exception as e:
-            print(e)
-            pass
-        # lab1 = QLabel('1', self.tab)
-        # lab2 = QLabel('2', self.tab_2)
-        # lab2.move(600, 300)
-        # lab1.move(600, 300)
-        # self.tab
-        # for i in range(5):
-        #     new_widget = QtWidgets.QWidget()
-        #     count = self.tabWidget.count()
-        #     lab = QLabel(f'{count + 1}', new_widget)
-        #     lab.move(600, 300)
-        #     self.tabWidget.insertTab(count, new_widget, f"{count + 1}")
 
     def go_to_menu(self):
         self.mai = Menu(self.nickname)
