@@ -1,5 +1,5 @@
 import os, shutil, PIL.Image
-import sys, json, asyncio
+import sys, json
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
 from PyQt5.QtCore import Qt, QSize, QRect
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
@@ -25,31 +25,18 @@ class AnyWidget(QWidget):
 
 class TheoryWidget(AnyWidget):
     def __init__(self, nickname):
+        global Images_size
+        global Pixmaps
         super().__init__('UI_files/TheoryWidget.ui', 'Теория')
 
         self.nickname = nickname
 
-        asyncio.run(load_all())
-
-        self.back.clicked.connect(self.go_to_menu)
-
-    async def load_all(self):
-        task = [
-            import_images(1,20),
-            import_images(20,40),
-            import_images(40,59)
-        ]
-        await asyncio.gather(*task)
-
-    async def import_images(self, st, end):
         for i in range(st, end):
 
-            pixmap = QPixmap(f'ege_po_borbe_theory/theory_{i}.png')
+            eval(f'self.label_{i}.setFixedSize({Images[i][0]}, {Images[i][1]})')
+            eval(f'self.label_{i}.setPixmap(Pixmaps[i])')
 
-            with PIL.Image.open(f'ege_po_borbe_theory/theory_{i}.png') as image:
-                eval(f'self.label_{i}.setFixedSize({image.size[0]}, {image.size[1]})')
-
-            eval(f'self.label_{i}.setPixmap(pixmap)')
+        self.back.clicked.connect(self.go_to_menu)
 
     def go_to_menu(self):
         self.mai = Menu(self.nickname)
@@ -682,9 +669,13 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    Pixmaps = [QPixmap(f'ege_po_borbe_theory/theory_{i}.png') for i in range(1, 59)]
+    Images = []
+    for i in range(1, 59):
+        with PIL.Image.open(f'ege_po_borbe_theory/theory_{i}.png') as img:
+            Images.append(img.size)
     ex = TheoryWidget("ДимASSS")
     # ex = Login()
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
