@@ -31,10 +31,10 @@ class TheoryWidget(AnyWidget):
 
         self.nickname = nickname
 
-        for i in range(st, end):
+        for i in range(1, 59):
 
-            eval(f'self.label_{i}.setFixedSize({Images[i][0]}, {Images[i][1]})')
-            eval(f'self.label_{i}.setPixmap(Pixmaps[i])')
+            eval(f'self.label_{i}.setFixedSize({Images[i - 1][0]}, {Images[i - 1][1]})')
+            eval(f'self.label_{i}.setPixmap(Pixmaps[i - 1])')
 
         self.back.clicked.connect(self.go_to_menu)
 
