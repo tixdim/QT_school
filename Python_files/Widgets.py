@@ -1,5 +1,5 @@
 import os, shutil, PIL.Image
-import sys, json
+import sys, json, asyncio
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
 from PyQt5.QtCore import Qt, QSize, QRect
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
@@ -29,18 +29,27 @@ class TheoryWidget(AnyWidget):
 
         self.nickname = nickname
 
-        for i in range(1, 59):
+        asyncio.run(load_all())
+
+        self.back.clicked.connect(self.go_to_menu)
+
+    async def load_all(self):
+        task = [
+            import_images(1,20),
+            import_images(20,40),
+            import_images(40,59)
+        ]
+        await asyncio.gather(*task)
+
+    async def import_images(self, st, end):
+        for i in range(st, end):
 
             pixmap = QPixmap(f'ege_po_borbe_theory/theory_{i}.png')
 
             with PIL.Image.open(f'ege_po_borbe_theory/theory_{i}.png') as image:
                 eval(f'self.label_{i}.setFixedSize({image.size[0]}, {image.size[1]})')
 
-            eval(f'self.label_{i}.setScaledContents(True)')
             eval(f'self.label_{i}.setPixmap(pixmap)')
-
-
-        self.back.clicked.connect(self.go_to_menu)
 
     def go_to_menu(self):
         self.mai = Menu(self.nickname)
@@ -675,6 +684,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = TheoryWidget("ДимASSS")
     # ex = Login()
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
