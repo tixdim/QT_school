@@ -25,16 +25,15 @@ class AnyWidget(QWidget):
 
 class TheoryWidget(AnyWidget):
     def __init__(self, nickname):
-        global Images_size
-        global Pixmaps
         super().__init__('UI_files/TheoryWidget.ui', 'Теория')
 
         self.nickname = nickname
 
         for i in range(1, 59):
-
-            eval(f'self.label_{i}.setFixedSize({Images[i - 1][0]}, {Images[i - 1][1]})')
-            eval(f'self.label_{i}.setPixmap(Pixmaps[i - 1])')
+            pixmap = QPixmap(f'ege_po_borbe_theory/theory_{i}.png')
+            with PIL.Image.open(f'ege_po_borbe_theory/theory_{i}.png') as img:
+                eval(f'self.label_{i}.setFixedSize({img.size[0]}, {img.size[1]})')
+            eval(f'self.label_{i}.setPixmap(pixmap)')
 
         self.back.clicked.connect(self.go_to_menu)
 
@@ -145,6 +144,7 @@ class Login(QMainWindow):
         self.close()
 
     def sign_in(self):
+        global theo
         user_nick = self.user_nickname.text()
         user_password = self.user_password.text()
 
@@ -158,6 +158,7 @@ class Login(QMainWindow):
             if users[user_nick]["password"] == user_password:
                 self.glavn_menu = MainMenu(user_nick)
                 self.glavn_menu.show()
+                theo = TheoryWidget(user_nick)
                 self.close()
             else:
                 if user_password == "":
@@ -393,8 +394,9 @@ class Menu(AnyWidget):
         self.close()
 
     def go_to_Theo(self):
-        self.the = TheoryWidget(self.nickname)
-        self.the.show()
+        global theo
+
+        theo.show()
         self.close()
 
     def go_to_Exam(self):
@@ -669,13 +671,8 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    Pixmaps = [QPixmap(f'ege_po_borbe_theory/theory_{i}.png') for i in range(1, 59)]
-    Images = []
-    for i in range(1, 59):
-        with PIL.Image.open(f'ege_po_borbe_theory/theory_{i}.png') as img:
-            Images.append(img.size)
-    ex = TheoryWidget("ДимASSS")
-    # ex = Login()
+    # ex = Menu("ДимASSS")
+    ex = Login()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
