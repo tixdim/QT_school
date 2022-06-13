@@ -20,7 +20,7 @@ class AnyWidget(QWidget):
         uic.loadUi(ui_file, self)
 
         self.setWindowTitle(name)
-        self.setFixedSize(1400, 800)
+        self.setFixedSize(1400, 800) # шашаша
 
 
 class TheoryWidget(AnyWidget):
@@ -45,7 +45,7 @@ class TheoryWidget(AnyWidget):
 
 class MainMenu(AnyWidget):
     def __init__(self, nickname):
-        super().__init__('UI_files/menu_with_menu.ui', 'Меню (название переделать)')
+        super().__init__('UI_files/menu_with_menu.ui', ' ')
         self.nicname = nickname
 
         self.Spravka_btn.clicked.connect(self.go_to_spravka)
@@ -145,6 +145,7 @@ class Login(QMainWindow):
 
     def sign_in(self):
         global theo
+
         user_nick = self.user_nickname.text()
         user_password = self.user_password.text()
 
@@ -156,9 +157,9 @@ class Login(QMainWindow):
 
         if user_nick in users:
             if users[user_nick]["password"] == user_password:
+                theo = TheoryWidget(user_nick)
                 self.glavn_menu = MainMenu(user_nick)
                 self.glavn_menu.show()
-                theo = TheoryWidget(user_nick)
                 self.close()
             else:
                 if user_password == "":
