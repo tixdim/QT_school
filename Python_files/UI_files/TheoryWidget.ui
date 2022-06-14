@@ -44,8 +44,8 @@ QLabel{
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
+     <x>10</x>
+     <y>10</y>
      <width>50</width>
      <height>30</height>
     </rect>
@@ -68,9 +68,9 @@ QLabel{
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>69</y>
+     <y>49</y>
      <width>1400</width>
-     <height>741</height>
+     <height>761</height>
     </rect>
    </property>
    <property name="styleSheet">

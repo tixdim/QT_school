@@ -368,12 +368,53 @@ class Exam(AnyWidget):
         self.close()
 
 
+class Exercise(AnyWidget):
+    def __init__(self, exNum, exVar):
+        super().__init__('UI_files/Exercise.ui', ' ')
+        self.exNum = exNum
+        Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}')
+        self.back.clicked.connect(self.go_to_Tren_Variants)
+        self.label.setPixmap(Pixmap)
+
+    def go_to_Tren_Variants(self):
+        self.Tren = Tren_Variants(self.exNum)
+        self.Tren.show()
+        self.close()
+
+
+class Tren_Variants(AnyWidget):
+    def __init__(self, exer):
+        global nickname
+        super().__init__('UI_files/Tren_Vars.ui', 'Выбор варианта')
+        self.exer = exer
+        self.nickname = nickname
+        self.back.clicked.connect(self.go_to_Tren)
+        for i in range(1, 6):
+            eval(f'self.var_{i}.clicked.connect(self.go_to_exercise)')
+
+    def go_to_exercise(self):
+        self.exer = Exercise(self.exer, self.sender().text())
+        self.exer.show()
+        self.close()
+
+    def go_to_Tren(self):
+        self.Tren = Tren()
+        self.Tren.show()
+        self.close()
+
 class Tren(AnyWidget):
     def __init__(self):
         global nickname
-        super().__init__('UI_files/Tren.ui', 'Тренажер')
+        super().__init__('UI_files/Tren.ui', 'Выбор задания')
         self.back.clicked.connect(self.go_to_menu)
         self.nickname = nickname
+        for i in range(1, 19):
+            eval(f'self.exercise_{i}.clicked.connect(self.go_to_Tren_variants)')
+
+    def go_to_Tren_variants(self):
+        self.Tren_vars = Tren_Variants(self.sender().text())
+        self.Tren_vars.show()
+        self.close()
 
     def go_to_menu(self):
         self.men = Menu()
