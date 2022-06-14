@@ -20,11 +20,12 @@ class AnyWidget(QWidget):
         uic.loadUi(ui_file, self)
 
         self.setWindowTitle(name)
-        self.setFixedSize(1400, 800) # шашаша
+        self.setFixedSize(1400, 800)
 
 
 class TheoryWidget(AnyWidget):
-    def __init__(self, nickname):
+    def __init__(self):
+        global nickname
         super().__init__('UI_files/TheoryWidget.ui', 'Теория')
 
         self.nickname = nickname
@@ -38,15 +39,14 @@ class TheoryWidget(AnyWidget):
         self.back.clicked.connect(self.go_to_menu)
 
     def go_to_menu(self):
-        self.mai = Menu(self.nickname)
+        self.mai = Menu()
         self.mai.show()
         self.close()
 
 
 class MainMenu(AnyWidget):
-    def __init__(self, nickname):
+    def __init__(self):
         super().__init__('UI_files/menu_with_menu.ui', ' ')
-        self.nicname = nickname
 
         self.Spravka_btn.clicked.connect(self.go_to_spravka)
         self.Menu_btn.clicked.connect(self.go_to_menu)
@@ -54,17 +54,17 @@ class MainMenu(AnyWidget):
         self.Exit_btn.clicked.connect(self.go_to_login)
 
     def go_to_spravka(self):
-        self.spr = Spravka(self.nicname)
+        self.spr = Spravka()
         self.spr.show()
         self.close()
 
     def go_to_menu(self):
-        self.men = Menu(self.nicname)
+        self.men = Menu()
         self.men.show()
         self.close()
 
     def go_to_profile(self):
-        self.pro = Profile(self.nicname)
+        self.pro = Profile()
         self.pro.show()
         self.close()
 
@@ -144,7 +144,7 @@ class Login(QMainWindow):
         self.close()
 
     def sign_in(self):
-        global theo
+        global nickname
 
         user_nick = self.user_nickname.text()
         user_password = self.user_password.text()
@@ -157,8 +157,8 @@ class Login(QMainWindow):
 
         if user_nick in users:
             if users[user_nick]["password"] == user_password:
-                theo = TheoryWidget(user_nick)
-                self.glavn_menu = MainMenu(user_nick)
+                nickname = user_nick
+                self.glavn_menu = MainMenu()
                 self.glavn_menu.show()
                 self.close()
             else:
@@ -345,52 +345,52 @@ class Regist(QMainWindow):
 
 
 class Spravka(AnyWidget):
-    def __init__(self, nickname):
+    def __init__(self):
         super().__init__('UI_files/Spravka.ui', 'Справка')
-        self.nicname = nickname
         self.back.clicked.connect(self.go_to_main_menu)
 
     def go_to_main_menu(self):
-        self.Main = MainMenu(self.nicname)
+        self.Main = MainMenu()
         self.Main.show()
         self.close()
 
 
 class Exam(AnyWidget):
-    def __init__(self, nickname):
+    def __init__(self):
+        global nickname
         super().__init__('UI_files/Exam.ui', 'Экзамен')
         self.back.clicked.connect(self.go_to_menu)
         self.nickname = nickname
 
     def go_to_menu(self):
-        self.men = Menu(self.nickname)
+        self.men = Menu()
         self.men.show()
         self.close()
 
 
 class Tren(AnyWidget):
-    def __init__(self, nickname):
+    def __init__(self):
+        global nickname
         super().__init__('UI_files/Tren.ui', 'Тренажер')
         self.back.clicked.connect(self.go_to_menu)
         self.nickname = nickname
 
     def go_to_menu(self):
-        self.men = Menu(self.nickname)
+        self.men = Menu()
         self.men.show()
         self.close()
 
 
 class Menu(AnyWidget):
-    def __init__(self, nickname):
+    def __init__(self):
         super().__init__('UI_files/Menu.ui', 'Меню')
-        self.nickname = nickname
         self.Theo_btn.clicked.connect(self.go_to_Theo)
         self.Exam_btn.clicked.connect(self.go_to_Exam)
         self.Tren_btn.clicked.connect(self.go_to_Tren)
         self.back.clicked.connect(self.go_to_main)
 
     def go_to_main(self):
-        self.mai = MainMenu(self.nickname)
+        self.mai = MainMenu()
         self.mai.show()
         self.close()
 
@@ -401,29 +401,30 @@ class Menu(AnyWidget):
         self.close()
 
     def go_to_Exam(self):
-        self.exam = Exam(self.nickname)
+        self.exam = Exam()
         self.exam.show()
         self.close()
 
     def go_to_Tren(self):
-        self.tren = Tren(self.nickname)
+        self.tren = Tren()
         self.tren.show()
         self.close()
 
 
 class ChangeMenu(AnyWidget):
-    def __init__(self, nickname):
+    def __init__(self):
+        global nickname
         super().__init__('UI_files/ChangeMenu.ui', 'Изменить профиль')
-        self.nicname = nickname
+        self.nickname = nickname
         self.pb_eye_active_1.setHidden(True)
         self.pb_eye_active_2.setHidden(True)
 
-        if os.path.exists(f'users_avatars/{self.nicname}_img.png'):
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nicname}_img.png);'
+        if os.path.exists(f'users_avatars/{self.nickname}_img.png'):
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nickname}_img.png);'
                                          f' border-radius: 60px')
 
-        elif os.path.exists(f'users_avatars/{self.nicname}_img.jpg'):
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nicname}_img.jpg);'
+        elif os.path.exists(f'users_avatars/{self.nickname}_img.jpg'):
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nickname}_img.jpg);'
                                          f' border-radius: 60px')
         else:
             self.user_icon.setStyleSheet(f'border-image: url(users_avatars/standart_image.png);'
@@ -527,7 +528,7 @@ class ChangeMenu(AnyWidget):
         user_password_1 = self.password_1.text()
         user_password_2 = self.password_2.text()
         with open("users.json", "r", encoding="utf-8") as read_file:
-            user_file = json.load(read_file)[f'{self.nicname}']
+            user_file = json.load(read_file)[f'{self.nickname}']
             if user_name:
                 pass
             else:
@@ -567,7 +568,7 @@ class ChangeMenu(AnyWidget):
             with open("users.json", "r", encoding="utf-8") as read_file:
                 users = json.load(read_file)
 
-            users[self.nicname] = {
+            users[self.nickname] = {
                 "name": user_name,
                 "surname": user_surname,
                 "password": user_password_1
@@ -577,7 +578,7 @@ class ChangeMenu(AnyWidget):
                 json.dump(users, write_file, indent=4, ensure_ascii=False)
 
     def go_to_profile(self):
-        self.pro = Profile(self.nicname)
+        self.pro = Profile()
         self.pro.show()
         self.close()
 
@@ -590,41 +591,42 @@ class ChangeMenu(AnyWidget):
             if not file_url:
                 raise BaseException
             try:
-                os.remove(f'users_avatars/{self.nicname}_img.jpg')
+                os.remove(f'users_avatars/{self.nickname}_img.jpg')
             except:
                 try:
-                    os.remove(f'users_avatars/{self.nicname}_img.png')
+                    os.remove(f'users_avatars/{self.nickname}_img.png')
                 except:
                     pass
             shutil.copy(file_url, "users_avatars")
             os.rename(f'users_avatars/{file_url[-1 * file_url[::-1].find("/"):]}',
-                      f'users_avatars/{self.nicname}_img.{file_url[-3:]}')
+                      f'users_avatars/{self.nickname}_img.{file_url[-3:]}')
 
             self.user_icon.setStyleSheet(f'border-radius:60px;'
-                                         f'border-image: url(users_avatars/{self.nicname}_img.{file_url[-3:]})')
+                                         f'border-image: url(users_avatars/{self.nickname}_img.{file_url[-3:]})')
         except:
             pass
 
 
 class Profile(AnyWidget):
-    def __init__(self, nickname):
+    def __init__(self):
+        global nickname
         super().__init__('UI_files/Profile.ui', 'Профиль')
-        self.nicname = nickname
+        self.nickname = nickname
         with open("users.json", "r", encoding="utf-8") as read_file:
-            user_data = json.load(read_file)[self.nicname]
+            user_data = json.load(read_file)[self.nickname]
             self.user_FI.setText(f'{user_data["name"]} {user_data["surname"]}')
-            self.user_nickname.setText(self.nicname)
+            self.user_nickname.setText(self.nickname)
         self.widget = QWidget()
         self.num = 49
         self.vbox = QVBoxLayout()
         self.vbox.setGeometry(QRect(0, 0, 1341, 1000))
 
-        if os.path.exists(f'users_avatars/{self.nicname}_img.png'):
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nicname}_img.png);'
+        if os.path.exists(f'users_avatars/{self.nickname}_img.png'):
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nickname}_img.png);'
                                          f' border-radius: 60px')
 
-        elif os.path.exists(f'users_avatars/{self.nicname}_img.jpg'):
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nicname}_img.jpg);'
+        elif os.path.exists(f'users_avatars/{self.nickname}_img.jpg'):
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nickname}_img.jpg);'
                                          f' border-radius: 60px')
         else:
             self.user_icon.setStyleSheet(f'border-image: url(users_avatars/standart_image.png);'
@@ -656,12 +658,12 @@ class Profile(AnyWidget):
         self.back.clicked.connect(self.go_to_main_menu)
 
     def go_to_main_menu(self):
-        self.men = MainMenu(self.nicname)
+        self.men = MainMenu()
         self.men.show()
         self.close()
 
     def go_to_change(self):
-        self.cha = ChangeMenu(self.nicname)
+        self.cha = ChangeMenu()
         self.cha.show()
         self.close()
 
@@ -672,7 +674,9 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    # ex = Menu("ДимASSS")
+    nickname = ' '
+    theo = TheoryWidget()
+    # ex = Menu()
     ex = Login()
     ex.show()
     sys.excepthook = except_hook
