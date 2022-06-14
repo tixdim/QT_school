@@ -50,12 +50,36 @@ QPushButton#back:pressed{
     <rect>
      <x>0</x>
      <y>90</y>
-     <width>1401</width>
-     <height>551</height>
+     <width>441</width>
+     <height>261</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="exNumber">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>20</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>32</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>1</string>
    </property>
   </widget>
  </widget>

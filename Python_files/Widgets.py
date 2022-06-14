@@ -372,7 +372,10 @@ class Exercise(AnyWidget):
     def __init__(self, exNum, exVar):
         super().__init__('UI_files/Exercise.ui', ' ')
         self.exNum = exNum
-        Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}')
+        Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}.png')
+        # with PIL.Image.open(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}.png') as img:
+        #     self.label.setFixedSize(*img.size)
+        self.exNumber.setText(exNum)
         self.back.clicked.connect(self.go_to_Tren_Variants)
         self.label.setPixmap(Pixmap)
 
@@ -715,10 +718,9 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    nickname = ' '
-    theo = TheoryWidget()
-    # ex = Menu()
-    ex = Login()
+    nickname = 'дима'
+    # theo = TheoryWidget()
+    ex = Menu()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
