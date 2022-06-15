@@ -17,7 +17,7 @@
    <string notr="true">QPushButton#back{
 	background-color: rgba(105, 118, 132, 0);
 }
-QPushButton#back:pressed{
+QPushButton:pressed{
 	padding-left: 2px;
 	padding-top: 2px;
 }</string>
