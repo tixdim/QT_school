@@ -368,16 +368,39 @@ class Exam(AnyWidget):
         self.close()
 
 
+class Correct_ans(AnyWidget):
+    def __init__(self, exNum, exVar):
+        super().__init__('UI_files/Correct_ans.ui', 'Подробное решение')
+        self.exNum = exNum
+        self.exVar = exVar
+        Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/ans/exer_{exNum}.png')
+        self.exNumber.setText(exNum + '.')
+        self.back.clicked.connect(self.go_to_ex)
+        self.label.setPixmap(Pixmap)
+
+    def go_to_ex(self):
+        self.ex = Exercise(self.exNum, self.exVar)
+        self.ex.show()
+        self.close()
+
+
 class Exercise(AnyWidget):
     def __init__(self, exNum, exVar):
         super().__init__('UI_files/Exercise.ui', ' ')
         self.exNum = exNum
+        self.exVar = exVar
         Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}.png')
-        # with PIL.Image.open(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}.png') as img:
-        #     self.label.setFixedSize(*img.size)
+        with PIL.Image.open(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}.png') as img:
+            self.label.setFixedSize(*img.size)
         self.exNumber.setText(exNum)
         self.back.clicked.connect(self.go_to_Tren_Variants)
         self.label.setPixmap(Pixmap)
+        self.see_right.clicked.connect(self.go_to_correct_ans)
+
+    def go_to_correct_ans(self):
+        self.cor = Correct_ans(self.exNum, self.exVar)
+        self.cor.show()
+        self.close()
 
     def go_to_Tren_Variants(self):
         self.Tren = Tren_Variants(self.exNum)
