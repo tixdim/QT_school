@@ -27,7 +27,11 @@ QPushButton#back:pressed{
 QSceollArea{
 	background-color: rgba(105, 118, 132, 0);
 }
-</string>
+
+QScrollBar
+{
+background : rgba(0, 0, 0, 0);
+}</string>
   </property>
   <widget class="QLabel" name="exNumber">
    <property name="geometry">
@@ -83,12 +87,15 @@ QSceollArea{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgba(0, 0, 0, 0 )
-
-</string>
+    <string notr="true">background-color:rgba(0, 0, 0, 0 );
+color:rgba(0, 0, 0, 0);
+border: 0px;</string>
    </property>
    <property name="lineWidth">
     <number>0</number>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
    </property>
    <property name="widgetResizable">
     <bool>true</bool>
@@ -98,8 +105,8 @@ QSceollArea{
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1359</width>
-      <height>609</height>
+      <width>1344</width>
+      <height>611</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
