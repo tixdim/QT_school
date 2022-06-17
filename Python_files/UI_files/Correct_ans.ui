@@ -24,7 +24,7 @@ QPushButton#back:pressed{
 	padding-left: 2px;
 	padding-top: 2px;
 }
-QSceollArea{
+QScrollArea{
 	background-color: rgba(105, 118, 132, 0);
 }
 </string>
@@ -32,9 +32,9 @@ QSceollArea{
   <widget class="QLabel" name="exNumber">
    <property name="geometry">
     <rect>
-     <x>680</x>
-     <y>10</y>
-     <width>81</width>
+     <x>0</x>
+     <y>20</y>
+     <width>1401</width>
      <height>41</height>
     </rect>
    </property>
@@ -48,6 +48,9 @@ QSceollArea{
    </property>
    <property name="text">
     <string>1</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="back">
@@ -83,9 +86,8 @@ QSceollArea{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgba(0, 0, 0, 0 )
-
-</string>
+    <string notr="true">background-color:rgba(0, 0, 0, 0);
+border: 0px;</string>
    </property>
    <property name="lineWidth">
     <number>0</number>
@@ -98,8 +100,8 @@ QSceollArea{
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1359</width>
-      <height>609</height>
+      <width>1361</width>
+      <height>611</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">

@@ -82,7 +82,9 @@ QPushButton:pressed{
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(107,92,209,200); color: White; border-radius: 20px; </string>
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+ border-radius: 20px; </string>
    </property>
    <property name="text">
     <string>2</string>
@@ -104,7 +106,9 @@ QPushButton:pressed{
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(107,92,209,200); color: White; border-radius: 20px; </string>
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+border-radius: 20px; </string>
    </property>
    <property name="text">
     <string>5</string>
@@ -126,7 +130,9 @@ QPushButton:pressed{
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(107,92,209,200); color: White; border-radius: 20px; </string>
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+border-radius: 20px; </string>
    </property>
    <property name="text">
     <string>3</string>
@@ -148,7 +154,9 @@ QPushButton:pressed{
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(107,92,209,200); color: White; border-radius: 20px; </string>
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+ border-radius: 20px; </string>
    </property>
    <property name="text">
     <string>1</string>
@@ -170,7 +178,9 @@ QPushButton:pressed{
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(107,92,209,200); color: White; border-radius: 20px; </string>
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+border-radius: 20px; </string>
    </property>
    <property name="text">
     <string>4</string>
