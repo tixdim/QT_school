@@ -1,5 +1,6 @@
 import os, shutil, PIL.Image
 import sys, json
+
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
 from PyQt5.QtCore import Qt, QSize, QRect
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
@@ -381,13 +382,23 @@ class Correct_ans(AnyWidget):
         self.exNum = exNum
         self.exVar = exVar
         Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/ans/exer_{exNum}.png')
-        self.exNumber.setText(exNum + '.')
-        self.back.clicked.connect(self.go_to_ex)
         self.label.setPixmap(Pixmap)
+        self.exNumber.setText(exNum + '.')
+        if int(exNum) <= 11:
+            self.ok_label.setHidden(True)
+            self.add_points.setHidden(True)
+            self.ok_label.setEnabled(False)
+            self.add_points.setEnabled(False)
+        else:
+            pass
+            # .setChecked(True)
+
+        self.back.clicked.connect(self.go_to_ex)
 
     def go_to_ex(self):
         self.ex = Exercise(self.exNum, self.exVar)
         self.ex.show()
+        self.close()
 
 
 class Exam_Vars(AnyWidget):
@@ -411,6 +422,7 @@ class Exam_Vars(AnyWidget):
 
 class Exercise(AnyWidget):
     def __init__(self, exNum, exVar):
+        self.answers = [0, [0], [0], [0], [0], [0]]
         super().__init__('UI_files/Exercise.ui', ' ')
         self.exNum = exNum
         self.exVar = exVar
@@ -418,9 +430,29 @@ class Exercise(AnyWidget):
         with PIL.Image.open(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}.png') as img:
             self.label.setFixedSize(*img.size)
         self.exNumber.setText(exNum)
-        self.back.clicked.connect(self.go_to_Tren_Variants)
         self.label.setPixmap(Pixmap)
+
+        if int(exNum) <= 11:
+            self.second_part.setHidden(True)
+        else:
+            self.ans.setEnabled(False)
+            self.ans.setHidden(True)
+            self.check_ans.setHidden(True)
+            self.check_ans.setEnabled(False)
+
+        self.check_ans.clicked.connect(self.check_answer)
+        self.back.clicked.connect(self.go_to_Tren_Variants)
         self.see_right.clicked.connect(self.go_to_correct_ans)
+
+    def check_answer(self):
+        if self.ans.text() == self.answers[self.exVar][self.exNum]:
+            self.right_or_no.setText('Верно!')
+            pass
+        else:
+            self.right_or_no.setText('Неправильно!')
+
+
+
 
     def go_to_correct_ans(self):
         self.cor = Correct_ans(self.exNum, self.exVar)

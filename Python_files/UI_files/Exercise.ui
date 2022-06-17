@@ -161,6 +161,27 @@ background-color:rgba(255, 255, 255, 150)</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="second_part">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>620</y>
+     <width>1321</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>26</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgba(255, 255, 255, 255)</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:26pt;&quot;&gt;Задания из второй части не проверяются, но вы можете посмотреть подробное &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:26pt;&quot;&gt;решение и самостоятельно себя проверить&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
