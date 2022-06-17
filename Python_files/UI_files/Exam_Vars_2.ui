@@ -41,12 +41,15 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <pointsize>18</pointsize>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">border-radius: 10px;
 background-color:rgba(255, 255, 255, 150)</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="left">
@@ -72,7 +75,7 @@ background-color:rgba(255, 255, 255, 150)</string>
     </size>
    </property>
   </widget>
-  <widget class="QLineEdit" name="ans_2">
+  <widget class="QLineEdit" name="ans_3">
    <property name="geometry">
     <rect>
      <x>1060</x>
@@ -83,12 +86,15 @@ background-color:rgba(255, 255, 255, 150)</string>
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <pointsize>18</pointsize>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">border-radius: 10px;
 background-color:rgba(255, 255, 255, 150)</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">

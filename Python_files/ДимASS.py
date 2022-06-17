@@ -1,4 +1,4 @@
-class Exam(AnyWidget):
+class Exam(AnyWidget): # меню с предложенными вариантами
     def __init__(self):
         global nickname
         super().__init__('UI_files/Exam.ui', 'Экзамен')
@@ -18,7 +18,7 @@ class Exam(AnyWidget):
         self.close()
 
 
-class Exam_Vars_1(AnyWidget):
+class Exam_Vars_1(AnyWidget): # задания из егэ № 1, 2, 3, 4
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_1.ui', f'Вариант №{egevar}')
         self.egevar = egevar
@@ -28,6 +28,7 @@ class Exam_Vars_1(AnyWidget):
             with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
                 eval(f'self.label_{i}.setFixedSize({img.size[0]}, {img.size[1]})')
             eval(f'self.label_{i}.setPixmap(Pixmap)')
+            eval(f"self.ans_{i}.setText(otv_perv[{i - 1}])")
 
         self.var.setText(f"Вариант №{self.egevar}")
 
@@ -35,17 +36,24 @@ class Exam_Vars_1(AnyWidget):
         self.right.clicked.connect(self.go_to_Exam_Vars_2)
 
     def go_to_Exam_Vars_2(self):
+        global otv_perv
+        otv_perv[0], otv_perv[1], otv_perv[2], otv_perv[3] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text(), self.ans_4.text()
+
         self.Exam_Vars_2 = Exam_Vars_2(self.egevar)
         self.Exam_Vars_2.show()
         self.close()
 
     def go_to_Exam(self):
+        global otv_perv
+        otv_perv.clear()
+        otv_perv = [""] * 11
+
         self.Exam = Exam()
         self.Exam.show()
         self.close()
 
 
-class Exam_Vars_2(AnyWidget):
+class Exam_Vars_2(AnyWidget): # задания из егэ № 5, 7
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_2.ui', f'Вариант №{egevar}')
         self.egevar = egevar
@@ -55,52 +63,67 @@ class Exam_Vars_2(AnyWidget):
             with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
                 eval(f'self.label_{i - 4}.setFixedSize({img.size[0]}, {img.size[1]})')
             eval(f'self.label_{i - 4}.setPixmap(Pixmap)')
+            eval(f"self.ans_{i - 4}.setText(otv_perv[{i - 1}])")
 
         self.left.clicked.connect(self.go_to_Exam_Vars_1)
         self.right.clicked.connect(self.go_to_Exam_Vars_3)
 
     def go_to_Exam_Vars_1(self):
+        global otv_perv
+        otv_perv[4], otv_perv[6] = self.ans_1.text(), self.ans_3.text()
+
         self.Exam_Vars_1 = Exam_Vars_1(self.egevar)
         self.Exam_Vars_1.show()
         self.close()
 
     def go_to_Exam_Vars_3(self):
+        global otv_perv
+        otv_perv[4], otv_perv[6] = self.ans_1.text(), self.ans_3.text()
+
         self.Exam_Vars_3 = Exam_Vars_3(self.egevar)
         self.Exam_Vars_3.show()
         self.close()
 
 
-class Exam_Vars_3(AnyWidget):
+class Exam_Vars_3(AnyWidget): # задания из егэ № 6, 8, 9
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_3.ui', f'Вариант №{egevar}')
         self.egevar = egevar
 
         Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_6.png')
         with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_6.png') as img:
-            eval(f'self.label_{1}.setFixedSize({img.size[0]}, {img.size[1]})')
-        eval(f'self.label_{1}.setPixmap(Pixmap)')
+            eval(f'self.label_1.setFixedSize({img.size[0]}, {img.size[1]})')
+        eval(f'self.label_1.setPixmap(Pixmap)')
+        eval(f"self.ans_1.setText(otv_perv[5])")
 
         for i in range(8, 10):
             Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
             with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
                 eval(f'self.label_{i - 6}.setFixedSize({img.size[0]}, {img.size[1]})')
             eval(f'self.label_{i - 6}.setPixmap(Pixmap)')
+            eval(f"self.ans_{i - 6}.setText(otv_perv[{i - 1}])")
 
         self.left.clicked.connect(self.go_to_Exam_Vars_2)
         self.right.clicked.connect(self.go_to_Exam_Vars_4)
 
     def go_to_Exam_Vars_2(self):
+        global otv_perv
+        otv_perv[5], otv_perv[7], otv_perv[8] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
+
         self.Exam_Vars_2 = Exam_Vars_2(self.egevar)
         self.Exam_Vars_2.show()
         self.close()
 
     def go_to_Exam_Vars_4(self):
+        global otv_perv
+        otv_perv[5], otv_perv[7], otv_perv[8] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
+
         self.Exam_Vars_4 = Exam_Vars_4(self.egevar)
         self.Exam_Vars_4.show()
         self.close()
 
 
-class Exam_Vars_4(AnyWidget):
+class Exam_Vars_4(AnyWidget): # задания из егэ № 10, 11, 12, 13
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_4.ui', f'Вариант №{egevar}')
         self.egevar = egevar
@@ -110,22 +133,30 @@ class Exam_Vars_4(AnyWidget):
             with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
                 eval(f'self.label_{i - 9}.setFixedSize({img.size[0]}, {img.size[1]})')
             eval(f'self.label_{i - 9}.setPixmap(Pixmap)')
+            if i in [10, 11]:
+                eval(f"self.ans_{i - 9}.setText(otv_perv[{i - 1}])")
 
         self.left.clicked.connect(self.go_to_Exam_Vars_3)
         self.right.clicked.connect(self.go_to_Exam_Vars_5)
 
     def go_to_Exam_Vars_3(self):
+        global otv_perv
+        otv_perv[9], otv_perv[10] = self.ans_1.text(), self.ans_2.text()
+
         self.Exam_Vars_3 = Exam_Vars_3(self.egevar)
         self.Exam_Vars_3.show()
         self.close()
 
     def go_to_Exam_Vars_5(self):
+        global otv_perv
+        otv_perv[9], otv_perv[10] = self.ans_1.text(), self.ans_2.text()
+
         self.Exam_Vars_5 = Exam_Vars_5(self.egevar)
         self.Exam_Vars_5.show()
         self.close()
 
 
-class Exam_Vars_5(AnyWidget):
+class Exam_Vars_5(AnyWidget): # задания из егэ № 14, 15, 16
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_5.ui', f'Вариант №{egevar}')
         self.egevar = egevar
@@ -150,7 +181,7 @@ class Exam_Vars_5(AnyWidget):
         self.close()
 
 
-class Exam_Vars_6(AnyWidget):
+class Exam_Vars_6(AnyWidget): # задания из егэ № 17, 18
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_6.ui', f'Вариант №{egevar}')
         self.egevar = egevar
@@ -175,7 +206,7 @@ class Exam_Vars_6(AnyWidget):
         self.close()
 
 
-class Exam_Vars_7(AnyWidget):
+class Exam_Vars_7(AnyWidget): # меню для перехода к оценке второй части
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_7.ui', f'Вариант №{egevar}')
         self.egevar = egevar
@@ -203,10 +234,25 @@ class Exam_Vars_7(AnyWidget):
         self.close()
 
     def go_to_itogi(self):
-        print("ti lox")
+        global ege, pred_ege, otv_perv
+        print(ege, pred_ege, otv_perv)
+
+        with open("ege_po_borbe_exam/otvete.json", "r", encoding="utf-8") as f:
+            otvete = json.load(f)[f"var_{self.egevar}"]
+
+        for i in range(11):
+            try:
+                if "," in otv_perv[i]:
+                    otv_perv[i] = otv_perv[i].replace(",", ".")
+                if float(otvete[str(i + 1)]) == float(otv_perv[i]):
+                    ege[i] = 1
+            except Exception:
+                ege[i] = 0
+
+        print(ege)
 
 
-class Exam_Vars_8(AnyWidget):
+class Exam_Vars_8(AnyWidget): # критерии
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_8.ui', f'Вариант №{egevar}')
         self.egevar = egevar
@@ -225,7 +271,7 @@ class Exam_Vars_8(AnyWidget):
         self.close()
 
 
-class Exam_Vars_9(AnyWidget):
+class Exam_Vars_9(AnyWidget): # оценка заданий второй части
     def __init__(self, egevar, number):
         super().__init__('UI_files/Exam_Vars_9.ui', f'Вариант №{egevar}')
         self.egevar = egevar
@@ -270,3 +316,16 @@ class Exam_Vars_9(AnyWidget):
         self.Exam_Vars_7 = Exam_Vars_7(self.egevar)
         self.Exam_Vars_7.show()
         self.close()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    nickname = 'дима'
+    ege = [0] * 18
+    pred_ege = [0] * 7
+    otv_perv = [""] * 11
+    # theo = TheoryWidget()
+    ex = Exam_Vars_1(1)
+    ex.show()
+    sys.excepthook = except_hook
+    sys.exit(app.exec_())
