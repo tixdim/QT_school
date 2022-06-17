@@ -422,7 +422,6 @@ class Exam_Vars(AnyWidget):
 
 class Exercise(AnyWidget):
     def __init__(self, exNum, exVar):
-        self.answers = [0, [0], [0], [0], [0], [0]]
         super().__init__('UI_files/Exercise.ui', ' ')
         self.exNum = exNum
         self.exVar = exVar
