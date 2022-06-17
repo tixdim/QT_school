@@ -378,7 +378,7 @@ class Exam(AnyWidget):
 
 class Correct_ans(AnyWidget):
     def __init__(self, exNum, exVar):
-        super().__init__('UI_files/Correct_ans.ui', 'Подробное решение')
+        super().__init__('UI_files/Correct_aans.ui', 'Подробное решение')
         self.exNum = exNum
         self.exVar = exVar
         Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/ans/exer_{exNum}.png')
