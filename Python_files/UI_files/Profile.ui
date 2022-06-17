@@ -34,6 +34,10 @@ QPushButton#back:pressed{
 QPushButton#change_btn:pressed{
 	padding-left: 2px;
 	padding-top: 2px;
+}
+QScrollBar
+{
+background : rgba(0, 0, 0, 0);
 }</string>
   </property>
   <widget class="QLabel" name="user_icon">

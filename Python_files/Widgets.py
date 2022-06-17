@@ -1,10 +1,11 @@
 import os, shutil, PIL.Image
 import sys, json
+
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
 from PyQt5.QtCore import Qt, QSize, QRect
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QButtonGroup,\
-    QVBoxLayout, QScrollArea, QGraphicsDropShadowEffect, QFileDialog, QLineEdit, QTabWidget, QRadioButton
+    QVBoxLayout, QScrollArea, QGraphicsDropShadowEffect, QFileDialog, QLineEdit, QTabWidget
 
 
 class AnyWidget(QWidget):
@@ -365,8 +366,8 @@ class Exam(AnyWidget): # меню с предложенными варианта
             eval(f'self.exam_{i}.clicked.connect(self.go_to_EGE)')
 
     def go_to_EGE(self):
-        self.Exam_Vars_1 = Exam_Vars_1(self.sender().text())
-        self.Exam_Vars_1.show()
+        self.Exam_Vars = Exam_Vars(self.sender().text())
+        self.Exam_Vars.show()
         self.close()
 
     def go_to_menu(self):
@@ -677,13 +678,22 @@ class Exam_Vars_9(AnyWidget): # оценка заданий второй час�
 
 class Correct_ans(AnyWidget):
     def __init__(self, exNum, exVar):
-        super().__init__('UI_files/Correct_ans.ui', 'Подробное решение')
+        super().__init__('UI_files/Correct_aans.ui', 'Подробное решение')
         self.exNum = exNum
         self.exVar = exVar
         Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/ans/exer_{exNum}.png')
-        self.exNumber.setText(exNum + '.')
-        self.back.clicked.connect(self.go_to_ex)
         self.label.setPixmap(Pixmap)
+        self.exNumber.setText(exNum + '.')
+        if int(exNum) <= 11:
+            self.ok_label.setHidden(True)
+            self.add_points.setHidden(True)
+            self.ok_label.setEnabled(False)
+            self.add_points.setEnabled(False)
+        else:
+            pass
+            # .setChecked(True)
+
+        self.back.clicked.connect(self.go_to_ex)
 
     def go_to_ex(self):
         self.ex = Exercise(self.exNum, self.exVar)
@@ -693,18 +703,34 @@ class Correct_ans(AnyWidget):
 
 class Exercise(AnyWidget):
     def __init__(self, exNum, exVar):
+        self.answers = [0, [0], [0], [0], [0], [0]]
         super().__init__('UI_files/Exercise.ui', ' ')
         self.exNum = exNum
         self.exVar = exVar
         Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}.png')
         with PIL.Image.open(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}.png') as img:
             self.label.setFixedSize(*img.size)
-
+        self.exNumber.setText(exNum)
         self.label.setPixmap(Pixmap)
 
-        self.exNumber.setText(exNum)
+        if int(exNum) <= 11:
+            self.second_part.setHidden(True)
+        else:
+            self.ans.setEnabled(False)
+            self.ans.setHidden(True)
+            self.check_ans.setHidden(True)
+            self.check_ans.setEnabled(False)
+
+        self.check_ans.clicked.connect(self.check_answer)
         self.back.clicked.connect(self.go_to_Tren_Variants)
         self.see_right.clicked.connect(self.go_to_correct_ans)
+
+    def check_answer(self):
+        if self.ans.text() == self.answers[self.exVar][self.exNum]:
+            self.right_or_no.setText('Верно!')
+            pass
+        else:
+            self.right_or_no.setText('Неправильно!')
 
     def go_to_correct_ans(self):
         self.cor = Correct_ans(self.exNum, self.exVar)
