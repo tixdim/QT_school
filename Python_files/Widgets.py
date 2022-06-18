@@ -683,15 +683,7 @@ class Correct_ans(AnyWidget):
         self.exVar = exVar
         Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/ans/exer_{exNum}.png')
         self.label.setPixmap(Pixmap)
-        self.exNumber.setText(exNum + '.')
-        if int(exNum) <= 11:
-            self.ok_label.setHidden(True)
-            self.add_points.setHidden(True)
-            self.ok_label.setEnabled(False)
-            self.add_points.setEnabled(False)
-        else:
-            pass
-            # .setChecked(True)
+        self.exNumber.setText(exNum)
 
         self.back.clicked.connect(self.go_to_ex)
 
@@ -725,11 +717,14 @@ class Exercise(AnyWidget):
         self.see_right.clicked.connect(self.go_to_correct_ans)
 
     def check_answer(self):
-        if self.ans.text() == self.answers[self.exVar][self.exNum]:
-            self.right_or_no.setText('Верно!')
-            pass
-        else:
-            self.right_or_no.setText('Неправильно!')
+        with open("ege_po_borbe_tren/answers.json", 'r', encoding="utf-8") as read_file:
+            ans = json.load(read_file)
+            if self.ans.text().replace(',', '.') == str(ans[f'var_{self.exVar}'][self.exNum]):
+                self.right_or_no.setText('Верно!')
+            else:
+                self.right_or_no.setText('Неправильно!')
+
+
 
     def go_to_correct_ans(self):
         self.cor = Correct_ans(self.exNum, self.exVar)
@@ -1077,11 +1072,13 @@ def except_hook(cls, exception, traceback):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     nickname = 'дима'
+
     ege = [0] * 18
     pred_ege = [0] * 7
     otv_perv = [""] * 11
+
     # theo = TheoryWidget()
-    ex = Exam_Vars_1(1)
+    ex = Menu()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())
