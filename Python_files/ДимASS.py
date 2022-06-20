@@ -771,7 +771,7 @@ class Exam_Vars_10(AnyWidget): # итоговый результат
         else:
             self.text_perv_ballov = "первичных баллов"
 
-        self.itogo.setText(f"Вы набрали {self.itog_point} из 100 {self.text}")
+        self.itogo.setText(f"Вы набрали {self.itog_point} {self.text} из 100")
         self.porog.setText(f'''<html><head/><body>
             <p>Решено {self.resh_zad} {self.text_zad} из 18, набрано {sum(ege)} {self.text_perv_ballov}, </p>
             <p>что соответствует {self.itog_point} баллам по стобалльной шкале.</p>
@@ -813,6 +813,93 @@ class Exam_Vars_10(AnyWidget): # итоговый результат
         self.close()
 
 
+class Info_Vars(AnyWidget):
+    def __init__(self, popitka, egevar):
+        super().__init__('UI_files/Exam_Vars_10.ui', f'Вариант №{egevar}')
+        self.popitka = popitka
+        self.egevar = egevar
+        self.UI()
+
+    def UI(self):
+        self.var.setText(f"Результат выполнения {self.egevar} варианта")
+        self.var.setStyleSheet('color:#ffffff;')
+
+        with open("ege_po_borbe_exam/otvete.json", "r", encoding="utf-8") as f:
+            otvete = json.load(f)[f"var_{self.egevar}"]
+
+        with open("users.json", "r", encoding="utf-8") as read_file:
+            info = json.load(read_file)[nickname]["vars"][str(self.popitka)]
+
+        self.itog_point, self.text, self.resh_zad, self.text_perv_ballov, self.text_zad, self.ege_var = info["vsego_points"], \
+            info["text"], info["resh_zad"], info["text_perv_ballov"], info["text_zad"], info["ege"],
+
+        for i in range(1, 12):
+            eval(f"self.ans_{i}.setText(str({otvete[str(i)]}))")
+
+            eval(f"self.u_ans_{i}.setText(str({info[str(i)]}))")
+            if info[str(i)].replace(" ", "") == "":
+                eval(f"self.u_ans_{i}.setStyleSheet('color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+            elif self.ege_var[i - 1] == 0:
+                eval(f"self.u_ans_{i}.setStyleSheet('background-color: rgba(255, 0, 0, 155); "
+                     f"color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+            else:
+                eval(f"self.u_ans_{i}.setStyleSheet('background-color: rgba(50, 205, 50, 180); "
+                     f"color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+
+        max_vt_chast = {12: 2, 13: 3, 14: 2, 15: 2, 16: 3, 17: 4, 18: 4}
+
+        for i in range(12, 19):
+            eval(f"self.u_point_{i}.setText(str({self.ege_var[i - 1]}))")
+            if self.ege_var[i - 1] == 0:
+                eval(f"self.u_point_{i}.setStyleSheet('background-color: rgba(255, 0, 0, 155); "
+                     f"color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+            elif self.ege_var[i - 1] == max_vt_chast[i]:
+                eval(f"self.u_point_{i}.setStyleSheet('background-color: rgba(50, 205, 50, 180); "
+                     f"color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+            else:
+                eval(f"self.u_point_{i}.setStyleSheet('background-color: rgba(255, 215, 0, 175); "
+                     f"color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+
+        perevod_points = [6, 11, 17, 22, 27, 34, 40, 46, 52, 58, 64, 66, 68, 70, 72, 74, 76, 78,
+                          80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 100, 100]
+
+        if self.itog_point >= 27:
+            proyden_porog = "пройден"
+            color = "rgba(50, 205, 50, 225)"
+        else:
+            proyden_porog = "не пройден"
+            color = "rgba(255, 0, 0, 195)"
+
+        self.itogo.setText(f"Вы набрали {self.itog_point} {self.text} из 100")
+        self.porog.setText(f'''<html><head/><body>
+            <p>Решено {self.resh_zad} {self.text_zad} из 18, набрано {sum(self.ege_var)} {self.text_perv_ballov}, </p>
+            <p>что соответствует {self.itog_point} баллам по стобалльной шкале.</p>
+            <p>В 2022 году порог для получения аттестата </p>
+            <p>составляет 27 баллов, <span style="text-decoration: underline;color: {color}">порог {proyden_porog}.</span></p>
+            </body></html>''')
+
+        self.back.clicked.connect(self.go_to_Profile)
+        self.bt_prof.setEnabled(False)
+        self.bt_prof.setHidden(True)
+
+    def go_to_Profile(self):
+        self.pro = Profile()
+        self.pro.show()
+        self.close()
+
+
 class Correct_ans(AnyWidget):
     def __init__(self, exNum, exVar):
         super().__init__('UI_files/Correct_aans.ui', 'Подробное решение')
@@ -820,15 +907,7 @@ class Correct_ans(AnyWidget):
         self.exVar = exVar
         Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/ans/exer_{exNum}.png')
         self.label.setPixmap(Pixmap)
-        self.exNumber.setText(exNum + '.')
-        if int(exNum) <= 11:
-            self.ok_label.setHidden(True)
-            self.add_points.setHidden(True)
-            self.ok_label.setEnabled(False)
-            self.add_points.setEnabled(False)
-        else:
-            pass
-            # .setChecked(True)
+        self.exNumber.setText(exNum)
 
         self.back.clicked.connect(self.go_to_ex)
 
@@ -862,11 +941,14 @@ class Exercise(AnyWidget):
         self.see_right.clicked.connect(self.go_to_correct_ans)
 
     def check_answer(self):
-        if self.ans.text() == self.answers[self.exVar][self.exNum]:
-            self.right_or_no.setText('Верно!')
-            pass
-        else:
-            self.right_or_no.setText('Неправильно!')
+        with open("ege_po_borbe_tren/answers.json", 'r', encoding="utf-8") as read_file:
+            ans = json.load(read_file)
+            if self.ans.text().replace(',', '.') == str(ans[f'var_{self.exVar}'][self.exNum]):
+                self.right_or_no.setText('Верно!')
+            else:
+                self.right_or_no.setText('Неправильно!')
+
+
 
     def go_to_correct_ans(self):
         self.cor = Correct_ans(self.exNum, self.exVar)
@@ -1176,20 +1258,18 @@ class Profile(AnyWidget):
 
         if "vars" in user_data:
             for i in range(len(user_data["vars"])):
-                print(user_data["vars"][str(i + 1)])
-                font = QFont('MS Shell Dlg 2', 30)
-                btn = QPushButton(f'  Вариант {i}')
-                btn.setFont(font)
+                btn = QPushButton(f'  Попытка №{i + 1}')
+                btn.setFont(QFont('MS Shell Dlg 2', 30))
                 btn.setMaximumSize(QSize(1300, 120))
                 btn.setMinimumSize(QSize(1300, 120))
-                if i % 2 == 1:
-                    btn.setStyleSheet('background-color: rgba(223, 116, 153, 150); color: '
-                                      'rgba(255, 255, 255, 150); text-align: left;'
-                                      'border-radius: 25px')
+                if user_data["vars"][str(i + 1)]["vsego_points"] < 27:
+                    btn.setStyleSheet('background-color: rgba(223, 116, 153, 230); color: '
+                                      'rgba(255, 255, 255, 150); text-align: left; border-radius: 25px')
                 else:
-                    btn.setStyleSheet('background-color: rgba(158, 241, 162, 200); color: '
-                                      'rgba(255, 255, 255, 150); text-align: left;'
-                                      'border-radius: 25px')
+                    btn.setStyleSheet('background-color: rgba(158, 241, 162, 240); color: '
+                                      'rgba(255, 255, 255, 150); text-align: left; border-radius: 25px')
+
+                btn.clicked.connect(self.go_to_Info_Var)
                 self.vbox.addWidget(btn)
 
             self.vbox.setSpacing(20)
@@ -1201,9 +1281,22 @@ class Profile(AnyWidget):
 
             self.no_vars.setEnabled(False)
             self.no_vars.setHidden(True)
+        else:
+            self.variants.setEnabled(False)
+            self.variants.setHidden(True)
 
         self.change_btn.clicked.connect(self.go_to_change)
         self.back.clicked.connect(self.go_to_main_menu)
+
+    def go_to_Info_Var(self):
+        popitka = int(self.sender().text().split()[1].split("№")[-1])
+
+        with open("users.json", "r", encoding="utf-8") as read_file:
+            ege_va = json.load(read_file)[self.nickname]["vars"][str(popitka)]["var"]
+
+        self.Info_Vars = Info_Vars(popitka, int(ege_va))
+        self.Info_Vars.show()
+        self.close()
 
     def go_to_main_menu(self):
         self.men = MainMenu()

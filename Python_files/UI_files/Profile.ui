@@ -35,9 +35,12 @@ QPushButton#change_btn:pressed{
 	padding-left: 2px;
 	padding-top: 2px;
 }
-QScrollBar
-{
+QScrollBar{
 background : rgba(0, 0, 0, 0);
+}
+QPushButton:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
 }</string>
   </property>
   <widget class="QLabel" name="user_icon">
@@ -130,7 +133,7 @@ background : rgba(0, 0, 0, 0);
     <rect>
      <x>30</x>
      <y>300</y>
-     <width>351</width>
+     <width>271</width>
      <height>81</height>
     </rect>
    </property>
@@ -145,7 +148,7 @@ background : rgba(0, 0, 0, 0);
     <string notr="true">color: rgba(255, 255, 255, 210);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Решенные варианты:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Ваши попытки:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -226,9 +229,9 @@ border: 0px;</string>
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>380</y>
+     <y>310</y>
      <width>1341</width>
-     <height>391</height>
+     <height>461</height>
     </rect>
    </property>
    <property name="font">
