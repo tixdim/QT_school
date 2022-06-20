@@ -366,8 +366,13 @@ class Exam(AnyWidget): # меню с предложенными варианта
             eval(f'self.exam_{i}.clicked.connect(self.go_to_EGE)')
 
     def go_to_EGE(self):
-        self.Exam_Vars = Exam_Vars(self.sender().text())
-        self.Exam_Vars.show()
+        global ege, pred_ege, otv_perv
+        ege = [0] * 18
+        pred_ege = [0] * 7
+        otv_perv = [""] * 11
+
+        self.Exam_Vars_1 = Exam_Vars_1(self.sender().text())
+        self.Exam_Vars_1.show()
         self.close()
 
     def go_to_menu(self):
@@ -592,8 +597,7 @@ class Exam_Vars_7(AnyWidget): # меню для перехода к оценке
         self.close()
 
     def go_to_itogi(self):
-        global ege, pred_ege, otv_perv
-        print(ege, pred_ege, otv_perv)
+        global ege, otv_perv
 
         with open("ege_po_borbe_exam/otvete.json", "r", encoding="utf-8") as f:
             otvete = json.load(f)[f"var_{self.egevar}"]
@@ -607,7 +611,9 @@ class Exam_Vars_7(AnyWidget): # меню для перехода к оценке
             except Exception:
                 ege[i] = 0
 
-        print(ege)
+        self.Exam_Vars_10 = Exam_Vars_10(self.egevar)
+        self.Exam_Vars_10.show()
+        self.close()
 
 
 class Exam_Vars_8(AnyWidget): # критерии
@@ -673,6 +679,137 @@ class Exam_Vars_9(AnyWidget): # оценка заданий второй час�
     def go_to_Exam_Vars_7(self):
         self.Exam_Vars_7 = Exam_Vars_7(self.egevar)
         self.Exam_Vars_7.show()
+        self.close()
+
+
+class Exam_Vars_10(AnyWidget): # итоговый результат
+    def __init__(self, egevar):
+        super().__init__('UI_files/Exam_Vars_10.ui', f'Вариант №{egevar}')
+        self.egevar = egevar
+        self.UI()
+
+    def UI(self):
+        self.var.setText(f"Результат выполнения {self.egevar} варианта")
+        self.var.setStyleSheet('color:#ffffff;')
+
+        with open("ege_po_borbe_exam/otvete.json", "r", encoding="utf-8") as f:
+            otvete = json.load(f)[f"var_{self.egevar}"]
+
+        for i in range(1, 12):
+            eval(f"self.ans_{i}.setText(str({otvete[str(i)]}))")
+
+            eval(f"self.u_ans_{i}.setText(str({otv_perv[i - 1]}))")
+            if otv_perv[i - 1].replace(" ", "") == "":
+                eval(f"self.u_ans_{i}.setStyleSheet('color: #ffffff; border-style: solid; "
+                    f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                    f"border-bottom-width: 1px; border-left-width: 1px;')")
+            elif ege[i - 1] == 0:
+                eval(f"self.u_ans_{i}.setStyleSheet('background-color: rgba(255, 0, 0, 155); "
+                     f"color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+            else:
+                eval(f"self.u_ans_{i}.setStyleSheet('background-color: rgba(50, 205, 50, 180); "
+                     f"color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+
+        max_vt_chast = {12: 2, 13: 3, 14: 2, 15: 2, 16: 3, 17: 4, 18: 4}
+
+        for i in range(12, 19):
+            eval(f"self.u_point_{i}.setText(str({ege[i - 1]}))")
+            if ege[i - 1] == 0:
+                eval(f"self.u_point_{i}.setStyleSheet('background-color: rgba(255, 0, 0, 155); "
+                     f"color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+            elif ege[i - 1] == max_vt_chast[i]:
+                eval(f"self.u_point_{i}.setStyleSheet('background-color: rgba(50, 205, 50, 180); "
+                     f"color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+            else:
+                eval(f"self.u_point_{i}.setStyleSheet('background-color: rgba(255, 215, 0, 175); "
+                     f"color: #ffffff; border-style: solid; "
+                     f"border-color: black;border-top-width: 0px; border-right-width: 1px; "
+                     f"border-bottom-width: 1px; border-left-width: 1px;')")
+
+        perevod_points = [6, 11, 17, 22, 27, 34, 40, 46, 52, 58, 64, 66, 68, 70, 72, 74, 76, 78,
+                          80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 100, 100]
+        self.itog_point = perevod_points[sum(ege) - 1]
+
+        if self.itog_point % 10 == 1 and self.itog_point != 11:
+            self.text = "балл"
+        elif (self.itog_point % 10 == 2 and self.itog_point != 12) or (self.itog_point % 10 == 3 and self.itog_point != 13) or \
+                (self.itog_point % 10 == 4 and self.itog_point != 14):
+            self.text = "балла"
+        else:
+            self.text = "баллов"
+
+        self.resh_zad = sum([1 if i > 0 else 0 for i in ege])
+
+        if self.itog_point >= 27:
+            proyden_porog = "пройден"
+            color = "rgba(50, 205, 50, 225)"
+        else:
+            proyden_porog = "не пройден"
+            color = "rgba(255, 0, 0, 195)"
+
+        if self.resh_zad == 1:
+            self.text_zad = "задание"
+        elif self.resh_zad in [2, 3, 4]:
+            self.text_zad = "задания"
+        else:
+            self.text_zad = "заданий"
+
+        perv_ballov = sum(ege)
+        if perv_ballov % 10 == 1 and perv_ballov != 11:
+            self.text_perv_ballov = "первичный балл"
+        elif (perv_ballov % 10 == 2 and perv_ballov != 12) or (perv_ballov % 10 == 3 and perv_ballov != 13)\
+                or (perv_ballov % 10 == 4 and perv_ballov != 14):
+            self.text_perv_ballov = "первичных балла"
+        else:
+            self.text_perv_ballov = "первичных баллов"
+
+        self.itogo.setText(f"Вы набрали {self.itog_point} из 100 {self.text}")
+        self.porog.setText(f'''<html><head/><body>
+            <p>Решено {self.resh_zad} {self.text_zad} из 18, набрано {sum(ege)} {self.text_perv_ballov}, </p>
+            <p>что соответствует {self.itog_point} баллам по стобалльной шкале.</p>
+            <p>В 2022 году порог для получения аттестата </p>
+            <p>составляет 27 баллов, <span style="text-decoration: underline;color: {color}">порог {proyden_porog}.</span></p>
+            </body></html>''')
+
+        self.bt_prof.clicked.connect(self.go_to_Profile)
+        self.back.clicked.connect(self.go_to_Exam_Vars_7)
+
+    def go_to_Exam_Vars_7(self):
+        self.Exam_Vars_7 = Exam_Vars_7(self.egevar)
+        self.Exam_Vars_7.show()
+        self.close()
+
+    def go_to_Profile(self):
+        with open("users.json", "r", encoding="utf-8") as read_file:
+            users = json.load(read_file)
+
+        info_var = {"var": self.egevar, "vsego_points": self.itog_point, "text": self.text,
+                    "resh_zad": self.resh_zad, "text_perv_ballov": self.text_perv_ballov,
+                    "text_zad": self.text_zad, "ege": ege}
+
+        for i in range(1, 12):
+            info_var[i] = otv_perv[i - 1]
+        for i in range(12, 19):
+            info_var[i] = ege[i - 1]
+
+        if 'vars' in users[nickname]:
+            users[nickname]["vars"][len(users[nickname]["vars"]) + 1] = info_var
+        else:
+            users[nickname]["vars"] = {"1": info_var}
+
+        with open("users.json", "w", encoding="utf-8") as write_file:
+            json.dump(users, write_file, indent=4, ensure_ascii=False)
+
+        self.Profile = Profile()
+        self.Profile.show()
         self.close()
 
 
@@ -1014,10 +1151,13 @@ class Profile(AnyWidget):
         global nickname
         super().__init__('UI_files/Profile.ui', 'Профиль')
         self.nickname = nickname
+
         with open("users.json", "r", encoding="utf-8") as read_file:
             user_data = json.load(read_file)[self.nickname]
-            self.user_FI.setText(f'{user_data["name"]} {user_data["surname"]}')
-            self.user_nickname.setText(self.nickname)
+
+        self.user_FI.setText(f'{user_data["name"]} {user_data["surname"]}')
+        self.user_nickname.setText(self.nickname)
+
         self.widget = QWidget()
         self.num = 49
         self.vbox = QVBoxLayout()
@@ -1034,28 +1174,34 @@ class Profile(AnyWidget):
             self.user_icon.setStyleSheet(f'border-image: url(users_avatars/standart_image.png);'
                                          f' border-radius: 60px')
 
-        for i in range(1, 50):
-            font = QFont('MS Shell Dlg 2', 30)
-            btn = QPushButton(f'  Вариант {i}')
-            btn.setFont(font)
-            btn.setMaximumSize(QSize(1300, 120))
-            btn.setMinimumSize(QSize(1300, 120))
-            if i % 2 == 1:
-                btn.setStyleSheet('background-color: rgba(223, 116, 153, 150); color: '
-                                  'rgba(255, 255, 255, 150); text-align: left;'
-                                  'border-radius: 25px')
-            else:
-                btn.setStyleSheet('background-color: rgba(158, 241, 162, 200); color: '
-                                  'rgba(255, 255, 255, 150); text-align: left;'
-                                  'border-radius: 25px')
-            self.vbox.addWidget(btn)
+        if "vars" in user_data:
+            for i in range(len(user_data["vars"])):
+                print(user_data["vars"][str(i + 1)])
+                font = QFont('MS Shell Dlg 2', 30)
+                btn = QPushButton(f'  Вариант {i}')
+                btn.setFont(font)
+                btn.setMaximumSize(QSize(1300, 120))
+                btn.setMinimumSize(QSize(1300, 120))
+                if i % 2 == 1:
+                    btn.setStyleSheet('background-color: rgba(223, 116, 153, 150); color: '
+                                      'rgba(255, 255, 255, 150); text-align: left;'
+                                      'border-radius: 25px')
+                else:
+                    btn.setStyleSheet('background-color: rgba(158, 241, 162, 200); color: '
+                                      'rgba(255, 255, 255, 150); text-align: left;'
+                                      'border-radius: 25px')
+                self.vbox.addWidget(btn)
 
-        self.vbox.setSpacing(20)
-        self.widget.setLayout(self.vbox)
-        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setWidget(self.widget)
+            self.vbox.setSpacing(20)
+            self.widget.setLayout(self.vbox)
+            self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+            self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+            self.scrollArea.setWidgetResizable(True)
+            self.scrollArea.setWidget(self.widget)
+
+            self.no_vars.setEnabled(False)
+            self.no_vars.setHidden(True)
+
         self.change_btn.clicked.connect(self.go_to_change)
         self.back.clicked.connect(self.go_to_main_menu)
 
@@ -1076,12 +1222,15 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    nickname = 'дима'
+    nickname = 'tixdim'
     ege = [0] * 18
     pred_ege = [0] * 7
-    otv_perv = [""] * 11
+    # otv_perv = [""] * 11
+    otv_perv = [str(8.75), "", "1,5", "-1.5"]
+    for i in range(5, 12):
+        otv_perv.append(str(i))
     # theo = TheoryWidget()
-    ex = Exam_Vars_1(1)
+    ex = Profile()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())

@@ -82,10 +82,10 @@ background : rgba(0, 0, 0, 0);
   <widget class="QLabel" name="user_FI">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>30</y>
-     <width>721</width>
-     <height>171</height>
+     <x>270</x>
+     <y>40</y>
+     <width>731</width>
+     <height>161</height>
     </rect>
    </property>
    <property name="font">
@@ -128,10 +128,10 @@ background : rgba(0, 0, 0, 0);
   <widget class="QLabel" name="variants">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>300</y>
-     <width>341</width>
-     <height>71</height>
+     <width>351</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
@@ -145,7 +145,7 @@ background : rgba(0, 0, 0, 0);
     <string notr="true">color: rgba(255, 255, 255, 210);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Решенные варианты:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Решенные варианты:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -181,7 +181,8 @@ border-radius: 20px;</string>
     </sizepolicy>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    <string notr="true">background-color: rgba(0, 0, 0, 0);
+border: 0px;</string>
    </property>
    <property name="widgetResizable">
     <bool>true</bool>
@@ -191,8 +192,8 @@ border-radius: 20px;</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1339</width>
-      <height>389</height>
+      <width>1341</width>
+      <height>391</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout"/>
@@ -221,6 +222,29 @@ border-radius: 20px;</string>
     </size>
    </property>
   </widget>
+  <widget class="QLabel" name="no_vars">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>380</y>
+     <width>1341</width>
+     <height>391</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgba(255, 255, 255, 210);</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;У вас ещё нет решённых вариантов.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Вы можете зайти в раздел 'Экзаменатор' и&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;пройти любой из предложенных.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
   <zorder>label</zorder>
   <zorder>user_icon</zorder>
   <zorder>user_nickname</zorder>
@@ -229,6 +253,7 @@ border-radius: 20px;</string>
   <zorder>variants</zorder>
   <zorder>scrollArea</zorder>
   <zorder>back</zorder>
+  <zorder>no_vars</zorder>
  </widget>
  <resources/>
  <connections/>
