@@ -1375,7 +1375,7 @@ if __name__ == '__main__':
     for i in range(5, 12):
         otv_perv.append(str(i))
 
-    theo = TheoryWidget()
+    # theo = TheoryWidget()
     ex = Zastavka()
     ex.show()
     sys.excepthook = except_hook
