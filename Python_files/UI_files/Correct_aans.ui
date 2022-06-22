@@ -83,9 +83,9 @@ background : rgba(0, 0, 0, 0);
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
-     <x>19</x>
+     <x>50</x>
      <y>119</y>
-     <width>1361</width>
+     <width>1300</width>
      <height>611</height>
     </rect>
    </property>
@@ -108,7 +108,7 @@ border: 0px;</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1361</width>
+      <width>1300</width>
       <height>611</height>
      </rect>
     </property>
@@ -137,7 +137,7 @@ border: 0px;</string>
         <bool>false</bool>
        </property>
        <property name="alignment">
-        <set>Qt::AlignHCenter|Qt::AlignTop</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
        </property>
       </widget>
      </item>

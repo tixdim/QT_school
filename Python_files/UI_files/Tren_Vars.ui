@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1400</width>
-    <height>800</height>
+    <height>834</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -171,66 +171,81 @@ QPushButton#back:pressed{
   <widget class="QLabel" name="ex_complited_1">
    <property name="geometry">
     <rect>
-     <x>872</x>
-     <y>130</y>
-     <width>91</width>
-     <height>81</height>
+     <x>870</x>
+     <y>145</y>
+     <width>60</width>
+     <height>60</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="ex_complited_2">
    <property name="geometry">
     <rect>
-     <x>872</x>
-     <y>260</y>
-     <width>91</width>
-     <height>81</height>
+     <x>870</x>
+     <y>277</y>
+     <width>60</width>
+     <height>60</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="ex_complited_3">
    <property name="geometry">
     <rect>
-     <x>872</x>
-     <y>390</y>
-     <width>91</width>
-     <height>81</height>
+     <x>870</x>
+     <y>407</y>
+     <width>60</width>
+     <height>60</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="ex_complited_4">
    <property name="geometry">
     <rect>
-     <x>872</x>
-     <y>520</y>
-     <width>91</width>
-     <height>81</height>
+     <x>870</x>
+     <y>537</y>
+     <width>60</width>
+     <height>60</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="ex_complited_5">
    <property name="geometry">
     <rect>
-     <x>872</x>
-     <y>650</y>
-     <width>91</width>
-     <height>81</height>
+     <x>870</x>
+     <y>667</y>
+     <width>60</width>
+     <height>60</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
