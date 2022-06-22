@@ -24,7 +24,7 @@ QPushButton#back:pressed{
 	padding-left: 2px;
 	padding-top: 2px;
 }
-QSceollArea{
+QScrollArea{
 	background-color: rgba(105, 118, 132, 0);
 }
 
@@ -36,10 +36,10 @@ background : rgba(0, 0, 0, 0);
   <widget class="QLabel" name="exNumber">
    <property name="geometry">
     <rect>
-     <x>680</x>
+     <x>0</x>
      <y>10</y>
-     <width>81</width>
-     <height>41</height>
+     <width>1401</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="font">
@@ -52,6 +52,9 @@ background : rgba(0, 0, 0, 0);
    </property>
    <property name="text">
     <string>1</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="back">

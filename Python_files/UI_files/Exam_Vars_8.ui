@@ -29,8 +29,12 @@ QPushButton:pressed{
 	padding-top: 2px;
 }
 
-QScrollArea{
+QScrollArea {
 	background-color: rgba(105, 118, 132, 0);
+}
+
+QScrollBar {
+	background : rgba(0, 0, 0, 0);
 }</string>
   </property>
   <widget class="QLabel" name="label">
@@ -92,7 +96,8 @@ QScrollArea{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgba(0, 0, 0, 0);
+    <string notr="true">background-color: rgba(0, 0, 0, 0 );
+color: rgba(0, 0, 0, 0);
 border: 0px;</string>
    </property>
    <property name="lineWidth">

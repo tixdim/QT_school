@@ -1,7 +1,7 @@
 import os, shutil, PIL.Image
 import sys, json
 
-from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
+from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont, QMovie
 from PyQt5.QtCore import Qt, QSize, QRect
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QButtonGroup,\
@@ -367,6 +367,9 @@ class Exam(AnyWidget): # меню с предложенными варианта
 
     def go_to_EGE(self):
         global ege, pred_ege, otv_perv
+        ege.clear()
+        pred_ege.clear()
+        otv_perv.clear()
         ege = [0] * 18
         pred_ege = [0] * 7
         otv_perv = [""] * 11
@@ -385,6 +388,31 @@ class Exam_Vars_1(AnyWidget): # задания из егэ № 1, 2, 3, 4
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_1.ui', f'Вариант №{egevar}')
         self.egevar = egevar
+
+        if self.egevar == "3":
+            self.ans_1.setGeometry(1060, 100, 211, 61)
+            self.label_2.setGeometry(100, 230, 0, 0)
+            self.ans_2.setGeometry(1060, 280, 211, 61)
+            self.label_3.setGeometry(100, 480, 0, 0)
+            self.ans_3.setGeometry(1060, 480, 211, 61)
+            self.ans_4.setGeometry(1060, 620, 211, 61)
+
+        elif self.egevar == "4":
+            self.ans_1.setGeometry(1060, 100, 211, 61)
+            self.label_2.setGeometry(100, 260, 0, 0)
+            self.ans_2.setGeometry(1060, 260, 211, 61)
+            self.label_3.setGeometry(100, 420, 0, 0)
+            self.ans_3.setGeometry(1060, 420, 211, 61)
+            self.label_4.setGeometry(100, 590, 0, 0)
+            self.ans_4.setGeometry(1060, 590, 211, 61)
+
+        elif self.egevar == "5":
+            self.label_2.setGeometry(100, 230, 0, 0)
+            self.ans_2.setGeometry(1060, 240, 211, 61)
+            self.label_3.setGeometry(100, 400, 0, 0)
+            self.ans_3.setGeometry(1060, 410, 211, 61)
+            self.label_4.setGeometry(100, 610, 0, 0)
+            self.ans_4.setGeometry(1060, 610, 211, 61)
 
         for i in range(1, 5):
             Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
@@ -407,10 +435,6 @@ class Exam_Vars_1(AnyWidget): # задания из егэ № 1, 2, 3, 4
         self.close()
 
     def go_to_Exam(self):
-        global otv_perv
-        otv_perv.clear()
-        otv_perv = [""] * 11
-
         self.Exam = Exam()
         self.Exam.show()
         self.close()
@@ -421,19 +445,105 @@ class Exam_Vars_2(AnyWidget): # задания из егэ № 5, 7
         super().__init__('UI_files/Exam_Vars_2.ui', f'Вариант №{egevar}')
         self.egevar = egevar
 
-        for i in range(5, 8, 2):
-            Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
-            with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
-                eval(f'self.label_{i - 4}.setFixedSize({img.size[0]}, {img.size[1]})')
-            eval(f'self.label_{i - 4}.setPixmap(Pixmap)')
-            eval(f"self.ans_{i - 4}.setText(otv_perv[{i - 1}])")
+        if self.egevar == "1":
+            self.label_3.setGeometry(120, 250, 0, 0)
+            self.ans_3.setGeometry(1060, 450, 211, 61)
+
+            for i in range(5, 8, 2):
+                Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
+                with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
+                    eval(f'self.label_{i - 4}.setFixedSize({img.size[0]}, {img.size[1]})')
+                eval(f'self.label_{i - 4}.setPixmap(Pixmap)')
+                eval(f"self.ans_{i - 4}.setText(otv_perv[{i - 1}])")
+
+            self.label_2.setEnabled(False)
+            self.label_2.setHidden(True)
+            self.ans_2.setEnabled(False)
+            self.ans_2.setHidden(True)
+
+        elif self.egevar == "2":
+            self.label_3.setGeometry(120, 590, 0, 0)
+            self.ans_3.setGeometry(1060, 610, 211, 61)
+
+            for i in range(5, 8):
+                Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
+                with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
+                    eval(f'self.label_{i - 4}.setFixedSize({img.size[0]}, {img.size[1]})')
+                eval(f'self.label_{i - 4}.setPixmap(Pixmap)')
+                eval(f"self.ans_{i - 4}.setText(otv_perv[{i - 1}])")
+
+        elif self.egevar == "3":
+            self.label_1.setGeometry(120, 40, 0, 0)
+            self.ans_1.setGeometry(1060, 90, 211, 61)
+
+            self.label_3.setGeometry(120, 300, 0, 0)
+            self.ans_3.setGeometry(1060, 380, 211, 61)
+
+            self.label_2.setGeometry(120, 590, 0, 0)
+            self.ans_2.setGeometry(1060, 620, 211, 61)
+
+            for i in range(5, 8, 2):
+                Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
+                with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
+                    eval(f'self.label_{i - 4}.setFixedSize({img.size[0]}, {img.size[1]})')
+                eval(f'self.label_{i - 4}.setPixmap(Pixmap)')
+                eval(f"self.ans_{i - 4}.setText(otv_perv[{i - 1}])")
+
+            Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_8.png')
+            with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_8.png') as img:
+                eval(f'self.label_2.setFixedSize({img.size[0]}, {img.size[1]})')
+            eval(f'self.label_2.setPixmap(Pixmap)')
+            eval(f"self.ans_2.setText(otv_perv[{7}])")
+
+        elif self.egevar == "4":
+            self.label_1.setGeometry(120, 50, 0, 0)
+            self.ans_1.setGeometry(1060, 65, 211, 61)
+
+            self.label_2.setGeometry(120, 190, 0, 0)
+            self.ans_2.setGeometry(1060, 280, 211, 61)
+
+            self.label_3.setGeometry(120, 570, 0, 0)
+            self.ans_3.setGeometry(1060, 625, 211, 61)
+
+            for i in range(5, 8):
+                Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
+                with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
+                    eval(f'self.label_{i - 4}.setFixedSize({img.size[0]}, {img.size[1]})')
+                eval(f'self.label_{i - 4}.setPixmap(Pixmap)')
+                eval(f"self.ans_{i - 4}.setText(otv_perv[{i - 1}])")
+
+        elif self.egevar == "5":
+            self.label_1.setGeometry(120, 50, 0, 0)
+            self.ans_1.setGeometry(1060, 75, 211, 61)
+
+            self.label_2.setGeometry(120, 350, 0, 0)
+            self.ans_2.setGeometry(1060, 390, 211, 61)
+
+            self.label_3.setEnabled(False)
+            self.label_3.setHidden(True)
+            self.ans_3.setEnabled(False)
+            self.ans_3.setHidden(True)
+
+            for i in range(5, 7):
+                Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
+                with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
+                    eval(f'self.label_{i - 4}.setFixedSize({img.size[0]}, {img.size[1]})')
+                eval(f'self.label_{i - 4}.setPixmap(Pixmap)')
+                eval(f"self.ans_{i - 4}.setText(otv_perv[{i - 1}])")
 
         self.left.clicked.connect(self.go_to_Exam_Vars_1)
         self.right.clicked.connect(self.go_to_Exam_Vars_3)
 
     def go_to_Exam_Vars_1(self):
         global otv_perv
-        otv_perv[4], otv_perv[6] = self.ans_1.text(), self.ans_3.text()
+        if self.egevar in "1":
+            otv_perv[4], otv_perv[6] = self.ans_1.text(), self.ans_3.text()
+        elif self.egevar in "24":
+            otv_perv[4], otv_perv[5], otv_perv[6] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
+        elif self.egevar == "3":
+            otv_perv[4], otv_perv[7], otv_perv[6] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
+        else:
+            otv_perv[4], otv_perv[5] = self.ans_1.text(), self.ans_2.text()
 
         self.Exam_Vars_1 = Exam_Vars_1(self.egevar)
         self.Exam_Vars_1.show()
@@ -441,7 +551,14 @@ class Exam_Vars_2(AnyWidget): # задания из егэ № 5, 7
 
     def go_to_Exam_Vars_3(self):
         global otv_perv
-        otv_perv[4], otv_perv[6] = self.ans_1.text(), self.ans_3.text()
+        if self.egevar in "1":
+            otv_perv[4], otv_perv[6] = self.ans_1.text(), self.ans_3.text()
+        elif self.egevar in "24":
+            otv_perv[4], otv_perv[5], otv_perv[6] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
+        elif self.egevar == "3":
+            otv_perv[4], otv_perv[7], otv_perv[6] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
+        else:
+            otv_perv[4], otv_perv[5] = self.ans_1.text(), self.ans_2.text()
 
         self.Exam_Vars_3 = Exam_Vars_3(self.egevar)
         self.Exam_Vars_3.show()
@@ -453,25 +570,110 @@ class Exam_Vars_3(AnyWidget): # задания из егэ № 6, 8, 9
         super().__init__('UI_files/Exam_Vars_3.ui', f'Вариант №{egevar}')
         self.egevar = egevar
 
-        Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_6.png')
-        with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_6.png') as img:
-            eval(f'self.label_1.setFixedSize({img.size[0]}, {img.size[1]})')
-        eval(f'self.label_1.setPixmap(Pixmap)')
-        eval(f"self.ans_1.setText(otv_perv[5])")
+        if self.egevar == "1":
+            Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_6.png')
+            with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_6.png') as img:
+                eval(f'self.label_1.setFixedSize({img.size[0]}, {img.size[1]})')
+            eval(f'self.label_1.setPixmap(Pixmap)')
+            eval(f"self.ans_1.setText(otv_perv[5])")
 
-        for i in range(8, 10):
-            Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
-            with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
-                eval(f'self.label_{i - 6}.setFixedSize({img.size[0]}, {img.size[1]})')
-            eval(f'self.label_{i - 6}.setPixmap(Pixmap)')
-            eval(f"self.ans_{i - 6}.setText(otv_perv[{i - 1}])")
+            for i in range(8, 10):
+                Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
+                with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
+                    eval(f'self.label_{i - 6}.setFixedSize({img.size[0]}, {img.size[1]})')
+                eval(f'self.label_{i - 6}.setPixmap(Pixmap)')
+                eval(f"self.ans_{i - 6}.setText(otv_perv[{i - 1}])")
+
+        elif self.egevar == "2":
+            self.label_1.setEnabled(False)
+            self.label_1.setHidden(True)
+            self.ans_1.setEnabled(False)
+            self.ans_1.setHidden(True)
+
+            self.label_2.setGeometry(100, 70, 0, 0)
+            self.ans_2.setGeometry(1060, 130, 211, 61)
+
+            self.label_3.setGeometry(100, 320, 0, 0)
+            self.ans_3.setGeometry(1060, 380, 211, 61)
+
+            for i in range(8, 10):
+                Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
+                with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
+                    eval(f'self.label_{i - 6}.setFixedSize({img.size[0]}, {img.size[1]})')
+                eval(f'self.label_{i - 6}.setPixmap(Pixmap)')
+                eval(f"self.ans_{i - 6}.setText(otv_perv[{i - 1}])")
+
+        elif self.egevar == "3":
+            self.label_1.setGeometry(100, 40, 0, 0)
+            self.ans_1.setGeometry(1060, 100, 211, 61)
+            self.label_2.setGeometry(100, 390, 0, 0)
+            self.ans_2.setGeometry(1060, 420, 211, 61)
+
+            self.label_3.setEnabled(False)
+            self.label_3.setHidden(True)
+            self.ans_3.setEnabled(False)
+            self.ans_3.setHidden(True)
+
+            Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_6.png')
+            with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_6.png') as img:
+                eval(f'self.label_1.setFixedSize({img.size[0]}, {img.size[1]})')
+            eval(f'self.label_1.setPixmap(Pixmap)')
+            eval(f"self.ans_1.setText(otv_perv[5])")
+
+            Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_9.png')
+            with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_9.png') as img:
+                eval(f'self.label_2.setFixedSize({img.size[0]}, {img.size[1]})')
+            eval(f'self.label_2.setPixmap(Pixmap)')
+            eval(f"self.ans_2.setText(otv_perv[8])")
+
+        elif self.egevar == "4":
+            self.label_1.setGeometry(100, 80, 0, 0)
+            self.ans_1.setGeometry(1060, 120, 211, 61)
+            self.label_2.setGeometry(100, 330, 0, 0)
+            self.ans_2.setGeometry(1060, 360, 211, 61)
+
+            self.label_3.setEnabled(False)
+            self.label_3.setHidden(True)
+            self.ans_3.setEnabled(False)
+            self.ans_3.setHidden(True)
+
+            for i in range(8, 10):
+                Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
+                with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
+                    eval(f'self.label_{i - 7}.setFixedSize({img.size[0]}, {img.size[1]})')
+                eval(f'self.label_{i - 7}.setPixmap(Pixmap)')
+                eval(f"self.ans_{i - 7}.setText(otv_perv[{i - 1}])")
+
+        elif self.egevar == "5":
+            self.label_1.setGeometry(100, 40, 0, 0)
+            self.ans_1.setGeometry(1060, 80, 211, 61)
+            self.label_2.setGeometry(100, 380, 0, 0)
+            self.ans_2.setGeometry(1060, 405, 211, 61)
+            self.label_3.setGeometry(100, 540, 0, 0)
+            self.ans_3.setGeometry(1060, 550, 211, 61)
+
+            for i in range(7, 10):
+                Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
+                with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
+                    eval(f'self.label_{i - 6}.setFixedSize({img.size[0]}, {img.size[1]})')
+                eval(f'self.label_{i - 6}.setPixmap(Pixmap)')
+                eval(f"self.ans_{i - 6}.setText(otv_perv[{i - 1}])")
 
         self.left.clicked.connect(self.go_to_Exam_Vars_2)
         self.right.clicked.connect(self.go_to_Exam_Vars_4)
 
     def go_to_Exam_Vars_2(self):
         global otv_perv
-        otv_perv[5], otv_perv[7], otv_perv[8] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
+        if self.egevar == "1":
+            otv_perv[5], otv_perv[7], otv_perv[8] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
+        elif self.egevar == "2":
+            otv_perv[7], otv_perv[8] = self.ans_2.text(), self.ans_3.text()
+        elif self.egevar == "3":
+            otv_perv[5], otv_perv[8] = self.ans_1.text(), self.ans_2.text()
+        elif self.egevar == "4":
+            otv_perv[7], otv_perv[8] = self.ans_1.text(), self.ans_2.text()
+        else:
+            otv_perv[6], otv_perv[7], otv_perv[8] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
 
         self.Exam_Vars_2 = Exam_Vars_2(self.egevar)
         self.Exam_Vars_2.show()
@@ -479,7 +681,16 @@ class Exam_Vars_3(AnyWidget): # задания из егэ № 6, 8, 9
 
     def go_to_Exam_Vars_4(self):
         global otv_perv
-        otv_perv[5], otv_perv[7], otv_perv[8] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
+        if self.egevar == "1":
+            otv_perv[5], otv_perv[7], otv_perv[8] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
+        elif self.egevar == "2":
+            otv_perv[7], otv_perv[8] = self.ans_2.text(), self.ans_3.text()
+        elif self.egevar == "3":
+            otv_perv[5], otv_perv[8] = self.ans_1.text(), self.ans_2.text()
+        elif self.egevar == "4":
+            otv_perv[7], otv_perv[8] = self.ans_1.text(), self.ans_2.text()
+        else:
+            otv_perv[6], otv_perv[7], otv_perv[8] = self.ans_1.text(), self.ans_2.text(), self.ans_3.text()
 
         self.Exam_Vars_4 = Exam_Vars_4(self.egevar)
         self.Exam_Vars_4.show()
@@ -490,6 +701,50 @@ class Exam_Vars_4(AnyWidget): # задания из егэ № 10, 11, 12, 13
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_4.ui', f'Вариант №{egevar}')
         self.egevar = egevar
+
+        if self.egevar == "2":
+            self.label_1.setGeometry(100, 70, 0, 0)
+            self.ans_1.setGeometry(1060, 90, 211, 61)
+
+            self.label_2.setGeometry(100, 250, 0, 0)
+            self.ans_2.setGeometry(1060, 270, 211, 61)
+
+            self.label_5.setGeometry(50, 360, 1301, 71)
+            self.label_3.setGeometry(100, 460, 0, 0)
+            self.label_4.setGeometry(100, 640, 0, 0)
+
+        elif self.egevar == "3":
+            self.label_1.setGeometry(100, 70, 0, 0)
+            self.ans_1.setGeometry(1060, 70, 211, 61)
+
+            self.label_2.setGeometry(100, 230, 0, 0)
+            self.ans_2.setGeometry(1060, 235, 211, 61)
+
+            self.label_5.setGeometry(50, 360, 1301, 71)
+            self.label_3.setGeometry(100, 440, 0, 0)
+            self.label_4.setGeometry(100, 580, 0, 0)
+
+        elif self.egevar == "4":
+            self.label_1.setGeometry(100, 30, 0, 0)
+            self.ans_1.setGeometry(1060, 60, 211, 61)
+
+            self.label_2.setGeometry(100, 290, 0, 0)
+            self.ans_2.setGeometry(1060, 280, 211, 61)
+
+            self.label_5.setGeometry(50, 390, 1301, 71)
+            self.label_3.setGeometry(100, 490, 0, 0)
+            self.label_4.setGeometry(100, 610, 0, 0)
+
+        elif self.egevar == "5":
+            self.label_1.setGeometry(100, 30, 0, 0)
+            self.ans_1.setGeometry(1060, 80, 211, 61)
+
+            self.label_2.setGeometry(100, 315, 0, 0)
+            self.ans_2.setGeometry(1060, 305, 211, 61)
+
+            self.label_5.setGeometry(50, 370, 1301, 71)
+            self.label_3.setGeometry(100, 450, 0, 0)
+            self.label_4.setGeometry(100, 570, 0, 0)
 
         for i in range(10, 14):
             Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
@@ -524,6 +779,26 @@ class Exam_Vars_5(AnyWidget): # задания из егэ № 14, 15, 16
         super().__init__('UI_files/Exam_Vars_5.ui', f'Вариант №{egevar}')
         self.egevar = egevar
 
+        if self.egevar == "2":
+            self.label_1.setGeometry(160, 100, 0, 0)
+            self.label_2.setGeometry(160, 240, 0, 0)
+            self.label_3.setGeometry(160, 550, 0, 0)
+
+        elif self.egevar == "3":
+            self.label_1.setGeometry(160, 80, 0, 0)
+            self.label_2.setGeometry(160, 260, 0, 0)
+            self.label_3.setGeometry(160, 520, 0, 0)
+
+        elif self.egevar == "4":
+            self.label_1.setGeometry(160, 80, 0, 0)
+            self.label_2.setGeometry(160, 265, 0, 0)
+            self.label_3.setGeometry(160, 520, 0, 0)
+
+        elif self.egevar == "5":
+            self.label_1.setGeometry(160, 60, 0, 0)
+            self.label_2.setGeometry(160, 160, 0, 0)
+            self.label_3.setGeometry(160, 500, 0, 0)
+
         for i in range(14, 17):
             Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
             with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png') as img:
@@ -548,6 +823,14 @@ class Exam_Vars_6(AnyWidget): # задания из егэ № 17, 18
     def __init__(self, egevar):
         super().__init__('UI_files/Exam_Vars_6.ui', f'Вариант №{egevar}')
         self.egevar = egevar
+
+        if self.egevar == "2":
+            self.label_1.setGeometry(160, 100, 0, 0)
+            self.label_2.setGeometry(160, 350, 0, 0)
+
+        elif self.egevar == "4":
+            self.label_1.setGeometry(160, 100, 0, 0)
+            self.label_2.setGeometry(160, 390, 0, 0)
 
         for i in range(17, 19):
             Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/exam_{i}.png')
@@ -736,7 +1019,10 @@ class Exam_Vars_10(AnyWidget): # итоговый результат
 
         perevod_points = [6, 11, 17, 22, 27, 34, 40, 46, 52, 58, 64, 66, 68, 70, 72, 74, 76, 78,
                           80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 100, 100]
-        self.itog_point = perevod_points[sum(ege) - 1]
+        if sum(ege) == 0:
+            self.itog_point = 0
+        else:
+            self.itog_point = perevod_points[sum(ege) - 1]
 
         if self.itog_point % 10 == 1 and self.itog_point != 11:
             self.text = "балл"
@@ -1258,10 +1544,19 @@ class Profile(AnyWidget):
 
         if "vars" in user_data:
             for i in range(len(user_data["vars"])):
-                btn = QPushButton(f'  Попытка №{i + 1}')
+                points = str(user_data["vars"][str(i + 1)]["vsego_points"])
+                if points in "07":
+                    a = 69
+                elif points != "100":
+                    a = 67
+                else:
+                    a = 65
+
+                btn = QPushButton(f'  Попытка №{i + 1}' + ' ' * a + f'{points}/100')
                 btn.setFont(QFont('MS Shell Dlg 2', 30))
                 btn.setMaximumSize(QSize(1300, 120))
                 btn.setMinimumSize(QSize(1300, 120))
+
                 if user_data["vars"][str(i + 1)]["vsego_points"] < 27:
                     btn.setStyleSheet('background-color: rgba(223, 116, 153, 230); color: '
                                       'rgba(255, 255, 255, 150); text-align: left; border-radius: 25px')
@@ -1281,6 +1576,7 @@ class Profile(AnyWidget):
 
             self.no_vars.setEnabled(False)
             self.no_vars.setHidden(True)
+
         else:
             self.variants.setEnabled(False)
             self.variants.setHidden(True)
@@ -1316,12 +1612,7 @@ def except_hook(cls, exception, traceback):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     nickname = 'tixdim'
-    ege = [0] * 18
-    pred_ege = [0] * 7
-    # otv_perv = [""] * 11
-    otv_perv = [str(8.75), "", "1,5", "-1.5"]
-    for i in range(5, 12):
-        otv_perv.append(str(i))
+    ege, pred_ege, otv_perv = [0] * 18, [0] * 7, [""] * 11
     # theo = TheoryWidget()
     ex = Profile()
     ex.show()
