@@ -1,7 +1,7 @@
 import os, shutil, PIL.Image
 import sys, json
 
-from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont
+from PyQt5.QtGui import QPixmap, QPainter, QColor, QIcon, QFont, QMovie
 from PyQt5.QtCore import Qt, QSize, QRect
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QButtonGroup,\
@@ -22,6 +22,26 @@ class AnyWidget(QWidget):
 
         self.setWindowTitle(name)
         self.setFixedSize(1400, 800)
+
+
+class Zastavka(QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('UI_files/zast.ui', self)
+
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setFixedSize(600, 600)
+
+
+        gif = QtGui.QMovie(f"gif/1")
+        self.label.setMovie(gif)
+        gif.start()
+
+    def keyPressEvent(self, a0: QtGui.QKeyEvent):
+        self.log = Login()
+        self.log.show()
+        self.close()
 
 
 class TheoryWidget(AnyWidget):
@@ -334,7 +354,14 @@ class Regist(QMainWindow):
             users[user_nick] = {
                 "name": user_name,
                 "surname": user_surname,
-                "password": user_password_1
+                "password": user_password_1,
+                "tren": {
+                    "1": [0 for i in range(11)],
+                    "2": [0 for i in range(11)],
+                    "3": [0 for i in range(11)],
+                    "4": [0 for i in range(11)],
+                    "5": [0 for i in range(11)]
+                }
             }
 
             with open("users.json", "w", encoding="utf-8") as write_file:
@@ -945,8 +972,20 @@ class Exercise(AnyWidget):
             ans = json.load(read_file)
             if self.ans.text().replace(',', '.') == str(ans[f'var_{self.exVar}'][self.exNum]):
                 self.right_or_no.setText('Верно!')
+
+                with open("users.json", "r", encoding="utf-8") as read_file:
+                    users = json.load(read_file)
+                users[nickname]["tren"][str(self.exVar)][int(self.exNum) - 1] = 1
+
             else:
                 self.right_or_no.setText('Неправильно!')
+
+                with open("users.json", "r", encoding="utf-8") as read_file:
+                    users = json.load(read_file)
+                users[nickname]["tren"][str(self.exVar)][int(self.exNum) - 1] = 2
+
+        with open("users.json", "w", encoding="utf-8") as write_file:
+            json.dump(users, write_file, indent=4, ensure_ascii=False)
 
 
 
@@ -967,6 +1006,18 @@ class Tren_Variants(AnyWidget):
         super().__init__('UI_files/Tren_Vars.ui', 'Выбор варианта')
         self.exer = exer
         self.nickname = nickname
+
+        ok_pix = QPixmap('Images/Ok.png')
+        not_ok_pix = QPixmap('Images/notOk.png')
+        if int(exer) <= 11:
+            with open("users.json", 'r', encoding="utf-8") as ab:
+                users = json.load(ab)
+                for i in range(1, 6):
+                    if users[self.nickname]['tren'][str(i)][int(self.exer) - 1] == 1:
+                        eval(f'self.ex_complited_{i}.setPixmap(ok_pix)')
+                    elif users[self.nickname]['tren'][str(i)][int(self.exer) - 1] == 2:
+                        eval(f'self.ex_complited_{i}.setPixmap(not_ok_pix)')
+
         self.back.clicked.connect(self.go_to_Tren)
         for i in range(1, 6):
             eval(f'self.var_{i}.clicked.connect(self.go_to_exercise)')
@@ -1315,15 +1366,17 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    nickname = 'tixdim'
+    nickname = ' '
     ege = [0] * 18
     pred_ege = [0] * 7
     # otv_perv = [""] * 11
     otv_perv = [str(8.75), "", "1,5", "-1.5"]
+
     for i in range(5, 12):
         otv_perv.append(str(i))
-    # theo = TheoryWidget()
-    ex = Profile()
+
+    theo = TheoryWidget()
+    ex = Zastavka()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())

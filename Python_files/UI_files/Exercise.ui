@@ -67,8 +67,8 @@ QPushButton#back:pressed{
   <widget class="QLabel" name="exNumber">
    <property name="geometry">
     <rect>
-     <x>670</x>
-     <y>20</y>
+     <x>680</x>
+     <y>10</y>
      <width>81</width>
      <height>41</height>
     </rect>
