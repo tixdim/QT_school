@@ -24,6 +24,26 @@ class AnyWidget(QWidget):
         self.setFixedSize(1400, 800)
 
 
+class Zastavka(QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('UI_files/zast.ui', self)
+
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setFixedSize(600, 600)
+
+
+        gif = QtGui.QMovie(f"gif/1")
+        self.label.setMovie(gif)
+        gif.start()
+
+    def keyPressEvent(self, a0: QtGui.QKeyEvent):
+        self.log = Login()
+        self.log.show()
+        self.close()
+
+
 class TheoryWidget(AnyWidget):
     def __init__(self):
         global nickname
@@ -94,6 +114,7 @@ class Login(QMainWindow):
         self.pb_close.clicked.connect(self.exit)
         self.pb_login.clicked.connect(self.sign_in)
         self.pb_regist.clicked.connect(self.sign_up)
+        self.anonim.clicked.connect(self.anonim_sign_in)
 
         self.pb_eye_not.clicked.connect(self.off_pass)
         self.pb_eye_active.clicked.connect(self.on_pass)
@@ -114,7 +135,7 @@ class Login(QMainWindow):
         self.pb_eye_active.setHidden(False)
         self.pb_eye_active.setEnabled(True)
 
-        self.pb_eye_active.setGeometry(350, 270, 21, 21)
+        self.pb_eye_active.setGeometry(350, 250, 21, 21)
 
         self.user_nickname.setEnabled(False)
         self.user_password.setEnabled(False)
@@ -153,22 +174,33 @@ class Login(QMainWindow):
         self.error.setStyleSheet("color: rgba(255, 255, 255, 210);")
         self.error.setAlignment(QtCore.Qt.AlignCenter)
 
-        with open("users.json", "r", encoding="utf-8") as read_file:
-            users = json.load(read_file)
+        try:
+            with open("users.json", "r", encoding="utf-8") as read_file:
+                users = json.load(read_file)
 
-        if user_nick in users:
-            if users[user_nick]["password"] == user_password:
-                nickname = user_nick
-                self.glavn_menu = MainMenu()
-                self.glavn_menu.show()
-                self.close()
-            else:
-                if user_password == "":
-                    self.error.setText("Заполните пароль!")
+            if user_nick in users:
+                if users[user_nick]["password"] == user_password:
+                    nickname = user_nick
+                    self.glavn_menu = MainMenu()
+                    self.glavn_menu.show()
+                    self.close()
                 else:
-                    self.error.setText("Вы ввели неправильный пароль!")
-        else:
+                    if user_password == "":
+                        self.error.setText("Заполните пароль!")
+                    else:
+                        self.error.setText("Вы ввели неправильный пароль!")
+            else:
+                self.error.setText("Такого никнейма нет!")
+        except Exception:
             self.error.setText("Такого никнейма нет!")
+
+    def anonim_sign_in(self):
+        global nickname
+        nickname = "anonymous_228_337.on@qwe"
+
+        self.glavn_menu = MainMenu()
+        self.glavn_menu.show()
+        self.close()
 
 
 class Regist(QMainWindow):
@@ -334,7 +366,14 @@ class Regist(QMainWindow):
             users[user_nick] = {
                 "name": user_name,
                 "surname": user_surname,
-                "password": user_password_1
+                "password": user_password_1,
+                "tren": {
+                    "1": [0 for i in range(11)],
+                    "2": [0 for i in range(11)],
+                    "3": [0 for i in range(11)],
+                    "4": [0 for i in range(11)],
+                    "5": [0 for i in range(11)]
+                }
             }
 
             with open("users.json", "w", encoding="utf-8") as write_file:
@@ -1067,35 +1106,86 @@ class Exam_Vars_10(AnyWidget): # итоговый результат
 
         self.bt_prof.clicked.connect(self.go_to_Profile)
         self.back.clicked.connect(self.go_to_Exam_Vars_7)
+        self.resh_per.clicked.connect(self.go_to_Exam_Vars_11)
 
     def go_to_Exam_Vars_7(self):
         self.Exam_Vars_7 = Exam_Vars_7(self.egevar)
         self.Exam_Vars_7.show()
         self.close()
 
+    def go_to_Exam_Vars_11(self):
+        self.Exam_Vars_11 = Exam_Vars_11(self.egevar)
+        self.Exam_Vars_11.show()
+        self.close()
+
     def go_to_Profile(self):
-        with open("users.json", "r", encoding="utf-8") as read_file:
-            users = json.load(read_file)
+        if nickname != "anonymous_228_337.on@qwe":
+            with open("users.json", "r", encoding="utf-8") as read_file:
+                users = json.load(read_file)
 
-        info_var = {"var": self.egevar, "vsego_points": self.itog_point, "text": self.text,
-                    "resh_zad": self.resh_zad, "text_perv_ballov": self.text_perv_ballov,
-                    "text_zad": self.text_zad, "ege": ege}
+            info_var = {"var": self.egevar, "vsego_points": self.itog_point, "text": self.text,
+                        "resh_zad": self.resh_zad, "text_perv_ballov": self.text_perv_ballov,
+                        "text_zad": self.text_zad, "ege": ege}
 
-        for i in range(1, 12):
-            info_var[i] = otv_perv[i - 1]
-        for i in range(12, 19):
-            info_var[i] = ege[i - 1]
+            for i in range(1, 12):
+                info_var[i] = otv_perv[i - 1]
+            for i in range(12, 19):
+                info_var[i] = ege[i - 1]
 
-        if 'vars' in users[nickname]:
-            users[nickname]["vars"][len(users[nickname]["vars"]) + 1] = info_var
-        else:
-            users[nickname]["vars"] = {"1": info_var}
+            if 'vars' in users[nickname]:
+                users[nickname]["vars"][len(users[nickname]["vars"]) + 1] = info_var
+            else:
+                users[nickname]["vars"] = {"1": info_var}
 
-        with open("users.json", "w", encoding="utf-8") as write_file:
-            json.dump(users, write_file, indent=4, ensure_ascii=False)
+            with open("users.json", "w", encoding="utf-8") as write_file:
+                json.dump(users, write_file, indent=4, ensure_ascii=False)
 
         self.Profile = Profile()
         self.Profile.show()
+        self.close()
+
+
+class Exam_Vars_11(AnyWidget): # меню с предложенными номерами заданий
+    def __init__(self, egevar):
+        global nickname
+        super().__init__('UI_files/Exam_Vars_11.ui', 'Экзамен')
+
+        self.egevar = egevar
+
+        for i in range(1, 12):
+            eval(f'self.exam_{i}.clicked.connect(self.go_to_Resh)')
+
+        self.back.clicked.connect(self.go_to_Exam_Vars_10)
+
+    def go_to_Resh(self):
+        self.Exam_Vars_12 = Exam_Vars_12(self.egevar, self.sender().text())
+        self.Exam_Vars_12.show()
+        self.close()
+
+    def go_to_Exam_Vars_10(self):
+        self.Exam_Vars_10 = Exam_Vars_10(self.egevar)
+        self.Exam_Vars_10.show()
+        self.close()
+
+
+class Exam_Vars_12(AnyWidget): # разбор первой части
+    def __init__(self, egevar, number):
+        super().__init__('UI_files/Exam_Vars_12.ui', f'Вариант №{egevar}')
+        self.egevar = egevar
+        self.number = number
+
+        self.label.setText(f"Решения задания №{self.number}")
+
+        Pixmap = QPixmap(f'ege_po_borbe_exam/var_{egevar}/razb_{self.number}.png')
+        with PIL.Image.open(f'ege_po_borbe_exam/var_{egevar}/razb_{self.number}.png') as img:
+            eval(f'self.label_1.setFixedSize({img.size[0]}, {img.size[1]})')
+        eval(f'self.label_1.setPixmap(Pixmap)')
+
+        self.back.clicked.connect(self.go_to_Exam_Vars_11)
+
+    def go_to_Exam_Vars_11(self):
+        self.Exam_Vars_11 = Exam_Vars_11(self.egevar)
+        self.Exam_Vars_11.show()
         self.close()
 
 
@@ -1193,7 +1283,7 @@ class Correct_ans(AnyWidget):
         self.exVar = exVar
         Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/ans/exer_{exNum}.png')
         self.label.setPixmap(Pixmap)
-        self.exNumber.setText(exNum)
+        self.exNumber.setText(f"Тип задания №{exNum}")
 
         self.back.clicked.connect(self.go_to_ex)
 
@@ -1211,7 +1301,7 @@ class Exercise(AnyWidget):
         Pixmap = QPixmap(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}.png')
         with PIL.Image.open(f'ege_po_borbe_tren/var_{exVar}/exer_{exNum}.png') as img:
             self.label.setFixedSize(*img.size)
-        self.exNumber.setText(exNum)
+        self.exNumber.setText(f"Тип задания №{exNum}")
         self.label.setPixmap(Pixmap)
 
         if int(exNum) <= 11:
@@ -1230,10 +1320,21 @@ class Exercise(AnyWidget):
         with open("ege_po_borbe_tren/answers.json", 'r', encoding="utf-8") as read_file:
             ans = json.load(read_file)
             if self.ans.text().replace(',', '.') == str(ans[f'var_{self.exVar}'][self.exNum]):
-                self.right_or_no.setText('Верно!')
+                self.right_or_no.setText('Правильно!')
+
+                with open("users.json", "r", encoding="utf-8") as read_file:
+                    users = json.load(read_file)
+                users[nickname]["tren"][str(self.exVar)][int(self.exNum) - 1] = 1
+
             else:
                 self.right_or_no.setText('Неправильно!')
 
+                with open("users.json", "r", encoding="utf-8") as read_file:
+                    users = json.load(read_file)
+                users[nickname]["tren"][str(self.exVar)][int(self.exNum) - 1] = 2
+
+        with open("users.json", "w", encoding="utf-8") as write_file:
+            json.dump(users, write_file, indent=4, ensure_ascii=False)
 
 
     def go_to_correct_ans(self):
@@ -1253,6 +1354,19 @@ class Tren_Variants(AnyWidget):
         super().__init__('UI_files/Tren_Vars.ui', 'Выбор варианта')
         self.exer = exer
         self.nickname = nickname
+
+        if nickname != "anonymous_228_337.on@qwe":
+            ok_pix = QPixmap('Images/Ok.png')
+            not_ok_pix = QPixmap('Images/notOk.png')
+            if int(exer) <= 11:
+                with open("users.json", 'r', encoding="utf-8") as ab:
+                    users = json.load(ab)
+                    for i in range(1, 6):
+                        if users[self.nickname]['tren'][str(i)][int(self.exer) - 1] == 1:
+                            eval(f'self.ex_complited_{i}.setPixmap(ok_pix)')
+                        elif users[self.nickname]['tren'][str(i)][int(self.exer) - 1] == 2:
+                            eval(f'self.ex_complited_{i}.setPixmap(not_ok_pix)')
+
         self.back.clicked.connect(self.go_to_Tren)
         for i in range(1, 6):
             eval(f'self.var_{i}.clicked.connect(self.go_to_exercise)')
@@ -1520,66 +1634,84 @@ class Profile(AnyWidget):
         super().__init__('UI_files/Profile.ui', 'Профиль')
         self.nickname = nickname
 
-        with open("users.json", "r", encoding="utf-8") as read_file:
-            user_data = json.load(read_file)[self.nickname]
+        if nickname != "anonymous_228_337.on@qwe":
+            with open("users.json", "r", encoding="utf-8") as read_file:
+                user_data = json.load(read_file)[self.nickname]
 
-        self.user_FI.setText(f'{user_data["name"]} {user_data["surname"]}')
-        self.user_nickname.setText(self.nickname)
+            self.user_FI.setText(f'{user_data["name"]} {user_data["surname"]}')
+            self.user_nickname.setText(self.nickname)
 
-        self.widget = QWidget()
-        self.num = 49
-        self.vbox = QVBoxLayout()
-        self.vbox.setGeometry(QRect(0, 0, 1341, 1000))
+            self.widget = QWidget()
+            self.num = 49
+            self.vbox = QVBoxLayout()
+            self.vbox.setGeometry(QRect(0, 0, 1341, 1000))
 
-        if os.path.exists(f'users_avatars/{self.nickname}_img.png'):
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nickname}_img.png);'
-                                         f' border-radius: 60px')
+            if os.path.exists(f'users_avatars/{self.nickname}_img.png'):
+                self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nickname}_img.png);'
+                                             f' border-radius: 60px')
 
-        elif os.path.exists(f'users_avatars/{self.nickname}_img.jpg'):
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nickname}_img.jpg);'
-                                         f' border-radius: 60px')
+            elif os.path.exists(f'users_avatars/{self.nickname}_img.jpg'):
+                self.user_icon.setStyleSheet(f'border-image: url(users_avatars/{self.nickname}_img.jpg);'
+                                             f' border-radius: 60px')
+
+            else:
+                self.user_icon.setStyleSheet(f'border-image: url(users_avatars/standart_image.png);'
+                                             f' border-radius: 60px')
+
+            if "vars" in user_data:
+                for i in range(len(user_data["vars"])):
+                    points = str(user_data["vars"][str(i + 1)]["vsego_points"])
+                    if points in "07":
+                        a = 69
+                    elif points != "100":
+                        a = 67
+                    else:
+                        a = 65
+
+                    btn = QPushButton(f'  Попытка №{i + 1}' + ' ' * a + f'{points}/100')
+                    btn.setFont(QFont('MS Shell Dlg 2', 30))
+                    btn.setMaximumSize(QSize(1300, 120))
+                    btn.setMinimumSize(QSize(1300, 120))
+
+                    if user_data["vars"][str(i + 1)]["vsego_points"] < 27:
+                        btn.setStyleSheet('background-color: rgba(223, 116, 153, 230); color: '
+                                          'rgba(255, 255, 255, 150); text-align: left; border-radius: 25px')
+                    else:
+                        btn.setStyleSheet('background-color: rgba(158, 241, 162, 240); color: '
+                                          'rgba(255, 255, 255, 150); text-align: left; border-radius: 25px')
+
+                    btn.clicked.connect(self.go_to_Info_Var)
+                    self.vbox.addWidget(btn)
+
+                self.vbox.setSpacing(20)
+                self.widget.setLayout(self.vbox)
+                self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+                self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+                self.scrollArea.setWidgetResizable(True)
+                self.scrollArea.setWidget(self.widget)
+
+                self.no_vars.setEnabled(False)
+                self.no_vars.setHidden(True)
+
+            else:
+                self.variants.setEnabled(False)
+                self.variants.setHidden(True)
+
         else:
-            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/standart_image.png);'
-                                         f' border-radius: 60px')
-
-        if "vars" in user_data:
-            for i in range(len(user_data["vars"])):
-                points = str(user_data["vars"][str(i + 1)]["vsego_points"])
-                if points in "07":
-                    a = 69
-                elif points != "100":
-                    a = 67
-                else:
-                    a = 65
-
-                btn = QPushButton(f'  Попытка №{i + 1}' + ' ' * a + f'{points}/100')
-                btn.setFont(QFont('MS Shell Dlg 2', 30))
-                btn.setMaximumSize(QSize(1300, 120))
-                btn.setMinimumSize(QSize(1300, 120))
-
-                if user_data["vars"][str(i + 1)]["vsego_points"] < 27:
-                    btn.setStyleSheet('background-color: rgba(223, 116, 153, 230); color: '
-                                      'rgba(255, 255, 255, 150); text-align: left; border-radius: 25px')
-                else:
-                    btn.setStyleSheet('background-color: rgba(158, 241, 162, 240); color: '
-                                      'rgba(255, 255, 255, 150); text-align: left; border-radius: 25px')
-
-                btn.clicked.connect(self.go_to_Info_Var)
-                self.vbox.addWidget(btn)
-
-            self.vbox.setSpacing(20)
-            self.widget.setLayout(self.vbox)
-            self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-            self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-            self.scrollArea.setWidgetResizable(True)
-            self.scrollArea.setWidget(self.widget)
-
-            self.no_vars.setEnabled(False)
-            self.no_vars.setHidden(True)
-
-        else:
+            self.user_nickname.setText("Аноним")
+            self.user_icon.setStyleSheet(f'border-image: url(users_avatars/standart_image.png); '
+                                         f'border-radius: 60px')
             self.variants.setEnabled(False)
             self.variants.setHidden(True)
+
+            self.user_icon.setGeometry(110, 50, 131, 121)
+            self.user_nickname.setGeometry(50, 190, 251, 71)
+
+            self.no_vars.setText('''<html><head/><body>
+            <p align="center">Ваши попытки не доступны!</p>
+            <p align="center">Войдите в свой аккаунт для этого!</p>
+            </body></html>''')
+            self.no_vars.setStyleSheet("font-size: 40px; color: rgba(255, 255, 255, 210);")
 
         self.change_btn.clicked.connect(self.go_to_change)
         self.back.clicked.connect(self.go_to_main_menu)
@@ -1600,9 +1732,16 @@ class Profile(AnyWidget):
         self.close()
 
     def go_to_change(self):
-        self.cha = ChangeMenu()
-        self.cha.show()
-        self.close()
+        if nickname == "anonymous_228_337.on@qwe":
+            self.no_vars.setText('''<html><head/><body>
+                        <p align="center">Вы не можете изменять данные профиля!</p>
+                        <p align="center">Войдите в свой аккаунт для этого!</p>
+                        </body></html>''')
+            self.no_vars.setStyleSheet("font-size: 40px; color: rgba(255, 255, 255, 210);")
+        else:
+            self.cha = ChangeMenu()
+            self.cha.show()
+            self.close()
 
 
 def except_hook(cls, exception, traceback):
@@ -1611,10 +1750,11 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    nickname = 'tixdim'
+    # anonymous_228_337.on@qwe - anonim nick
+    nickname = ''
     ege, pred_ege, otv_perv = [0] * 18, [0] * 7, [""] * 11
-    # theo = TheoryWidget()
-    ex = Profile()
+    theo = TheoryWidget()
+    ex = Zastavka()
     ex.show()
     sys.excepthook = except_hook
     sys.exit(app.exec_())

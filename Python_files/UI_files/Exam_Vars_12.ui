@@ -13,45 +13,51 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="whatsThis">
-   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;QPushButton#back{&lt;/p&gt;&lt;p&gt;	background-color: rgba(105, 118, 132, 0);&lt;/p&gt;&lt;p&gt;}&lt;/p&gt;&lt;p&gt;QPushButton#back:pressed{&lt;/p&gt;&lt;p&gt;	padding-left: 2px;&lt;/p&gt;&lt;p&gt;	padding-top: 2px;&lt;/p&gt;&lt;p&gt;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-  </property>
   <property name="styleSheet">
    <string notr="true">QPushButton#back{
 	background-color: rgba(105, 118, 132, 0);
 }
-QPushButton#back:pressed{
-	padding-left: 2px;
-	padding-top: 2px;
+QPushButton#left{
+	background-color: rgba(105, 118, 132, 0);
 }
-QScrollArea{
+QPushButton#right{
 	background-color: rgba(105, 118, 132, 0);
 }
 
-QScrollBar
-{
-background : rgba(0, 0, 0, 0);
+QPushButton:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}
+
+QScrollArea {
+	background-color: rgba(105, 118, 132, 0);
+}
+
+QScrollBar {
+	background : rgba(0, 0, 0, 0);
 }</string>
   </property>
-  <widget class="QLabel" name="exNumber">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>20</y>
+     <y>5</y>
      <width>1401</width>
-     <height>61</height>
+     <height>91</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <pointsize>28</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(255,255,255)</string>
+    <string notr="true"> color:#ffffff;</string>
    </property>
    <property name="text">
-    <string>Тип задания №1</string>
+    <string>Решения задания №1</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -83,22 +89,19 @@ background : rgba(0, 0, 0, 0);
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>119</y>
-     <width>1300</width>
-     <height>611</height>
+     <x>260</x>
+     <y>100</y>
+     <width>1121</width>
+     <height>671</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgba(0, 0, 0, 0 );
-color:rgba(0, 0, 0, 0);
+    <string notr="true">background-color: rgba(0, 0, 0, 0 );
+color: rgba(0, 0, 0, 0);
 border: 0px;</string>
    </property>
    <property name="lineWidth">
     <number>0</number>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAsNeeded</enum>
    </property>
    <property name="widgetResizable">
     <bool>true</bool>
@@ -108,8 +111,8 @@ border: 0px;</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1300</width>
-      <height>611</height>
+      <width>1121</width>
+      <height>671</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -129,15 +132,18 @@ border: 0px;</string>
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string/>
+      <widget class="QLabel" name="label_1">
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
        </property>
        <property name="scaledContents">
         <bool>false</bool>
        </property>
        <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>

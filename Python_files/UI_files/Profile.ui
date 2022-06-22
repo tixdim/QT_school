@@ -47,7 +47,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>60</y>
+     <y>50</y>
      <width>131</width>
      <height>121</height>
     </rect>
@@ -60,7 +60,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>200</y>
+     <y>190</y>
      <width>251</width>
      <height>71</height>
     </rect>
@@ -85,9 +85,9 @@ QPushButton:pressed{
   <widget class="QLabel" name="user_FI">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>40</y>
-     <width>731</width>
+     <x>280</x>
+     <y>30</y>
+     <width>721</width>
      <height>161</height>
     </rect>
    </property>
@@ -109,9 +109,9 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>1130</x>
-     <y>90</y>
+     <y>75</y>
      <width>211</width>
-     <height>81</height>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
@@ -132,7 +132,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>300</y>
+     <y>290</y>
      <width>271</width>
      <height>81</height>
     </rect>
@@ -157,7 +157,7 @@ QPushButton:pressed{
      <x>20</x>
      <y>20</y>
      <width>1361</width>
-     <height>281</height>
+     <height>271</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -172,9 +172,9 @@ border-radius: 20px;</string>
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>380</y>
+     <y>370</y>
      <width>1341</width>
-     <height>391</height>
+     <height>401</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -196,7 +196,7 @@ border: 0px;</string>
       <x>0</x>
       <y>0</y>
       <width>1341</width>
-      <height>391</height>
+      <height>401</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout"/>
@@ -229,9 +229,9 @@ border: 0px;</string>
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>310</y>
+     <y>300</y>
      <width>1341</width>
-     <height>461</height>
+     <height>471</height>
     </rect>
    </property>
    <property name="font">

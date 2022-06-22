@@ -26,7 +26,7 @@ QPushButton#back:pressed{
    <property name="geometry">
     <rect>
      <x>533</x>
-     <y>650</y>
+     <y>663</y>
      <width>311</width>
      <height>91</height>
     </rect>
@@ -34,7 +34,7 @@ QPushButton#back:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -48,7 +48,7 @@ QPushButton#back:pressed{
    <property name="geometry">
     <rect>
      <x>533</x>
-     <y>260</y>
+     <y>273</y>
      <width>311</width>
      <height>91</height>
     </rect>
@@ -56,7 +56,7 @@ QPushButton#back:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -70,7 +70,7 @@ QPushButton#back:pressed{
    <property name="geometry">
     <rect>
      <x>532</x>
-     <y>130</y>
+     <y>143</y>
      <width>311</width>
      <height>91</height>
     </rect>
@@ -78,7 +78,7 @@ QPushButton#back:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -92,7 +92,7 @@ QPushButton#back:pressed{
    <property name="geometry">
     <rect>
      <x>532</x>
-     <y>520</y>
+     <y>533</y>
      <width>311</width>
      <height>91</height>
     </rect>
@@ -100,7 +100,7 @@ QPushButton#back:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -114,7 +114,7 @@ QPushButton#back:pressed{
    <property name="geometry">
     <rect>
      <x>532</x>
-     <y>390</y>
+     <y>403</y>
      <width>311</width>
      <height>91</height>
     </rect>
@@ -122,7 +122,7 @@ QPushButton#back:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -135,7 +135,7 @@ QPushButton#back:pressed{
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>20</y>
      <width>50</width>
      <height>30</height>
@@ -158,21 +158,24 @@ QPushButton#back:pressed{
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>530</x>
+     <x>0</x>
      <y>20</y>
-     <width>351</width>
+     <width>1401</width>
      <height>81</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;Выберите номер варианта&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:40pt; color:#ffffff;&quot;&gt;Выберите номер варианта&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="ex_complited_1">
    <property name="geometry">
     <rect>
      <x>870</x>
-     <y>145</y>
+     <y>158</y>
      <width>60</width>
      <height>60</height>
     </rect>
@@ -188,7 +191,7 @@ QPushButton#back:pressed{
    <property name="geometry">
     <rect>
      <x>870</x>
-     <y>277</y>
+     <y>290</y>
      <width>60</width>
      <height>60</height>
     </rect>
@@ -204,7 +207,7 @@ QPushButton#back:pressed{
    <property name="geometry">
     <rect>
      <x>870</x>
-     <y>407</y>
+     <y>420</y>
      <width>60</width>
      <height>60</height>
     </rect>
@@ -220,7 +223,7 @@ QPushButton#back:pressed{
    <property name="geometry">
     <rect>
      <x>870</x>
-     <y>537</y>
+     <y>550</y>
      <width>60</width>
      <height>60</height>
     </rect>
@@ -236,7 +239,7 @@ QPushButton#back:pressed{
    <property name="geometry">
     <rect>
      <x>870</x>
-     <y>667</y>
+     <y>680</y>
      <width>60</width>
      <height>60</height>
     </rect>
@@ -248,6 +251,18 @@ QPushButton#back:pressed{
     <bool>true</bool>
    </property>
   </widget>
+  <zorder>label</zorder>
+  <zorder>var_5</zorder>
+  <zorder>var_2</zorder>
+  <zorder>var_1</zorder>
+  <zorder>var_4</zorder>
+  <zorder>var_3</zorder>
+  <zorder>back</zorder>
+  <zorder>ex_complited_1</zorder>
+  <zorder>ex_complited_2</zorder>
+  <zorder>ex_complited_3</zorder>
+  <zorder>ex_complited_4</zorder>
+  <zorder>ex_complited_5</zorder>
  </widget>
  <resources/>
  <connections/>

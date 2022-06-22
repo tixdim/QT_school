@@ -108,7 +108,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>180</y>
+     <y>170</y>
      <width>251</width>
      <height>531</height>
     </rect>
@@ -432,7 +432,7 @@ border-left-width: 1px;</string>
    <property name="geometry">
     <rect>
      <x>410</x>
-     <y>180</y>
+     <y>170</y>
      <width>251</width>
      <height>531</height>
     </rect>
@@ -759,7 +759,7 @@ border-left-width: 1px;</string>
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>180</y>
+     <y>170</y>
      <width>61</width>
      <height>531</height>
     </rect>
@@ -1083,7 +1083,7 @@ border-left-width: 1px;</string>
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>130</y>
+     <y>120</y>
      <width>571</width>
      <height>31</height>
     </rect>
@@ -1109,7 +1109,7 @@ border-left-width: 1px;</string>
    <property name="geometry">
     <rect>
      <x>790</x>
-     <y>130</y>
+     <y>120</y>
      <width>481</width>
      <height>31</height>
     </rect>
@@ -1135,7 +1135,7 @@ border-left-width: 1px;</string>
    <property name="geometry">
     <rect>
      <x>1060</x>
-     <y>180</y>
+     <y>170</y>
      <width>211</width>
      <height>351</height>
     </rect>
@@ -1358,7 +1358,7 @@ border-left-width: 1px;</string>
    <property name="geometry">
     <rect>
      <x>850</x>
-     <y>180</y>
+     <y>170</y>
      <width>211</width>
      <height>351</height>
     </rect>
@@ -1578,7 +1578,7 @@ border-left-width: 1px;</string>
    <property name="geometry">
     <rect>
      <x>790</x>
-     <y>180</y>
+     <y>170</y>
      <width>61</width>
      <height>351</height>
     </rect>
@@ -1821,9 +1821,9 @@ border-left-width: 1px;</string>
    <property name="geometry">
     <rect>
      <x>710</x>
-     <y>550</y>
+     <y>530</y>
      <width>641</width>
-     <height>161</height>
+     <height>171</height>
     </rect>
    </property>
    <property name="font">
@@ -1844,6 +1844,28 @@ border-left-width: 1px;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="resh_per">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>720</y>
+     <width>561</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(107,92,209,200); color: White; border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>Посмотреть решения первой части</string>
    </property>
   </widget>
  </widget>

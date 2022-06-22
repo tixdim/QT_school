@@ -10,6 +10,11 @@
     <height>800</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>8</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -49,7 +54,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>260</y>
+     <y>250</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -57,7 +62,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -71,7 +76,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>282</x>
-     <y>260</y>
+     <y>250</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -79,7 +84,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -93,7 +98,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>504</x>
-     <y>260</y>
+     <y>250</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -101,7 +106,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -115,7 +120,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>726</x>
-     <y>260</y>
+     <y>250</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -123,7 +128,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -137,7 +142,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>948</x>
-     <y>260</y>
+     <y>250</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -145,7 +150,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -159,7 +164,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>1170</x>
-     <y>260</y>
+     <y>250</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -167,7 +172,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -181,7 +186,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>948</x>
-     <y>400</y>
+     <y>390</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -189,7 +194,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -203,7 +208,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>282</x>
-     <y>400</y>
+     <y>390</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -211,7 +216,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -225,7 +230,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>400</y>
+     <y>390</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -233,7 +238,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -247,7 +252,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>1170</x>
-     <y>400</y>
+     <y>390</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -255,7 +260,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -269,7 +274,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>726</x>
-     <y>400</y>
+     <y>390</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -277,7 +282,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -291,7 +296,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>504</x>
-     <y>400</y>
+     <y>390</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -299,7 +304,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -313,7 +318,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>1170</x>
-     <y>540</y>
+     <y>530</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -321,7 +326,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -335,7 +340,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>504</x>
-     <y>540</y>
+     <y>530</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -343,7 +348,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -357,7 +362,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>948</x>
-     <y>540</y>
+     <y>530</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -365,7 +370,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -379,7 +384,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>282</x>
-     <y>540</y>
+     <y>530</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -387,7 +392,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -401,7 +406,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>726</x>
-     <y>540</y>
+     <y>530</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -409,7 +414,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -423,7 +428,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>540</y>
+     <y>530</y>
      <width>170</width>
      <height>91</height>
     </rect>
@@ -431,7 +436,7 @@ QPushButton:pressed{
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>28</pointsize>
+     <pointsize>33</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -444,16 +449,41 @@ QPushButton:pressed{
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>533</x>
-     <y>60</y>
-     <width>341</width>
-     <height>81</height>
+     <x>3</x>
+     <y>0</y>
+     <width>1401</width>
+     <height>241</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;Выберите номер задания &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:40pt; color:#ffffff;&quot;&gt;Выберите номер задания &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
+  <zorder>label</zorder>
+  <zorder>back</zorder>
+  <zorder>exercise_1</zorder>
+  <zorder>exercise_2</zorder>
+  <zorder>exercise_3</zorder>
+  <zorder>exercise_4</zorder>
+  <zorder>exercise_5</zorder>
+  <zorder>exercise_6</zorder>
+  <zorder>exercise_11</zorder>
+  <zorder>exercise_8</zorder>
+  <zorder>exercise_7</zorder>
+  <zorder>exercise_12</zorder>
+  <zorder>exercise_10</zorder>
+  <zorder>exercise_9</zorder>
+  <zorder>exercise_18</zorder>
+  <zorder>exercise_15</zorder>
+  <zorder>exercise_17</zorder>
+  <zorder>exercise_14</zorder>
+  <zorder>exercise_16</zorder>
+  <zorder>exercise_13</zorder>
  </widget>
  <resources/>
  <connections/>

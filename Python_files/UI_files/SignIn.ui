@@ -98,6 +98,16 @@ QPushButton#pb_eye_active{
 QPushButton#pb_eye_active:pressed{
 	padding-left: 1px;
 	padding-top: 1px;
+}
+
+QPushButton#anonim{
+	background-color: rgba(0, 0, 0, 0);
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+QPushButton#anonim:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
 }</string>
     </property>
     <widget class="QLabel" name="back">
@@ -164,7 +174,7 @@ border-radius: 20px;</string>
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>200</y>
+       <y>180</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -191,7 +201,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>260</y>
+       <y>240</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -222,7 +232,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>370</y>
+       <y>350</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -277,7 +287,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>430</y>
+       <y>410</y>
        <width>251</width>
        <height>41</height>
       </rect>
@@ -310,7 +320,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>350</x>
-       <y>270</y>
+       <y>250</y>
        <width>21</width>
        <height>21</height>
       </rect>
@@ -327,7 +337,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>370</x>
-       <y>270</y>
+       <y>250</y>
        <width>21</width>
        <height>21</height>
       </rect>
@@ -344,7 +354,7 @@ padding-bottom: 7px;</string>
      <property name="geometry">
       <rect>
        <x>90</x>
-       <y>310</y>
+       <y>290</y>
        <width>311</width>
        <height>51</height>
       </rect>
@@ -366,6 +376,32 @@ padding-bottom: 7px;</string>
       <string/>
      </property>
     </widget>
+    <widget class="QPushButton" name="anonim">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>460</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Войти без аккаунта</string>
+     </property>
+    </widget>
     <zorder>back</zorder>
     <zorder>front</zorder>
     <zorder>login</zorder>
@@ -377,6 +413,7 @@ padding-bottom: 7px;</string>
     <zorder>pb_eye_active</zorder>
     <zorder>pb_close</zorder>
     <zorder>error</zorder>
+    <zorder>anonim</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

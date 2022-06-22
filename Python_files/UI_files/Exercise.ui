@@ -25,8 +25,8 @@ QPushButton#back:pressed{
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>30</y>
+     <x>20</x>
+     <y>20</y>
      <width>50</width>
      <height>30</height>
     </rect>
@@ -50,8 +50,8 @@ QPushButton#back:pressed{
     <rect>
      <x>50</x>
      <y>140</y>
-     <width>301</width>
-     <height>281</height>
+     <width>1311</width>
+     <height>461</height>
     </rect>
    </property>
    <property name="text">
@@ -64,76 +64,63 @@ QPushButton#back:pressed{
     <set>Qt::AlignHCenter|Qt::AlignTop</set>
    </property>
   </widget>
-  <widget class="QLabel" name="exNumber">
-   <property name="geometry">
-    <rect>
-     <x>680</x>
-     <y>10</y>
-     <width>81</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>32</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:rgb(255,255,255)</string>
-   </property>
-   <property name="text">
-    <string>1</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="check_ans">
    <property name="geometry">
     <rect>
-     <x>235</x>
+     <x>240</x>
      <y>710</y>
-     <width>231</width>
+     <width>251</width>
      <height>61</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>15</pointsize>
+     <pointsize>20</pointsize>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(107,92,209,200); color: White; border-radius: 20px; </string>
    </property>
    <property name="text">
-    <string>Проверить Ответ</string>
+    <string>Проверить ответ</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="ans">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>640</y>
-     <width>541</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-radius: 10px;
-background-color:rgba(255, 255, 255, 150)</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="see_right">
-   <property name="geometry">
-    <rect>
-     <x>1000</x>
-     <y>10</y>
-     <width>341</width>
+     <x>105</x>
+     <y>630</y>
+     <width>521</width>
      <height>61</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+background-color:rgba(255, 255, 255, 150)</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="see_right">
+   <property name="geometry">
+    <rect>
+     <x>960</x>
+     <y>20</y>
+     <width>421</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>15</pointsize>
+     <pointsize>20</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -146,16 +133,19 @@ background-color:rgba(255, 255, 255, 150)</string>
   <widget class="QLabel" name="right_or_no">
    <property name="geometry">
     <rect>
-     <x>650</x>
+     <x>680</x>
      <y>630</y>
      <width>251</width>
-     <height>71</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>15</pointsize>
+     <pointsize>24</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255,255,255)</string>
    </property>
    <property name="text">
     <string/>
@@ -166,7 +156,7 @@ background-color:rgba(255, 255, 255, 150)</string>
     <rect>
      <x>50</x>
      <y>620</y>
-     <width>1321</width>
+     <width>1311</width>
      <height>151</height>
     </rect>
    </property>
@@ -182,6 +172,38 @@ background-color:rgba(255, 255, 255, 150)</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:26pt;&quot;&gt;Задания из второй части не проверяются, но вы можете посмотреть подробное &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:26pt;&quot;&gt;решение и самостоятельно себя проверить&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
+  <widget class="QLabel" name="exNumber">
+   <property name="geometry">
+    <rect>
+     <x>-130</x>
+     <y>20</y>
+     <width>1401</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>28</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255,255,255)</string>
+   </property>
+   <property name="text">
+    <string>Тип задания №1</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>second_part</zorder>
+  <zorder>check_ans</zorder>
+  <zorder>exNumber</zorder>
+  <zorder>back</zorder>
+  <zorder>label</zorder>
+  <zorder>ans</zorder>
+  <zorder>see_right</zorder>
+  <zorder>right_or_no</zorder>
  </widget>
  <resources/>
  <connections/>
