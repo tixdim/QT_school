@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1400</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton#back{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#left{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#right{
+	background-color: rgba(105, 118, 132, 0);
+}
+
+
+QPushButton:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}</string>
+  </property>
+  <widget class="QPushButton" name="itogi">
+   <property name="geometry">
+    <rect>
+     <x>1150</x>
+     <y>710</y>
+     <width>221</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(107,92,209,200); color: White; border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>Подвести итоги</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="back">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>50</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../Images/right-arrows.png</normaloff>../Images/right-arrows.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>1401</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> color:#ffffff;</string>
+   </property>
+   <property name="text">
+    <string>Ниже вы можете ознакомиться с решениями заданий части 
+с развернутым ответом и оценить их выполнение самостоятельно</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="krit">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>140</y>
+     <width>501</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+ border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>Критерии</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ex_12">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>270</y>
+     <width>241</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+ border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>12</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ex_13">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>270</y>
+     <width>251</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>13</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ex_14">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>400</y>
+     <width>241</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+ border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>14</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ex_15">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>400</y>
+     <width>251</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>15</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ex_17">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>530</y>
+     <width>251</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>17</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ex_16">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>530</y>
+     <width>241</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+ border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>16</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ex_18">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>660</y>
+     <width>511</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(107,92,209,200); 
+color: White;
+ border-radius: 20px; </string>
+   </property>
+   <property name="text">
+    <string>18</string>
+   </property>
+  </widget>
+  <zorder>itogi</zorder>
+  <zorder>krit</zorder>
+  <zorder>ex_12</zorder>
+  <zorder>ex_13</zorder>
+  <zorder>ex_14</zorder>
+  <zorder>ex_15</zorder>
+  <zorder>ex_17</zorder>
+  <zorder>ex_16</zorder>
+  <zorder>ex_18</zorder>
+  <zorder>label</zorder>
+  <zorder>back</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>520</width>
+    <height>580</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>10</y>
+      <width>451</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#pb_login{
+	background-color: rgba(210, 148, 148, 210);
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+QPushButton#pb_login:hover{
+	background-color: rgba(230, 168, 168, 210);
+}
+QPushButton#pb_login:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+	background-color: rgba(255, 188, 188, 210);
+}
+
+QPushButton#pb_regist{
+	background-color: rgba(210, 148, 148, 210);
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+QPushButton#pb_regist:hover{
+	background-color: rgba(230, 168, 168, 210);
+}
+QPushButton#pb_regist:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+	background-color: rgba(255, 188, 188, 210);
+}
+
+QPushButton#pb_for{
+	background-color: rgba(105, 118, 132, 0);
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+QPushButton#pb_for:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}
+
+QPushButton#pb_back{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_back:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}
+
+QPushButton#pb_close{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_close:pressed{
+	padding-left: 3px;
+	padding-top: 3px;
+}
+
+QPushButton#pb_eye_not{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_eye_not:pressed{
+	padding-left: 1px;
+	padding-top: 1px;
+}
+
+QPushButton#pb_eye_active{
+	background-color: rgba(105, 118, 132, 0);
+}
+QPushButton#pb_eye_active:pressed{
+	padding-left: 1px;
+	padding-top: 1px;
+}
+
+QPushButton#anonim{
+	background-color: rgba(0, 0, 0, 0);
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+QPushButton#anonim:pressed{
+	padding-left: 2px;
+	padding-top: 2px;
+}</string>
+    </property>
+    <widget class="QLabel" name="back">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>10</y>
+       <width>421</width>
+       <height>521</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffc0cb;
+border-radius: 25px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="front">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>401</width>
+       <height>491</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0, 80);
+border-radius: 20px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="login">
+     <property name="geometry">
+      <rect>
+       <x>119</x>
+       <y>90</y>
+       <width>251</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgba(255, 255, 255, 210);</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Авторизация&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="user_nickname">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>180</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(105, 118, 132, 255);
+color: rgba(255, 255, 255, 230);
+padding-bottom: 7px;</string>
+     </property>
+     <property name="placeholderText">
+      <string> Ваш никнейм</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="user_password">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>240</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(105, 118, 132, 255);
+color: rgba(255, 255, 255, 230);
+padding-bottom: 7px;</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string> Ваш пароль</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_login">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>350</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>В о й т и</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_close">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>50</y>
+       <width>50</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../Images/close.png</normaloff>../Images/close.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_regist">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>410</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+       <kerning>true</kerning>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
+     <property name="mouseTracking">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Зарегистрироваться</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_eye_not">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>250</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../Images/eyes.svg</normaloff>../Images/eyes.svg</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_eye_active">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>250</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../Images/eyes-active.svg</normaloff>../Images/eyes-active.svg</iconset>
+     </property>
+    </widget>
+    <widget class="QLabel" name="error">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>290</y>
+       <width>311</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgba(255, 255, 255, 210);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="anonim">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>460</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Войти без аккаунта</string>
+     </property>
+    </widget>
+    <zorder>back</zorder>
+    <zorder>front</zorder>
+    <zorder>login</zorder>
+    <zorder>user_nickname</zorder>
+    <zorder>user_password</zorder>
+    <zorder>pb_login</zorder>
+    <zorder>pb_regist</zorder>
+    <zorder>pb_eye_not</zorder>
+    <zorder>pb_eye_active</zorder>
+    <zorder>pb_close</zorder>
+    <zorder>error</zorder>
+    <zorder>anonim</zorder>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
